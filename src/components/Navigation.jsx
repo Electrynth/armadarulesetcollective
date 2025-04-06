@@ -1,41 +1,96 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Navigation = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   const isActive = (path) => {
-    return location.pathname === path ? 'bg-[#C14949]/20 ring-1 ring-[#C14949]/50 font-bold' : '';
+    return location.pathname === path ? 'text-[#C14949] font-bold' : '';
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navLinks = [
+    { path: '/', label: 'Home' },
+    { path: '/news', label: 'News' },
+    { path: '/resources', label: 'Resources' },
+    { path: '/about', label: 'About' },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-gray-800 font-montserrat py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800 font-montserrat py-3">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="bg-gray-900/80 backdrop-blur-md rounded-full px-6 py-3 shadow-lg ring-1 ring-gray-800">
-          <div className="flex justify-between items-center">
-            <Link
-              to="/"
-              className={`px-5 py-2 rounded-full text-white hover:text-[#666666] hover:bg-[#666666]/10 transition-all ${isActive('/')}`}
+        <div className="flex justify-between items-center">
+          {/* Logo/Home link */}
+          <Link to="/" className="text-white font-bold text-xl">
+            ARC
+          </Link>
+          
+          {/* Hamburger menu button - visible only on mobile */}
+          <button 
+            className="md:hidden text-white p-2"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
             >
-              Home
-            </Link>
-            <Link
-              to="/news"
-              className={`px-5 py-2 rounded-full text-white hover:text-[#666666] hover:bg-[#666666]/10 transition-all ${isActive('/news')}`}
-            >
-              News
-            </Link>
-            <Link
-              to="/resources"
-              className={`px-5 py-2 rounded-full text-white hover:text-[#666666] hover:bg-[#666666]/10 transition-all ${isActive('/resources')}`}
-            >
-              Resources
-            </Link>
-            <Link
-              to="/about"
-              className={`px-5 py-2 rounded-full text-white hover:text-[#666666] hover:bg-[#666666]/10 transition-all ${isActive('/about')}`}
-            >
-              About
-            </Link>
+              {isMenuOpen ? (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M6 18L18 6M6 6l12 12" 
+                />
+              ) : (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M4 6h16M4 12h16M4 18h16" 
+                />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop navigation - hidden on mobile */}
+          <div className="hidden md:flex space-x-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-white hover:text-[#C14949] transition-colors ${isActive(link.path)}`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile menu - shown when isMenuOpen is true */}
+        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mt-3`}>
+          <div className="flex flex-col space-y-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-white hover:text-[#C14949] transition-colors ${isActive(link.path)}`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

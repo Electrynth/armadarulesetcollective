@@ -1,8 +1,8 @@
 const News = () => {
   return (
-    <div className="min-h-screen bg-black text-white p-8 font-montserrat">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[#C14949] to-purple-500 text-transparent bg-clip-text">
+    <div className="min-h-screen p-8 font-montserrat">
+      <div className="max-w-4xl mx-auto mt-12">
+        <h1 className="text-5xl font-bold mb-6 text-white hover:text-[#666666] transition-all">
           Latest News
         </h1>
         <div className="space-y-6">
