@@ -29,26 +29,6 @@ const OrganizedPlay = () => {
           </div>
         </div>
         
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Fleet Building</h3>
-              <p className="text-gray-300 mb-3">Tools and guidelines for building competitive fleets for tournaments.</p>
-              <button className="bg-gray-800/90 backdrop-blur-sm text-white px-4 py-2 rounded-full ring-1 ring-gray-700/50 hover:bg-gray-700/90 transition-all">
-                Fleet Builder
-              </button>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Strategy Guides</h3>
-              <p className="text-gray-300 mb-3">Advanced strategy guides and tips for competitive play.</p>
-              <button className="bg-gray-800/90 backdrop-blur-sm text-white px-4 py-2 rounded-full ring-1 ring-gray-700/50 hover:bg-gray-700/90 transition-all">
-                View Guides
-              </button>
-            </div>
-          </div>
-        </div>
-        
         <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4">Tournament Results</h2>
           <p className="text-gray-300 mb-4">

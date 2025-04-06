@@ -15,7 +15,7 @@
 
 .stars-container.visible .star {
   transform: scale(1);
-  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
 }
 
 .stars-container.visible .far .star {
