@@ -1,5 +1,17 @@
+@import './styles/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Montserrat', sans-serif !important;
+  }
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   line-height: 1.5;
   font-weight: 400;
 
@@ -15,11 +27,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #C14949;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #a13a3a;
 }
 
 body {
@@ -28,11 +40,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 button {
@@ -41,13 +55,13 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif !important;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #C14949;
 }
 button:focus,
 button:focus-visible {
@@ -60,7 +74,7 @@ button:focus-visible {
     background-color: #000;
   }
   a:hover {
-    color: #747bff;
+    color: #d15a5a;
   }
   button {
     background-color: #f9f9f9;
