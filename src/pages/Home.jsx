@@ -14,9 +14,9 @@ const Home = () => {
           <img 
             src={ARC_Logo_No_Text} 
             alt="Armada Ruleset Collective Logo" 
-            className="w-56 h-56 md:w-88 md:h-88 object-contain"
+            className="w-56 h-56 md:w-88 md:h-88 object-contain mb-2"
           />
-          <h1 className="text-[72px] md:text-[108px] lg:text-[130px] font-black text-white tracking-tighter">
+          <h1 className="text-[72px] md:text-[108px] lg:text-[130px] font-black text-white tracking-tighter mb-2">
             ARC
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
@@ -28,16 +28,16 @@ const Home = () => {
           Your central hub for Star Wars: Armada rules, resources, and community updates.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-800 hover:ring-[#C14949]/50 transition-all">
-            <h2 className="text-2xl font-semibold text-[#C14949] mb-3">Latest Updates</h2>
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+            <h2 className="text-2xl font-semibold text-white mb-3">Latest Updates</h2>
             <p className="text-gray-300">Stay informed with the latest rules clarifications and community news.</p>
           </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-800 hover:ring-[#C14949]/50 transition-all">
-            <h2 className="text-2xl font-semibold text-[#C14949] mb-3">Resources</h2>
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+            <h2 className="text-2xl font-semibold text-white mb-3">Resources</h2>
             <p className="text-gray-300">Access comprehensive guides, fleet builders, and strategy resources.</p>
           </div>
-          <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-800 hover:ring-[#C14949]/50 transition-all md:col-span-2">
-            <h2 className="text-2xl font-semibold text-[#C14949] mb-3">Join Our Discord Community</h2>
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 md:col-span-2">
+            <h2 className="text-2xl font-semibold text-white mb-3">Join Our Discord Community</h2>
             <p className="text-gray-300 mb-4">Connect with fellow Armada players, discuss strategies, and stay updated with the latest news.</p>
             <div className="flex justify-center">
               <iframe
