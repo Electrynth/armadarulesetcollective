@@ -16,7 +16,7 @@ const Home = () => {
             alt="Armada Ruleset Collective Logo" 
             className="w-56 h-56 md:w-88 md:h-88 object-contain"
           />
-          <h1 className="text-[80px] md:text-[120px] lg:text-[144px] font-black text-white tracking-tighter">
+          <h1 className="text-[72px] md:text-[108px] lg:text-[130px] font-black text-white tracking-tighter">
             ARC
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">

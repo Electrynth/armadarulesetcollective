@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import News from './pages/News';
 import Resources from './pages/Resources';
 import About from './pages/About';
+import OrganizedPlay from './pages/OrganizedPlay';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
+            <Route path="/organized-play" element={<OrganizedPlay />} />
           </Routes>
         </div>
       </div>
