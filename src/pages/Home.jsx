@@ -1,8 +1,13 @@
 const Home = () => {
   return (
     <div className="min-h-screen bg-black text-white p-8 font-montserrat">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[#C14949] to-purple-500 text-transparent bg-clip-text">
+      <div className="max-w-4xl mx-auto mt-24">
+        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
+          <p className="text-[#C14949] font-semibold">
+            🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
+          </p>
+        </div>
+        <h1 className="text-5xl font-bold mb-6 text-white hover:text-[#666666] transition-all">
           Armada Ruleset Collective
         </h1>
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
