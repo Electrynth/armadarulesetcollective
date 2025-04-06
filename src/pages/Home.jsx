@@ -10,16 +10,16 @@ const Home = () => {
           </p>
         </div>
         
-        <div className="flex flex-col items-center mb-8 space-y-[-1.5rem]">
+        <div className="flex flex-col items-center mb-8">
           <img 
             src={ARC_Logo_No_Text} 
             alt="Armada Ruleset Collective Logo" 
-            className="w-64 h-64 md:w-96 md:h-96 object-contain"
+            className="w-56 h-56 md:w-88 md:h-88 object-contain"
           />
           <h1 className="text-[80px] md:text-[120px] lg:text-[144px] font-black text-white tracking-tighter">
             ARC
           </h1>
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mt-4 md:mt-0">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
             Armada Ruleset Collective
           </h2>
         </div>
