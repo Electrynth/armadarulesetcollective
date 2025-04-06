@@ -20,13 +20,13 @@ const About = () => {
               Have questions or suggestions? Reach out to us through our community channels.
             </p>
             <div className="flex space-x-4">
-              <button className="bg-[#C14949]/20 text-[#C14949] px-4 py-2 rounded-full ring-1 ring-[#C14949]/50 hover:bg-[#C14949]/30 transition-all">
+              <button className="!bg-gray-800/80 !backdrop-blur-md !text-white !px-4 !py-2 !rounded-full !ring-1 !ring-gray-700 hover:!bg-gray-700/80 !transition-all">
                 Discord
               </button>
-              <button className="bg-[#C14949]/20 text-[#C14949] px-4 py-2 rounded-full ring-1 ring-[#C14949]/50 hover:bg-[#C14949]/30 transition-all">
+              <button className="!bg-gray-800/80 !backdrop-blur-md !text-white !px-4 !py-2 !rounded-full !ring-1 !ring-gray-700 hover:!bg-gray-700/80 !transition-all">
                 Twitter
               </button>
-              <button className="bg-[#C14949]/20 text-[#C14949] px-4 py-2 rounded-full ring-1 ring-[#C14949]/50 hover:bg-[#C14949]/30 transition-all">
+              <button className="!bg-gray-800/80 !backdrop-blur-md !text-white !px-4 !py-2 !rounded-full !ring-1 !ring-gray-700 hover:!bg-gray-700/80 !transition-all">
                 Email
               </button>
             </div>

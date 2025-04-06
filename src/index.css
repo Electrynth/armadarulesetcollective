@@ -54,12 +54,15 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: 'Montserrat', sans-serif !important;
-  background-color: #1a1a1a;
+  background-color: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(8px);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
 }
 button:hover {
-  border-color: #C14949;
+  background-color: rgba(55, 65, 81, 0.8);
+  border-color: rgba(75, 85, 99, 0.8);
 }
 button:focus,
 button:focus-visible {
@@ -75,6 +78,8 @@ button:focus-visible {
     color: #AAAAAA;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(8px);
+    color: white;
   }
 }

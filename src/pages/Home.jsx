@@ -16,7 +16,7 @@ const Home = () => {
             alt="Armada Ruleset Collective Logo" 
             className="w-64 h-64 md:w-96 md:h-96 object-contain"
           />
-          <h1 className="text-[80px] md:text-[120px] lg:text-[144px] font-bold text-white">
+          <h1 className="text-[80px] md:text-[120px] lg:text-[144px] font-black text-white tracking-tighter">
             ARC
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mt-4 md:mt-0">
@@ -35,6 +35,21 @@ const Home = () => {
           <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-800 hover:ring-[#C14949]/50 transition-all">
             <h2 className="text-2xl font-semibold text-[#C14949] mb-3">Resources</h2>
             <p className="text-gray-300">Access comprehensive guides, fleet builders, and strategy resources.</p>
+          </div>
+          <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-800 hover:ring-[#C14949]/50 transition-all md:col-span-2">
+            <h2 className="text-2xl font-semibold text-[#C14949] mb-3">Join Our Discord Community</h2>
+            <p className="text-gray-300 mb-4">Connect with fellow Armada players, discuss strategies, and stay updated with the latest news.</p>
+            <div className="flex justify-center">
+              <iframe
+                src="https://discord.com/widget?id=219608175333081088&theme=dark"
+                width="100%"
+                height="350"
+                className="rounded-lg h-[350px] md:h-[500px] w-full max-w-2xl"
+                allowTransparency="true"
+                frameBorder="0"
+                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

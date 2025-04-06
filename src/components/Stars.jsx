@@ -54,15 +54,15 @@ const Stars = () => {
     <div className={`stars-container ${isVisible ? 'visible' : ''}`}>
       {/* Far stars (small, more numerous) */}
       <div className="stars-layer far">
-        {generateStars(125, 1)}
+        {generateStars(200, 1)}
       </div>
       {/* Medium stars */}
       <div className="stars-layer medium">
-        {generateStars(63, 2)}
+        {generateStars(100, 2)}
       </div>
       {/* Near stars (larger, fewer) */}
       <div className="stars-layer near">
-        {generateStars(31, 3)}
+        {generateStars(75, 3)}
       </div>
     </div>
   );
