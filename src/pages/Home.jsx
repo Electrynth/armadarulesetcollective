@@ -3,20 +3,20 @@ import ARC_Logo_No_Text from '../assets/ARC Logo no text Transparent.png';
 const Home = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
-      <div className="max-w-4xl mx-auto mt-12">
+      <div className="max-w-4xl mx-auto mt-8">
         <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
           <p className="text-[#C14949] font-semibold">
             🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
           </p>
         </div>
         
-        <div className="flex flex-col items-center mb-8">
+        <div className="flex flex-col items-center mb-4">
           <img 
             src={ARC_Logo_No_Text} 
             alt="Armada Ruleset Collective Logo" 
-            className="w-56 h-56 md:w-88 md:h-88 object-contain mb-2"
+            className="w-56 h-56 md:w-88 md:h-88 object-contain mb-1"
           />
-          <h1 className="text-[72px] md:text-[108px] lg:text-[130px] font-black text-white tracking-tighter mb-2">
+          <h1 className="text-[72px] md:text-[108px] lg:text-[130px] font-black text-white tracking-tighter mb-1">
             ARC
           </h1>
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
