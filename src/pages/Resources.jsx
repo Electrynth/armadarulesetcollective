@@ -150,7 +150,7 @@ const Resources = () => {
         </h1>
         
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-          Welcome to the ARC Resources page. Here you'll find a comprehensive collection of tools, guides, and information to help you get the most out of Star Wars: Armada. Whether you're a new player or a seasoned veteran, these resources are designed to enhance your gaming experience.
+          Welcome to the ARC Resources page. Here you'll find a comprehensive collection of tools, guides, and information to help you get the most out of Star Wars: Armada.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -160,10 +160,10 @@ const Resources = () => {
               className="bg-gray-800/90 backdrop-blur-sm rounded-lg ring-1 ring-gray-700/50 overflow-hidden"
             >
               <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl mr-3">{category.icon}</span>
-                  <h2 className="text-2xl font-semibold text-white">{category.title}</h2>
-                </div>
+                <h2 className="text-2xl font-semibold text-white mb-4">
+                  <span className="mr-2">{category.icon}</span>
+                  {category.title}
+                </h2>
                 
                 <p className="text-gray-300 mb-4">
                   {category.description}
