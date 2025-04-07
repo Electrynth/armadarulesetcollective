@@ -45,29 +45,29 @@ const BlogPost = ({ post, isPreview = false }) => {
   };
 
   return (
-    <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-lg ring-1 ring-gray-700/50">
       <div className="mb-4 overflow-hidden rounded-lg bg-gray-900/50 flex items-center justify-center">
         <img 
           src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
           alt={post.title} 
-          className={`w-full min-h-[12rem] max-h-[20rem] ${imageError || !post.image ? 'object-contain p-4' : 'object-contain'}`}
+          className={`w-full min-h-[8rem] sm:min-h-[12rem] max-h-[15rem] sm:max-h-[20rem] ${imageError || !post.image ? 'object-contain p-4' : 'object-contain'}`}
           onError={handleImageError}
         />
       </div>
       
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-[#C14949] text-sm font-medium">{post.category}</span>
+      <div className="flex flex-wrap items-center gap-2 mb-2 text-sm">
+        <span className="text-[#C14949] font-medium">{post.category}</span>
         <span className="text-gray-500">•</span>
-        <span className="text-gray-400 text-sm">{formatDate(post.date)}</span>
+        <span className="text-gray-400">{formatDate(post.date)}</span>
         {post.author && (
           <>
             <span className="text-gray-500">•</span>
-            <span className="text-gray-400 text-sm">By {post.author}</span>
+            <span className="text-gray-400">By {post.author}</span>
           </>
         )}
       </div>
       
-      <h2 className="text-2xl font-semibold text-white mb-2">
+      <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2">
         {isPreview ? (
           <Link to={`/news/${post.id}`} className="hover:text-[#C14949] transition-colors">
             {post.title}

@@ -113,17 +113,6 @@ const Resources = () => {
       ]
     },
     {
-      title: "Custom Content",
-      description: "Guidelines for creating balanced custom content for casual play.",
-      icon: "🎨",
-      items: [
-        { title: "Custom Ship Guidelines", link: "#", description: "Guidelines for creating balanced custom ships." },
-        { title: "Custom Squadron Guidelines", link: "#", description: "Guidelines for creating balanced custom squadrons." },
-        { title: "Custom Upgrade Guidelines", link: "#", description: "Guidelines for creating balanced custom upgrades." },
-        { title: "Custom Scenario Guidelines", link: "#", description: "Guidelines for creating balanced custom scenarios." }
-      ]
-    },
-    {
       title: "Accessibility Resources",
       description: "Tools and guides to make the game more accessible to players with different needs.",
       icon: "♿",

@@ -3,6 +3,7 @@ import ARC_Logo_No_Text_Transparent from '../assets/ARC Logo no text Transparent
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchBlogPosts } from '../services/contentful';
+import BlogPost from '../components/BlogPost';
 
 const Home = () => {
   const [imageError, setImageError] = useState(false);
@@ -91,51 +92,7 @@ const Home = () => {
               <p className="text-gray-300">Loading latest update...</p>
             </div>
           ) : latestPost ? (
-            <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
-              <div className="mb-4 overflow-hidden rounded-lg bg-gray-900/50 flex items-center justify-center">
-                <img 
-                  src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
-                  alt={latestPost.title} 
-                  className={`w-full min-h-[12rem] max-h-[20rem] ${imageError || !latestPost.image ? 'object-contain p-4' : 'object-contain'}`}
-                  onError={handleImageError}
-                />
-              </div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[#C14949] text-sm font-medium">{latestPost.category}</span>
-                <span className="text-gray-500">•</span>
-                <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
-                {latestPost.author && (
-                  <>
-                    <span className="text-gray-500">•</span>
-                    <span className="text-gray-400 text-sm">By {latestPost.author}</span>
-                  </>
-                )}
-              </div>
-              <h2 className="text-2xl font-semibold text-white mb-2">
-                <Link to={`/news/${latestPost.id}`} className="hover:text-[#C14949] transition-colors">
-                  {latestPost.title}
-                </Link>
-              </h2>
-              <p className="text-gray-300">{latestPost.summary}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {latestPost.tags && latestPost.tags.map((tag, index) => (
-                  <span 
-                    key={index} 
-                    className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-4">
-                <Link 
-                  to={`/news/${latestPost.id}`} 
-                  className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
-                >
-                  Read more →
-                </Link>
-              </div>
-            </article>
+            <BlogPost post={latestPost} isPreview={true} />
           ) : (
             <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
               <p className="text-gray-300">No updates available at this time.</p>
