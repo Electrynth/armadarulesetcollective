@@ -145,7 +145,7 @@ const Resources = () => {
           </p>
         </div>
         
-        <h1 className="text-5xl font-bold mb-6 text-white text-left">
+        <h1 className="text-5xl font-bold mb-6 text-white text-center">
           Resources
         </h1>
         
