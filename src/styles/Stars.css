@@ -16,11 +16,12 @@
   opacity: 0;
   transform: scale(0);
   will-change: transform, opacity;
+  transition: opacity 1.5s ease-in-out, transform 5s ease-in-out;
 }
 
 .stars-container.visible .star {
   transform: scale(1);
-  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+  opacity: 1;
 }
 
 .stars-container.visible .far .star {

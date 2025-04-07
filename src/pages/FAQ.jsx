@@ -26,7 +26,7 @@ const FAQ = () => {
     },
     {
       question: "Is ARC affiliated with Fantasy Flight Games or Atomic Mass Games?",
-      answer: "ARC is an independent community resource and is not affiliated with Fantasy Flight Games, Atomic Mass Games, Lucasfilm Ltd., or any other company."
+      answer: "No, ARC is an independent community resource and is not affiliated with Fantasy Flight Games, Atomic Mass Games, Lucasfilm Ltd., or any other company."
     },
     {
       question: "How can I report errors or suggest improvements?",

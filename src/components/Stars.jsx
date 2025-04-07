@@ -6,7 +6,10 @@ const Stars = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    setIsVisible(true);
+    // Add a small delay before setting isVisible to true to ensure the initial state is applied
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
     
     // Update dimensions on mount and resize
     const updateDimensions = () => {
@@ -18,7 +21,10 @@ const Stars = () => {
 
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+      clearTimeout(timer);
+    };
   }, []);
 
   // Check if a position is too close to existing stars
