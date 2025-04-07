@@ -15,6 +15,8 @@ const processContent = (content) => {
   
   // If it's a Rich Text object, return it as is
   if (typeof content === 'object') {
+    // Log the content structure to help debug formatting issues
+    console.log('Rich text content structure:', JSON.stringify(content, null, 2));
     return content;
   }
   

@@ -92,11 +92,11 @@ const Home = () => {
             </div>
           ) : latestPost ? (
             <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
-              <div className="mb-4 overflow-hidden rounded-lg">
+              <div className="mb-4 overflow-hidden rounded-lg bg-gray-900/50 flex items-center justify-center">
                 <img 
                   src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
                   alt={latestPost.title} 
-                  className={`w-full h-48 ${imageError || !latestPost.image ? 'object-contain bg-gray-900/50 p-4' : 'object-cover'}`}
+                  className={`w-full min-h-[12rem] max-h-[20rem] ${imageError || !latestPost.image ? 'object-contain p-4' : 'object-contain'}`}
                   onError={handleImageError}
                 />
               </div>
