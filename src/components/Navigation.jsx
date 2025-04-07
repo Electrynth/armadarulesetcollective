@@ -46,6 +46,7 @@ const Navigation = () => {
     { path: '/news', label: 'News' },
     { path: '/organized-play', label: 'Organized Play' },
     { path: '/resources', label: 'Resources' },
+    { path: '/faq', label: 'FAQ' },
     { path: '/about', label: 'About' },
   ];
 
@@ -56,7 +57,7 @@ const Navigation = () => {
           {/* Desktop navigation - hidden on mobile */}
           <div className="hidden md:flex bg-gray-800/90 backdrop-blur-sm rounded-xl pl-3 pr-6 py-2 ring-1 ring-gray-700/50 items-center">
             {/* Logo and ARC text */}
-            <div className="flex items-center space-x-2 mr-6">
+            <div className="flex items-center space-x-2 mr-24">
               <img 
                 src={arcLogo} 
                 alt="ARC Logo" 

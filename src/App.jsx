@@ -8,6 +8,7 @@ import Resources from './pages/Resources';
 import About from './pages/About';
 import OrganizedPlay from './pages/OrganizedPlay';
 import Privacy from './pages/Privacy';
+import FAQ from './pages/FAQ';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<BlogPostDetail />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/organized-play" element={<OrganizedPlay />} />
             <Route path="/privacy" element={<Privacy />} />
