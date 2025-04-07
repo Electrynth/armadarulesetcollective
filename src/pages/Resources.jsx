@@ -72,17 +72,6 @@ const Resources = () => {
       ]
     },
     {
-      title: "Video Tutorials",
-      description: "Video content explaining game mechanics, strategies, or specific rules.",
-      icon: "🎥",
-      items: [
-        { title: "Rules Tutorials", link: "#", description: "Videos explaining specific rules and mechanics." },
-        { title: "Strategy Tutorials", link: "#", description: "Videos with strategic advice and tips." },
-        { title: "Battle Reports", link: "#", description: "Recorded games with commentary and analysis." },
-        { title: "Tournament Coverage", link: "#", description: "Coverage of major tournaments and matches." }
-      ]
-    },
-    {
       title: "Print & Play Resources",
       description: "Templates for cards, tokens, markers, and other game components.",
       icon: "🖨️",
@@ -105,21 +94,22 @@ const Resources = () => {
       ]
     },
     {
-      title: "Meta Analysis",
-      description: "Information about current competitive meta, popular fleet builds, and trends.",
-      icon: "📊",
+      title: "Podcasts",
+      description: "Audio content from the Star Wars: Armada community discussing strategy, news, and community events.",
+      icon: "🎙️",
       items: [
-        { title: "Current Meta Report", link: "#", description: "Analysis of the current competitive meta." },
-        { title: "Popular Fleet Builds", link: "#", description: "Information about popular fleet builds in the current meta." },
-        { title: "Meta Trends", link: "#", description: "Analysis of how the meta has evolved over time." },
-        { title: "Counter Strategies", link: "#", description: "Strategies for countering popular fleet builds." }
+        { title: "The Armada Podcast", link: "https://the-armada-podcast.simplecast.com", description: "Long-running podcast discussing Star Wars: Armada strategy, news, and community." }
       ]
     },
     {
-      title: "Content Creators",
-      description: "Tools created by the community that enhance the gaming experience.",
-      icon: "🛠️",
+      title: "YouTubers",
+      description: "Video content creators specializing in Star Wars: Armada gameplay, strategy, and community content.",
+      icon: "📺",
       items: [
+        { title: "Crabbok", link: "https://www.youtube.com/c/Crabbok", description: "Popular YouTube channel with battle reports, strategy guides, and fleet reviews." },
+        { title: "Master of the Fleet", link: "https://www.youtube.com/@motf7552", description: "YouTube channel with battle reports, strategy guides, and ship reviews." },
+        { title: "Ion Radio", link: "https://www.youtube.com/c/IonRadio", description: "YouTube channel with strategy discussions, meta analysis, and community content." },
+        { title: "DownsizeIt", link: "https://www.youtube.com/@DownsizeIt", description: "YouTube channel with battle reports, strategy guides, and fleet reviews." }
       ]
     },
     {
