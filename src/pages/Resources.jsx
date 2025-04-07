@@ -116,14 +116,10 @@ const Resources = () => {
       ]
     },
     {
-      title: "Community Tools",
+      title: "Content Creators",
       description: "Tools created by the community that enhance the gaming experience.",
       icon: "🛠️",
       items: [
-        { title: "Community Apps", link: "#", description: "Applications created by the community for Armada players." },
-        { title: "Online Tools", link: "#", description: "Online tools for various aspects of the game." },
-        { title: "Discord Bots", link: "#", description: "Bots for Discord servers related to Star Wars: Armada." },
-        { title: "Community Scripts", link: "#", description: "Scripts and utilities created by the community." }
       ]
     },
     {

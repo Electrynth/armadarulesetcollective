@@ -104,6 +104,12 @@ const Home = () => {
                 <span className="text-[#C14949] text-sm font-medium">{latestPost.category}</span>
                 <span className="text-gray-500">•</span>
                 <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
+                {latestPost.author && (
+                  <>
+                    <span className="text-gray-500">•</span>
+                    <span className="text-gray-400 text-sm">By {latestPost.author}</span>
+                  </>
+                )}
               </div>
               <h2 className="text-2xl font-semibold text-white mb-2">
                 <Link to={`/news/${latestPost.id}`} className="hover:text-[#C14949] transition-colors">

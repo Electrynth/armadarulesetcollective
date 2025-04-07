@@ -15,8 +15,26 @@ const processContent = (content) => {
   
   // If it's a Rich Text object, return it as is
   if (typeof content === 'object') {
-    // Log the content structure to help debug formatting issues
-    console.log('Rich text content structure:', JSON.stringify(content, null, 2));
+    // Check if the content has the expected structure for Contentful Rich Text
+    if (content.nodeType === 'document' && Array.isArray(content.content)) {
+      // Process the content to ensure italic marks are preserved
+      const processedContent = {
+        ...content,
+        content: content.content.map(node => {
+          // If the node has marks, ensure they're properly formatted
+          if (node.marks && Array.isArray(node.marks)) {
+            return {
+              ...node,
+              marks: node.marks.map(mark => mark)
+            };
+          }
+          return node;
+        })
+      };
+      
+      return processedContent;
+    }
+    
     return content;
   }
   

@@ -1,15 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, MARKS } from '@contentful/rich-text-types';
-import { useEffect } from 'react';
 
 const RichTextContent = ({ content }) => {
-  // Debug content structure
-  useEffect(() => {
-    if (content && typeof content === 'object') {
-      console.log('RichTextContent received:', content);
-    }
-  }, [content]);
-
   // If content is a string (HTML), render it directly
   if (typeof content === 'string') {
     return (
@@ -49,10 +41,7 @@ const RichTextContent = ({ content }) => {
       },
       renderMark: {
         [MARKS.BOLD]: text => <strong>{text}</strong>,
-        [MARKS.ITALIC]: text => {
-          console.log('Rendering italic text:', text);
-          return <em className="italic">{text}</em>;
-        },
+        [MARKS.ITALIC]: text => <em className="italic font-style-italic" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: 'italic' }}>{text}</em>,
         [MARKS.CODE]: text => <code className="bg-gray-800 px-1 py-0.5 rounded">{text}</code>,
       },
     };

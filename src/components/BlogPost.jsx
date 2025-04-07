@@ -59,6 +59,12 @@ const BlogPost = ({ post, isPreview = false }) => {
         <span className="text-[#C14949] text-sm font-medium">{post.category}</span>
         <span className="text-gray-500">•</span>
         <span className="text-gray-400 text-sm">{formatDate(post.date)}</span>
+        {post.author && (
+          <>
+            <span className="text-gray-500">•</span>
+            <span className="text-gray-400 text-sm">By {post.author}</span>
+          </>
+        )}
       </div>
       
       <h2 className="text-2xl font-semibold text-white mb-2">

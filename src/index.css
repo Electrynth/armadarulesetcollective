@@ -69,6 +69,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Explicit styling for italic text */
+em, .italic, .font-style-italic {
+  font-style: italic !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Ensure italic text is visible */
+.prose em, .prose .italic, .prose .font-style-italic {
+  font-style: italic !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color: #eee;
