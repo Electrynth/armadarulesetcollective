@@ -46,16 +46,30 @@ const About = () => {
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-white mb-3">Innovation</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Transparency</h3>
               <p className="text-gray-300">
-                We continuously seek new ways to improve the gaming experience and make resources more accessible to players.
+                We are open about our processes, decisions, and the reasoning behind rule interpretations and clarifications.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-white mb-3">Transparency</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Education</h3>
               <p className="text-gray-300">
-                We are open about our processes, decisions, and the reasoning behind rule interpretations and clarifications.
+                We are dedicated to helping players of all skill levels understand the game better through clear explanations and learning resources.
+              </p>
+            </div>
+            
+            <div className="bg-gray-700/50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-white mb-3">Collaboration</h3>
+              <p className="text-gray-300">
+                We work together with players, organizers, and the broader community to develop and refine our resources and rules interpretations.
+              </p>
+            </div>
+            
+            <div className="bg-gray-700/50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-white mb-3">Balance</h3>
+              <p className="text-gray-300">
+                We are committed to fostering a balanced competitive environment where all factions have a chance to succeed with various strategies.
               </p>
             </div>
           </div>

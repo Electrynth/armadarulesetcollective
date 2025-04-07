@@ -52,23 +52,12 @@ const Resources = () => {
     {
       title: "Card Database",
       description: "Comprehensive information about all Star Wars: Armada cards.",
-      icon: "🃏",
+      icon: "📋",
       items: [
         { title: "Ship Cards", link: "#", description: "Database of all ship cards and their abilities." },
         { title: "Squadron Cards", link: "#", description: "Database of all squadron cards and their abilities." },
         { title: "Upgrade Cards", link: "#", description: "Database of all upgrade cards and their effects." },
         { title: "Commander Cards", link: "#", description: "Database of all commander cards and their abilities." }
-      ]
-    },
-    {
-      title: "Scenario Guides",
-      description: "Guides for playing specific scenarios or mission types.",
-      icon: "🗺️",
-      items: [
-        { title: "Official Scenarios", link: "#", description: "Guides for official Star Wars: Armada scenarios." },
-        { title: "Custom Scenarios", link: "#", description: "Community-created scenarios with rules and setup instructions." },
-        { title: "Campaign Guides", link: "#", description: "Resources for running narrative campaigns." },
-        { title: "Scenario Creation Guide", link: "#", description: "Guidelines for creating balanced custom scenarios." }
       ]
     },
     {

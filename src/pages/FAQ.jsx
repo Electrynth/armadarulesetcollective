@@ -10,11 +10,15 @@ const FAQ = () => {
   const faqs = [
     {
       question: "What is the Armada Ruleset Collective (ARC)?",
-      answer: "ARC is a community-driven initiative dedicated to providing accurate, up-to-date rules and resources for Star Wars: Armada players worldwide. We maintain a comprehensive rules database and provide tools to enhance the gaming experience."
+      answer: "ARC is a community-driven initiative dedicated to providing accurate, up-to-date rules and resources for Star Wars: Armada players worldwide. We maintain a comprehensive rules database and provide tools to enhance the gaming experience. This includes slowly introducing new content to the game to enrich the competitive scene."
     },
     {
-      question: "How can I contribute to ARC?",
-      answer: "We welcome contributions from the community! You can help by reporting rule clarifications, suggesting improvements to our resources, or participating in Discord community discussions."
+      question: "Will ARC release or approve content for the competitive ruleset?",
+      answer: "Yes, ARC may release content or approve content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-approved and will be designed to enhance the competitive experience while maintaining game balance."
+    },
+    {
+      question: "How will ARC ensure new content is balanced and fair for the competitive scene and the game?",
+      answer: "ARC will conduct extensive playtesting of new content through a dedicated testing team and community volunteers. This process includes multiple rounds of testing across different skill levels, faction combinations, and playstyles. Feedback will be collected, analyzed, and incorporated before any content is introduced to the competitive scene."
     },
     {
       question: "How often are rules updated?",
@@ -25,24 +29,24 @@ const FAQ = () => {
       answer: "ARC is an independent community resource and is not affiliated with Fantasy Flight Games, Atomic Mass Games, Lucasfilm Ltd., or any other company."
     },
     {
-      question: "Will ARC release or approve content for the competitive ruleset?",
-      answer: "Yes, ARC may release content or approve content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-approved and will be designed to enhance the competitive experience while maintaining game balance."
-    },
-    {
       question: "How can I report errors or suggest improvements?",
-      answer: "You can report errors or suggest improvements through our Discord server, Facebook, or by emailing our team. We appreciate all feedback that helps us improve our resources."
+      answer: "You can report errors or suggest improvements through the Armada Hub Discord server, Facebook, or by emailing our team. We appreciate all feedback that helps us improve our resources."
     },
     {
       question: "Are there any fees to use ARC resources?",
-      answer: "No, all ARC resources are provided free of charge to the Star Wars: Armada community. We are committed to keeping our content accessible to all players."
+      answer: "No, all ARC resources are provided free of charge to the Star Wars: Armada community. We are committed to keeping our content as accessible as possible to all players."
     },
     {
       question: "How can I stay updated with ARC news?",
-      answer: "You can stay updated by following our News page, joining our Discord server, or following us on Facebook. We regularly post updates about new features, rule clarifications, and community events."
+      answer: "You can stay updated by visiting our News page, joining the Armada Hub Discord server, or following us on Facebook. We regularly post updates about new features, rule clarifications, and community events."
     },
     {
       question: "Does ARC organize tournaments or events?",
       answer: "While ARC primarily focuses on providing rules and resources, we occasionally collaborate with tournament organizers and provide support for community events. Check our Organized Play page for more information."
+    },
+    {
+      question: "How can I contribute to ARC?",
+      answer: "We welcome contributions from the community! You can help by reporting rule clarifications, suggesting improvements to our resources, or participating in Discord community discussions."
     }
   ];
 
