@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import '../styles/Stars.css';
 
 const Stars = () => {
@@ -32,7 +32,7 @@ const Stars = () => {
   };
 
   // Generate stars for different layers
-  const generateStars = (count, size) => {
+  const generateStars = (count, size, seed) => {
     const stars = [];
     const minDistance = size * 2; // Minimum distance between stars (scaled by star size)
     const maxAttempts = 50; // Maximum attempts to place each star
@@ -41,13 +41,20 @@ const Stars = () => {
     const density = Math.min(dimensions.width, dimensions.height) / 1000;
     const adjustedCount = Math.floor(count * density);
 
+    // Use a seeded random number generator for consistent positions
+    const seededRandom = (seed) => {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    };
+
     for (let i = 0; i < adjustedCount; i++) {
       let attempts = 0;
       let x, y;
       
       do {
-        x = Math.random() * 100;
-        y = Math.random() * 100;
+        // Use seeded random numbers based on the layer seed and star index
+        x = seededRandom(seed + i * 0.1) * 100;
+        y = seededRandom(seed + i * 0.2) * 100;
         attempts++;
       } while (isTooClose(x, y, stars, minDistance) && attempts < maxAttempts);
 
@@ -67,19 +74,24 @@ const Stars = () => {
     });
   };
 
+  // Use useMemo to ensure stars are only generated once for each dimension change
+  const farStars = useMemo(() => generateStars(125, 1.25, 1), [dimensions]);
+  const mediumStars = useMemo(() => generateStars(100, 2.5, 2), [dimensions]);
+  const nearStars = useMemo(() => generateStars(75, 3.75, 3), [dimensions]);
+
   return (
     <div className={`stars-container ${isVisible ? 'visible' : ''}`}>
       {/* Far stars (small, more numerous) */}
       <div className="stars-layer far">
-        {generateStars(125, 1.25)}
+        {farStars}
       </div>
       {/* Medium stars */}
       <div className="stars-layer medium">
-        {generateStars(100, 2.5)}
+        {mediumStars}
       </div>
       {/* Near stars (larger, fewer) */}
       <div className="stars-layer near">
-        {generateStars(75, 3.75)}
+        {nearStars}
       </div>
     </div>
   );
