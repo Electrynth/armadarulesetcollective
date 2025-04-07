@@ -1,6 +1,34 @@
 import ARC_Logo_No_Text from '../assets/ARC Logo no text Transparent.png';
+import { Link } from 'react-router-dom';
+import blogPosts from '../data/blogPosts';
+import { useState } from 'react';
 
 const Home = () => {
+  const [imageError, setImageError] = useState(false);
+  
+  // Get the latest blog post
+  const latestPost = [...blogPosts].sort((a, b) => 
+    new Date(b.date) - new Date(a.date)
+  )[0];
+
+  // Format date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  // Handle image error
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  // Determine image class based on whether it's the fallback logo
+  const getImageClass = () => {
+    return imageError || !latestPost?.image 
+      ? "w-full h-48 object-contain bg-gray-900/50 p-4" 
+      : "w-full h-48 object-cover";
+  };
+
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-2xl mx-auto mt-8">
@@ -27,7 +55,65 @@ const Home = () => {
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
           Your central hub for Star Wars: Armada rules, resources, and community updates.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-24">
+
+        {/* Latest Blog Post */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-semibold text-white">Latest Update</h2>
+            <Link 
+              to="/news" 
+              className="text-white hover:text-gray-300 transition-colors font-medium"
+            >
+              View All Updates →
+            </Link>
+          </div>
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+            {latestPost && (
+              <>
+                <div className="mb-4 overflow-hidden rounded-lg">
+                  <img 
+                    src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
+                    alt={latestPost.title} 
+                    className={getImageClass()}
+                    onError={handleImageError}
+                  />
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[#C14949] text-sm font-medium">{latestPost.category}</span>
+                  <span className="text-gray-500">•</span>
+                  <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  <Link 
+                    to={`/news/${latestPost.id}`} 
+                    className="hover:text-[#C14949] transition-colors"
+                  >
+                    {latestPost.title}
+                  </Link>
+                </h3>
+                <p className="text-gray-300 mb-4">{latestPost.summary}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {latestPost.tags.map((tag, index) => (
+                    <span 
+                      key={index}
+                      className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <Link 
+                  to={`/news/${latestPost.id}`} 
+                  className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
+                >
+                  Read More →
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 md:col-span-2">
             <h2 className="text-2xl font-semibold text-white mb-3">Join Our Discord Community</h2>
             <p className="text-gray-300 mb-4">Connect with fellow Armada players, discuss strategies, and stay updated with the latest news.</p>
@@ -43,6 +129,27 @@ const Home = () => {
               ></iframe>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Legal Disclaimers */}
+      <div className="max-w-2xl mx-auto mt-12 mb-8 text-sm text-gray-400">
+        <div className="space-y-4">
+          <p>
+            © {new Date().getFullYear()} Armada Ruleset Collective. All rights reserved.
+          </p>
+          
+          <p>
+            Star Wars: Armada is a trademark of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd. This website is not affiliated with, endorsed by, or connected to Fantasy Flight Games, Atomic Mass Games, or Lucasfilm Ltd. All Star Wars: Armada content, including but not limited to rules, card text, and game mechanics, is the property of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd.
+          </p>
+          
+          <p>
+            The content provided on this website is for informational and community purposes only. While we strive to maintain accuracy, we make no representations or warranties of any kind about the completeness, accuracy, reliability, suitability, or availability of the information contained on this website.
+          </p>
+          
+          <p>
+            By using this website, you agree to our <Link to="/privacy" className="text-[#C14949] hover:text-[#D15A5A]">Privacy Policy</Link> and acknowledge that you have read and understood our terms of use.
+          </p>
         </div>
       </div>
     </div>

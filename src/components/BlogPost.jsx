@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
+import { useState } from 'react';
 
 const BlogPost = ({ post, isPreview = false }) => {
+  const [imageError, setImageError] = useState(false);
+  
   // Format date
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -39,17 +43,21 @@ const BlogPost = ({ post, isPreview = false }) => {
     );
   };
 
+  // Handle image error
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
-      {post.image && (
-        <div className="mb-4 overflow-hidden rounded-lg">
-          <img 
-            src={post.image} 
-            alt={post.title} 
-            className="w-full h-48 object-cover"
-          />
-        </div>
-      )}
+      <div className="mb-4 overflow-hidden rounded-lg">
+        <img 
+          src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
+          alt={post.title} 
+          className={`w-full h-48 ${imageError || !post.image ? 'object-contain bg-gray-900/50 p-4' : 'object-cover'}`}
+          onError={handleImageError}
+        />
+      </div>
       
       <div className="flex items-center gap-2 mb-2">
         <span className="text-[#C14949] text-sm font-medium">{post.category}</span>

@@ -1,10 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import BlogPost from '../components/BlogPost';
+import Pagination from '../components/Pagination';
 import blogPosts from '../data/blogPosts';
 
 const News = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 5; // Number of posts to display per page
+  
+  // Get page from URL or default to 1
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    if (pageParam) {
+      const page = parseInt(pageParam, 10);
+      if (!isNaN(page) && page > 0) {
+        setCurrentPage(page);
+      }
+    }
+  }, [searchParams]);
   
   // Get unique categories
   const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
@@ -22,6 +38,45 @@ const News = () => {
     new Date(b.date) - new Date(a.date)
   );
   
+  // Calculate pagination
+  const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+  
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Update URL with new page number
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('page', pageNumber.toString());
+    setSearchParams(newSearchParams);
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
+  // Handle category change
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    // Reset to first page when changing category
+    setCurrentPage(1);
+    // Update URL
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('page', '1');
+    setSearchParams(newSearchParams);
+  };
+  
+  // Handle search change
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+    // Reset to first page when searching
+    setCurrentPage(1);
+    // Update URL
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('page', '1');
+    setSearchParams(newSearchParams);
+  };
+  
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-4xl mx-auto mt-8">
@@ -36,16 +91,19 @@ const News = () => {
         </h1>
         
         {/* Filters */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4">
-          <div className="flex-1">
+        <div className="mb-8 space-y-4">
+          {/* Search bar - always on top in desktop */}
+          <div className="w-full">
             <input
               type="text"
               placeholder="Search posts..."
               className="w-full bg-gray-800/90 backdrop-blur-sm p-3 rounded-lg ring-1 ring-gray-700/50 text-white"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchChange}
             />
           </div>
+          
+          {/* Category buttons */}
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
               <button
@@ -55,7 +113,7 @@ const News = () => {
                     ? 'bg-[#C14949] text-white'
                     : 'bg-gray-800/90 text-gray-300 hover:bg-gray-700/90'
                 }`}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryChange(category)}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
@@ -63,10 +121,15 @@ const News = () => {
           </div>
         </div>
         
+        {/* Results count */}
+        <div className="mb-4 text-gray-300">
+          Showing {indexOfFirstPost + 1}-{Math.min(indexOfLastPost, sortedPosts.length)} of {sortedPosts.length} posts
+        </div>
+        
         {/* Blog posts */}
         <div className="space-y-6">
-          {sortedPosts.length > 0 ? (
-            sortedPosts.map(post => (
+          {currentPosts.length > 0 ? (
+            currentPosts.map(post => (
               <BlogPost key={post.id} post={post} isPreview={true} />
             ))
           ) : (
@@ -75,6 +138,13 @@ const News = () => {
             </div>
           )}
         </div>
+        
+        {/* Pagination */}
+        <Pagination 
+          currentPage={currentPage} 
+          totalPages={totalPages} 
+          onPageChange={handlePageChange} 
+        />
       </div>
     </div>
   );
