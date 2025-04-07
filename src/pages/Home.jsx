@@ -1,4 +1,5 @@
-import ARC_Logo_No_Text from '../assets/ARC Logo no text Transparent.png';
+import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
+import ARC_Logo_No_Text_Transparent from '../assets/ARC Logo no text Transparent.png';
 import { Link } from 'react-router-dom';
 import blogPosts from '../data/blogPosts';
 import { useState } from 'react';
@@ -22,13 +23,6 @@ const Home = () => {
     setImageError(true);
   };
 
-  // Determine image class based on whether it's the fallback logo
-  const getImageClass = () => {
-    return imageError || !latestPost?.image 
-      ? "w-full h-48 object-contain bg-gray-900/50 p-4" 
-      : "w-full h-48 object-cover";
-  };
-
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-2xl mx-auto mt-8">
@@ -40,7 +34,7 @@ const Home = () => {
         
         <div className="flex flex-col items-center mb-4">
           <img 
-            src={ARC_Logo_No_Text} 
+            src={ARC_Logo_No_Text_Transparent} 
             alt="Armada Ruleset Collective Logo" 
             className="w-56 h-56 md:w-88 md:h-88 object-contain mb-1"
           />
@@ -67,14 +61,14 @@ const Home = () => {
               View All Updates →
             </Link>
           </div>
-          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+          <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
             {latestPost && (
               <>
                 <div className="mb-4 overflow-hidden rounded-lg">
                   <img 
                     src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
                     alt={latestPost.title} 
-                    className={getImageClass()}
+                    className={`w-full h-48 ${imageError || !latestPost.image ? 'object-contain bg-gray-900/50 p-4' : 'object-cover'}`}
                     onError={handleImageError}
                   />
                 </div>
@@ -83,34 +77,33 @@ const Home = () => {
                   <span className="text-gray-500">•</span>
                   <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  <Link 
-                    to={`/news/${latestPost.id}`} 
-                    className="hover:text-[#C14949] transition-colors"
-                  >
+                <h2 className="text-2xl font-semibold text-white mb-2">
+                  <Link to={`/news/${latestPost.id}`} className="hover:text-[#C14949] transition-colors">
                     {latestPost.title}
                   </Link>
-                </h3>
-                <p className="text-gray-300 mb-4">{latestPost.summary}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {latestPost.tags.map((tag, index) => (
+                </h2>
+                <p className="text-gray-300">{latestPost.summary}</p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {latestPost.tags && latestPost.tags.map((tag, index) => (
                     <span 
-                      key={index}
+                      key={index} 
                       className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <Link 
-                  to={`/news/${latestPost.id}`} 
-                  className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
-                >
-                  Read More →
-                </Link>
+                <div className="mt-4">
+                  <Link 
+                    to={`/news/${latestPost.id}`} 
+                    className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
+                  >
+                    Read more →
+                  </Link>
+                </div>
               </>
             )}
-          </div>
+          </article>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
