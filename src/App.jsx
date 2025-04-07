@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Stars from './components/Stars';
 import Home from './pages/Home';
 import News from './pages/News';
+import BlogPostDetail from './pages/BlogPostDetail';
 import Resources from './pages/Resources';
 import About from './pages/About';
 import OrganizedPlay from './pages/OrganizedPlay';
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
+            <Route path="/news/:id" element={<BlogPostDetail />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/about" element={<About />} />
             <Route path="/organized-play" element={<OrganizedPlay />} />
