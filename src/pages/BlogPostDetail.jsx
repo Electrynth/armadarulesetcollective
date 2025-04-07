@@ -1,15 +1,52 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import BlogPost from '../components/BlogPost';
-import blogPosts from '../data/blogPosts';
+import { fetchBlogPostById } from '../services/contentful';
 
 const BlogPostDetail = () => {
   const { id } = useParams();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   
-  // Find the post by ID
-  const post = blogPosts.find(post => post.id === id);
+  useEffect(() => {
+    const getBlogPost = async () => {
+      try {
+        setLoading(true);
+        const fetchedPost = await fetchBlogPostById(id);
+        
+        if (fetchedPost) {
+          setPost(fetchedPost);
+          setError(null);
+        } else {
+          setError('Post not found');
+        }
+      } catch (err) {
+        console.error('Error fetching blog post:', err);
+        setError('Failed to load blog post. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getBlogPost();
+  }, [id]);
   
-  // If post not found, show error
-  if (!post) {
+  // If loading, show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen p-8 font-montserrat">
+        <div className="max-w-4xl mx-auto mt-8">
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+            <p className="text-gray-300">Loading blog post...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  // If error or post not found, show error state
+  if (error || !post) {
     return (
       <div className="min-h-screen p-8 font-montserrat">
         <div className="max-w-4xl mx-auto mt-8">

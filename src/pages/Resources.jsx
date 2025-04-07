@@ -16,13 +16,14 @@ const Resources = () => {
     },
     {
       title: "Fleet Builders",
-      description: "Tools to help you build and optimize your fleets.",
+      description: "Tools to help you build your fleets.",
       icon: "🚀",
       items: [
-        { title: "ARC Fleet Builder", link: "#", description: "Our official fleet building tool with the latest updates." },
-        { title: "Alternative Fleet Builders", link: "#", description: "Community-created fleet building tools." },
-        { title: "Fleet Templates", link: "#", description: "Pre-built fleet templates for different playstyles." },
-        { title: "Fleet Analysis Tools", link: "#", description: "Tools to analyze fleet strengths and weaknesses." }
+        { title: "Ryan Kingston's Fleet Builder", link: "https://armada.ryankingston.com", description: "Fleet builder by Ryan Kingston with comprehensive features." },
+        { title: "Armada Warlords Fleet Builder", link: "https://armadawarlords.com/fleet-builder", description: "Fleet builder offering a visual card-style interface." },
+        { title: "Star Forge", link: "https://star-forge.tools", description: "Modern fleet builder designed for speed, ease of use, and integration with community formats and content." },
+        { title: "HoloFoundry", link: "https://holofoundry.com", description: "Fleet builder that hosts custom content, tools, and resources." },
+        { title: "Armada Fleets Designer", link: "https://dmborque.eu/swm", description: "Fleet designer with unique visualization features and Android mobile app." }
       ]
     },
     {
@@ -41,6 +42,7 @@ const Resources = () => {
       description: "Resources for tournament players and organizers.",
       icon: "🏆",
       items: [
+        { title: "Tournament Web Platform", link: "#", description: "Websites for hosting and recording tournaments." },
         { title: "Tournament Formats", link: "#", description: "Different tournament formats and their rules." },
         { title: "Tournament Preparation", link: "#", description: "Guides to help you prepare for tournaments." },
         { title: "Scoring Systems", link: "#", description: "Information about different scoring systems used in tournaments." },
@@ -82,13 +84,13 @@ const Resources = () => {
     },
     {
       title: "Print & Play Resources",
-      description: "Templates for tokens, markers, or other game components.",
+      description: "Templates for cards, tokens, markers, and other game components.",
       icon: "🖨️",
       items: [
+        { title: "Custom Cards", link: "#", description: "Printable templates for custom cards." },
         { title: "Token Templates", link: "#", description: "Printable templates for game tokens and markers." },
-        { title: "Card Sleeves", link: "#", description: "Information about card sleeves and protection." },
-        { title: "Storage Solutions", link: "#", description: "Ideas and templates for storing your Armada collection." },
-        { title: "Custom Components", link: "#", description: "Templates for custom game components." }
+        { title: "Custom Components", link: "#", description: "Templates for custom game components." },
+        { title: "Card Sleeves", link: "#", description: "Information about card sleeves and protection." }
       ]
     },
     {
@@ -111,17 +113,6 @@ const Resources = () => {
         { title: "Popular Fleet Builds", link: "#", description: "Information about popular fleet builds in the current meta." },
         { title: "Meta Trends", link: "#", description: "Analysis of how the meta has evolved over time." },
         { title: "Counter Strategies", link: "#", description: "Strategies for countering popular fleet builds." }
-      ]
-    },
-    {
-      title: "Errata & FAQ",
-      description: "Official errata and frequently asked questions about specific rules or cards.",
-      icon: "❓",
-      items: [
-        { title: "Official Errata", link: "#", description: "Official errata from Fantasy Flight Games/Atomic Mass Games." },
-        { title: "ARC FAQ", link: "#", description: "Frequently asked questions answered by the ARC team." },
-        { title: "Community FAQ", link: "#", description: "Questions frequently asked by the community." },
-        { title: "Rules Disputes", link: "#", description: "Resolution of common rules disputes." }
       ]
     },
     {
@@ -219,12 +210,23 @@ const Resources = () => {
                     <li key={itemIndex} className="border-t border-gray-700/50 pt-3">
                       <h3 className="text-lg font-medium text-white mb-1">{item.title}</h3>
                       <p className="text-gray-400 text-sm mb-2">{item.description}</p>
-                      <Link 
-                        to={item.link} 
-                        className="text-[#C14949] hover:text-[#D15A5A] transition-colors text-sm font-medium"
-                      >
-                        Learn more →
-                      </Link>
+                      {item.link.startsWith('http') ? (
+                        <a 
+                          href={item.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-[#C14949] hover:text-[#D15A5A] transition-colors text-sm font-medium"
+                        >
+                          Visit site →
+                        </a>
+                      ) : (
+                        <Link 
+                          to={item.link} 
+                          className="text-[#C14949] hover:text-[#D15A5A] transition-colors text-sm font-medium"
+                        >
+                          Learn more →
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

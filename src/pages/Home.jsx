@@ -1,16 +1,40 @@
 import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
 import ARC_Logo_No_Text_Transparent from '../assets/ARC Logo no text Transparent.png';
 import { Link } from 'react-router-dom';
-import blogPosts from '../data/blogPosts';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { fetchBlogPosts } from '../services/contentful';
 
 const Home = () => {
   const [imageError, setImageError] = useState(false);
+  const [latestPost, setLatestPost] = useState(null);
+  const [loading, setLoading] = useState(true);
   
-  // Get the latest blog post
-  const latestPost = [...blogPosts].sort((a, b) => 
-    new Date(b.date) - new Date(a.date)
-  )[0];
+  // Fetch the latest blog post
+  useEffect(() => {
+    const getLatestPost = async () => {
+      try {
+        setLoading(true);
+        const posts = await fetchBlogPosts();
+        
+        if (posts && posts.length > 0) {
+          // Sort by date (newest first) and get the first one
+          const sortedPosts = [...posts].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+          );
+          setLatestPost(sortedPosts[0]);
+        } else {
+          setLatestPost(null);
+        }
+      } catch (err) {
+        console.error('Error fetching latest blog post:', err);
+        setLatestPost(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getLatestPost();
+  }, []);
 
   // Format date
   const formatDate = (dateString) => {
@@ -61,49 +85,56 @@ const Home = () => {
               View All Updates →
             </Link>
           </div>
-          <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
-            {latestPost && (
-              <>
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <img 
-                    src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
-                    alt={latestPost.title} 
-                    className={`w-full h-48 ${imageError || !latestPost.image ? 'object-contain bg-gray-900/50 p-4' : 'object-cover'}`}
-                    onError={handleImageError}
-                  />
-                </div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[#C14949] text-sm font-medium">{latestPost.category}</span>
-                  <span className="text-gray-500">•</span>
-                  <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
-                </div>
-                <h2 className="text-2xl font-semibold text-white mb-2">
-                  <Link to={`/news/${latestPost.id}`} className="hover:text-[#C14949] transition-colors">
-                    {latestPost.title}
-                  </Link>
-                </h2>
-                <p className="text-gray-300">{latestPost.summary}</p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {latestPost.tags && latestPost.tags.map((tag, index) => (
-                    <span 
-                      key={index} 
-                      className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4">
-                  <Link 
-                    to={`/news/${latestPost.id}`} 
-                    className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
+          
+          {loading ? (
+            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+              <p className="text-gray-300">Loading latest update...</p>
+            </div>
+          ) : latestPost ? (
+            <article className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+              <div className="mb-4 overflow-hidden rounded-lg">
+                <img 
+                  src={imageError ? ARC_Logo_No_Text : (latestPost.image || ARC_Logo_No_Text)} 
+                  alt={latestPost.title} 
+                  className={`w-full h-48 ${imageError || !latestPost.image ? 'object-contain bg-gray-900/50 p-4' : 'object-cover'}`}
+                  onError={handleImageError}
+                />
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#C14949] text-sm font-medium">{latestPost.category}</span>
+                <span className="text-gray-500">•</span>
+                <span className="text-gray-400 text-sm">{formatDate(latestPost.date)}</span>
+              </div>
+              <h2 className="text-2xl font-semibold text-white mb-2">
+                <Link to={`/news/${latestPost.id}`} className="hover:text-[#C14949] transition-colors">
+                  {latestPost.title}
+                </Link>
+              </h2>
+              <p className="text-gray-300">{latestPost.summary}</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {latestPost.tags && latestPost.tags.map((tag, index) => (
+                  <span 
+                    key={index} 
+                    className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
                   >
-                    Read more →
-                  </Link>
-                </div>
-              </>
-            )}
-          </article>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-4">
+                <Link 
+                  to={`/news/${latestPost.id}`} 
+                  className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
+                >
+                  Read more →
+                </Link>
+              </div>
+            </article>
+          ) : (
+            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+              <p className="text-gray-300">No updates available at this time.</p>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

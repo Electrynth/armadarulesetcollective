@@ -2,14 +2,37 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import BlogPost from '../components/BlogPost';
 import Pagination from '../components/Pagination';
-import blogPosts from '../data/blogPosts';
+import { fetchBlogPosts } from '../services/contentful';
 
 const News = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const postsPerPage = 5; // Number of posts to display per page
+  
+  // Fetch blog posts from Contentful
+  useEffect(() => {
+    const getBlogPosts = async () => {
+      try {
+        setLoading(true);
+        const posts = await fetchBlogPosts();
+        setBlogPosts(posts);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+        setError('Failed to load blog posts. Please try again later.');
+        setBlogPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getBlogPosts();
+  }, []);
   
   // Get page from URL or default to 1
   useEffect(() => {
@@ -90,6 +113,13 @@ const News = () => {
           Latest News
         </h1>
         
+        {/* Error message */}
+        {error && (
+          <div className="bg-red-900/50 backdrop-blur-sm p-4 rounded-lg ring-1 ring-red-700/50 mb-8 text-center">
+            <p className="text-red-300">{error}</p>
+          </div>
+        )}
+        
         {/* Filters */}
         <div className="mb-8 space-y-4">
           {/* Search bar - always on top in desktop */}
@@ -121,30 +151,39 @@ const News = () => {
           </div>
         </div>
         
-        {/* Results count */}
-        <div className="mb-4 text-gray-300">
-          Showing {indexOfFirstPost + 1}-{Math.min(indexOfLastPost, sortedPosts.length)} of {sortedPosts.length} posts
-        </div>
-        
-        {/* Blog posts */}
-        <div className="space-y-6">
-          {currentPosts.length > 0 ? (
-            currentPosts.map(post => (
-              <BlogPost key={post.id} post={post} isPreview={true} />
-            ))
-          ) : (
-            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
-              <p className="text-gray-300">No posts found matching your criteria.</p>
+        {/* Loading state */}
+        {loading ? (
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+            <p className="text-gray-300">Loading blog posts...</p>
+          </div>
+        ) : (
+          <>
+            {/* Results count */}
+            <div className="mb-4 text-gray-300">
+              Showing {indexOfFirstPost + 1}-{Math.min(indexOfLastPost, sortedPosts.length)} of {sortedPosts.length} posts
             </div>
-          )}
-        </div>
-        
-        {/* Pagination */}
-        <Pagination 
-          currentPage={currentPage} 
-          totalPages={totalPages} 
-          onPageChange={handlePageChange} 
-        />
+            
+            {/* Blog posts */}
+            <div className="space-y-6">
+              {currentPosts.length > 0 ? (
+                currentPosts.map(post => (
+                  <BlogPost key={post.id} post={post} isPreview={true} />
+                ))
+              ) : (
+                <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+                  <p className="text-gray-300">No posts found matching your criteria.</p>
+                </div>
+              )}
+            </div>
+            
+            {/* Pagination */}
+            <Pagination 
+              currentPage={currentPage} 
+              totalPages={totalPages} 
+              onPageChange={handlePageChange} 
+            />
+          </>
+        )}
       </div>
     </div>
   );

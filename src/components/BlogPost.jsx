@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
 import { useState } from 'react';
+import RichTextContent from './RichTextContent';
 
 const BlogPost = ({ post, isPreview = false }) => {
   const [imageError, setImageError] = useState(false);
@@ -35,12 +36,7 @@ const BlogPost = ({ post, isPreview = false }) => {
       return <p className="text-gray-300">{post.summary}</p>;
     }
     
-    return (
-      <div 
-        className="prose prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-    );
+    return <RichTextContent content={post.content} />;
   };
 
   // Handle image error
