@@ -145,7 +145,7 @@ const Resources = () => {
           </p>
         </div>
         
-        <h1 className="text-5xl font-bold mb-6 text-white">
+        <h1 className="text-5xl font-bold mb-6 text-white text-left">
           Resources
         </h1>
         
@@ -200,7 +200,7 @@ const Resources = () => {
         </div>
         
         <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-lg ring-1 ring-gray-700/50">
-          <h2 className="text-2xl font-semibold text-white mb-4">Suggest a Resource</h2>
+          <h2 className="text-2xl font-semibold text-white mb-4 text-left">Suggest a Resource</h2>
           <p className="text-gray-300 mb-6">
             Know of a great resource that should be included here? We'd love to hear about it! Please reach out to us through our community channels.
           </p>
