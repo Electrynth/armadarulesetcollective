@@ -13,8 +13,8 @@ const FAQ = () => {
       answer: "ARC is a community-driven initiative dedicated to providing accurate, up-to-date rules and resources for Star Wars: Armada players worldwide. We maintain a comprehensive rules database and provide tools to enhance the gaming experience. This includes slowly introducing new content to the game to enrich the competitive scene."
     },
     {
-      question: "Will ARC release or approve content for the competitive ruleset?",
-      answer: "Yes, ARC may release content or approve content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-approved and will be designed to enhance the competitive experience while maintaining game balance."
+      question: "Will ARC approve or use community content for the competitive ruleset?",
+      answer: "Yes, ARC may use or approve community content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-approved and will be tailored to enhance the competitive experience while maintaining game balance."
     },
     {
       question: "How will ARC ensure new content is balanced and fair for the competitive scene and the game?",
@@ -53,7 +53,7 @@ const FAQ = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-4xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
+        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
           <p className="text-[#C14949] font-semibold">
             🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
           </p>
@@ -67,7 +67,7 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="bg-gray-800/90 backdrop-blur-sm rounded-lg ring-1 ring-gray-700/50 overflow-hidden"
+              className="bg-gray-800/90 backdrop-blur-sm rounded-xl ring-1 ring-gray-700/50 overflow-hidden"
             >
               <button
                 className="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-700/50 transition-colors"
@@ -93,7 +93,7 @@ const FAQ = () => {
           ))}
         </div>
         
-        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50">
+        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4">Still Have Questions?</h2>
           <p className="text-gray-300 mb-4">
             If you couldn't find the answer you're looking for, please reach out to our community through one of these channels:

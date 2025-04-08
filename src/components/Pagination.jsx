@@ -58,7 +58,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`px-3 py-1 rounded-lg transition-colors ${
+          className={`px-3 py-1 rounded-xl transition-colors ${
             currentPage === 1
               ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
               : 'bg-gray-800/90 text-white hover:bg-gray-700/90'
@@ -76,7 +76,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             ) : (
               <button
                 onClick={() => onPageChange(page)}
-                className={`px-3 py-1 rounded-lg transition-colors ${
+                className={`px-3 py-1 rounded-xl transition-colors ${
                   currentPage === page
                     ? 'bg-[#C14949] text-white'
                     : 'bg-gray-800/90 text-white hover:bg-gray-700/90'
@@ -94,7 +94,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`px-3 py-1 rounded-lg transition-colors ${
+          className={`px-3 py-1 rounded-xl transition-colors ${
             currentPage === totalPages
               ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
               : 'bg-gray-800/90 text-white hover:bg-gray-700/90'

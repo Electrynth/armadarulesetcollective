@@ -45,8 +45,8 @@ const BlogPost = ({ post, isPreview = false }) => {
   };
 
   return (
-    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-lg ring-1 ring-gray-700/50">
-      <div className="mb-4 overflow-hidden rounded-lg bg-gray-900/50 flex items-center justify-center">
+    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50">
+      <div className="mb-4 overflow-hidden rounded-xl bg-gray-900/50 flex items-center justify-center">
         <img 
           src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
           alt={post.title} 

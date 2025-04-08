@@ -139,7 +139,7 @@ const Resources = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-6xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
+        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
           <p className="text-[#C14949] font-semibold">
             🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
           </p>
@@ -157,7 +157,7 @@ const Resources = () => {
           {resourceCategories.map((category, index) => (
             <div 
               key={index} 
-              className="bg-gray-800/90 backdrop-blur-sm rounded-lg ring-1 ring-gray-700/50 overflow-hidden"
+              className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 overflow-hidden"
             >
               <div className="p-6">
                 <h2 className="text-2xl font-semibold text-white mb-4">
@@ -199,19 +199,19 @@ const Resources = () => {
           ))}
         </div>
         
-        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-lg ring-1 ring-gray-700/50">
+        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4 text-left">Suggest a Resource</h2>
           <p className="text-gray-300 mb-6">
             Know of a great resource that should be included here? We'd love to hear about it! Please reach out to us through our community channels.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-lg ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
+            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-xl ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
               Discord
             </button>
-            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-lg ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
+            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-xl ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
               Facebook
             </button>
-            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-lg ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
+            <button className="bg-gray-700/50 text-white px-6 py-3 rounded-xl ring-1 ring-gray-600/50 hover:bg-gray-600/50 transition-all">
               Email
             </button>
           </div>

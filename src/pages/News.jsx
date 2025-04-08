@@ -103,7 +103,7 @@ const News = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-4xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
+        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
           <p className="text-[#C14949] font-semibold">
             🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
           </p>
@@ -115,7 +115,7 @@ const News = () => {
         
         {/* Error message */}
         {error && (
-          <div className="bg-red-900/50 backdrop-blur-sm p-4 rounded-lg ring-1 ring-red-700/50 mb-8 text-center">
+          <div className="bg-red-900/50 backdrop-blur-sm p-4 rounded-xl ring-1 ring-red-700/50 mb-8 text-center">
             <p className="text-red-300">{error}</p>
           </div>
         )}
@@ -127,7 +127,7 @@ const News = () => {
             <input
               type="text"
               placeholder="Search posts..."
-              className="w-full bg-gray-800/90 backdrop-blur-sm p-3 rounded-lg ring-1 ring-gray-700/50 text-white"
+              className="w-full bg-gray-800/90 backdrop-blur-sm p-3 rounded-xl ring-1 ring-gray-700/50 text-white"
               value={searchQuery}
               onChange={handleSearchChange}
             />
@@ -138,7 +138,7 @@ const News = () => {
             {categories.map((category) => (
               <button
                 key={category}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-xl transition-colors ${
                   selectedCategory === category
                     ? 'bg-[#C14949] text-white'
                     : 'bg-gray-800/90 text-gray-300 hover:bg-gray-700/90'
@@ -153,7 +153,7 @@ const News = () => {
         
         {/* Loading state */}
         {loading ? (
-          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
             <p className="text-gray-300">Loading blog posts...</p>
           </div>
         ) : (
@@ -170,7 +170,7 @@ const News = () => {
                   <BlogPost key={post.id} post={post} isPreview={true} />
                 ))
               ) : (
-                <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+                <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
                   <p className="text-gray-300">No posts found matching your criteria.</p>
                 </div>
               )}

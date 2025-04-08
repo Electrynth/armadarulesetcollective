@@ -51,7 +51,7 @@ const Home = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-2xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
+        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
           <p className="text-[#C14949] font-semibold">
             🚧 Under Construction - This site is actively being developed. Many features are incomplete and/or subject to change. 🚧
           </p>
@@ -88,20 +88,20 @@ const Home = () => {
           </div>
           
           {loading ? (
-            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
               <p className="text-gray-300">Loading latest update...</p>
             </div>
           ) : latestPost ? (
             <BlogPost post={latestPost} isPreview={true} />
           ) : (
-            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 text-center">
+            <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
               <p className="text-gray-300">No updates available at this time.</p>
             </div>
           )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 md:col-span-2">
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 md:col-span-2">
             <h2 className="text-2xl font-semibold text-white mb-3">Join Our Discord Community</h2>
             <p className="text-gray-300 mb-4">Connect with fellow Armada players, discuss strategies, and stay updated with the latest news.</p>
             <div className="flex justify-center">
@@ -109,7 +109,7 @@ const Home = () => {
                 src="https://discord.com/widget?id=219608175333081088&theme=dark"
                 width="100%"
                 height="350"
-                className="rounded-lg h-[350px] md:h-[500px] w-full max-w-xl"
+                className="rounded-xl h-[350px] md:h-[500px] w-full max-w-xl"
                 allowTransparency="true"
                 frameBorder="0"
                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
