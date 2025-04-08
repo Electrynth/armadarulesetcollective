@@ -14,7 +14,7 @@ const FAQ = () => {
     },
     {
       question: "Will ARC approve or use community content for the competitive ruleset?",
-      answer: "Yes, ARC may use or approve community content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-approved and will be tailored to enhance the competitive experience while maintaining game balance."
+      answer: "Yes, ARC may use or approve community content to be introduced into the competitive ruleset in the future. This content will be clearly marked as ARC-friendly and will be tailored to enhance the competitive experience while maintaining game balance and rules consistency."
     },
     {
       question: "How will ARC ensure new content is balanced and fair for the competitive scene and the game?",
