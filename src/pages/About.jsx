@@ -73,6 +73,72 @@ const About = () => {
           </p>
         </div>
         
+        {/* Core Members Section */}
+        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
+          <h2 className="text-3xl font-semibold text-white mb-6">Core Members</h2>
+          
+          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+            Meet the dedicated individuals who form the heart of the Armada Ruleset Collective.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Member 1 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">Nick Brown</h3>
+              <p className="text-gray-400 text-sm mb-1">Discord Name: @cactus.cooler</p>
+              <p className="text-gray-400 text-sm mb-1">Armada Hub Discord: @nick</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Los Angeles, California, USA</p>
+              <p className="text-gray-300">
+                I am a long-time Star Wars: Armada player, playing the game since 2015 and have extensive experience in the competitive scene. I placed 4th at the 2019 World Championship and 6th at the 2025 World Championship. I believe my experience and knowledge of the game will help me provide the community with accurate rules and balanced competitive formats.
+              </p>
+              <br />
+              <p className="text-gray-300">
+                As part of ARC I focus on the technical development of ARC's tools and resources and support the other core members in their efforts. Outside of Armada, I am software engineer who also enjoys playing other tabletop and board games.
+              </p>
+            </div>
+            
+            {/* Member 2 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">John Doe #1</h3>
+              <p className="text-gray-400 text-sm mb-1">@johndoe1</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <p className="text-gray-300">
+                
+              </p>
+            </div>
+            
+            {/* Member 3 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">John Doe #2</h3>
+              <p className="text-gray-400 text-sm mb-1">@johndoe2</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <p className="text-gray-300">
+                
+              </p>
+            </div>
+            
+            {/* Member 4 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">John Doe #3</h3>
+              <p className="text-gray-400 text-sm mb-1">@johndoe3</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <p className="text-gray-300">
+                
+              </p>
+            </div>
+            
+            {/* Member 5 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">John Doe #4</h3>
+              <p className="text-gray-400 text-sm mb-1">@johndoe4</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <p className="text-gray-300">
+                
+              </p>
+            </div>
+          </div>
+        </div>
+        
         {/* FAQ Integration Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
           <h2 className="text-3xl font-semibold text-white mb-6">Common Questions</h2>
