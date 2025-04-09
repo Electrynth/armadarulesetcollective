@@ -128,10 +128,10 @@ const Resources = () => {
       description: "Resources created by and for the Star Wars: Armada community.",
       icon: "👥",
       items: [
-        { title: "Community Forums", link: "#", description: "Forums where Armada players can discuss the game." },
-        { title: "Discord Servers", link: "#", description: "Discord servers dedicated to Star Wars: Armada." },
-        { title: "Facebook Groups", link: "#", description: "Facebook groups for Armada players." },
-        { title: "Local Communities", link: "#", description: "Information about local Armada communities and play groups." }
+        { title: "The Armada Hub Discord", link: "https://discord.gg/WRMbfNkeMM", description: "Primary Discord server to the Star Wars: Armada community." },
+        { title: "Armada Vassal Discord", link: "https://discord.gg/EGN54CtwrK", description: "Discord server dedicated to Star Wars: Armada with emphasis on using Vassal as a platform for playing the game." },
+        { title: "Armada Legacy Discord", link: "https://discord.gg/qJ5VvupY4j", description: "Discord server dedicated to the Legacy format of Star Wars: Armada." },
+        { title: "Armada Legends Discord", link: "https://discord.gg/PFj2xHGYvq", description: "Discord server dedicated to the Legends format of Star Wars: Armada." }
       ]
     }
   ];
