@@ -51,18 +51,6 @@ const Resources = () => {
       ]
     },
     {
-      title: "Tournament Resources",
-      description: "Resources for tournament players and organizers.",
-      icon: "🏆",
-      items: [
-        { title: "Tournament Web Platform", link: "#", description: "Websites for hosting and recording tournaments." },
-        { title: "Tournament Formats", link: "#", description: "Different tournament formats and their rules." },
-        { title: "Tournament Preparation", link: "#", description: "Guides to help you prepare for tournaments." },
-        { title: "Scoring Systems", link: "#", description: "Information about different scoring systems used in tournaments." },
-        { title: "Tournament Organizer Guide", link: "#", description: "Resources for organizing your own tournaments." }
-      ]
-    },
-    {
       title: "Print & Play Resources",
       description: "Templates for cards, tokens, markers, and other game components.",
       icon: "🖨️",
