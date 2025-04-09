@@ -77,10 +77,6 @@ const About = () => {
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
           <h2 className="text-3xl font-semibold text-white mb-6">Core Members</h2>
           
-          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            Meet the dedicated individuals who form the heart of the Armada Ruleset Collective.
-          </p>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Member 1 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
@@ -135,6 +131,38 @@ const About = () => {
               <p className="text-gray-300">
                 
               </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Supporting Members Section */}
+        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
+          <h2 className="text-3xl font-semibold text-white mb-6">Supporting Members</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Supporting Member 1 */}
+            <div className="bg-gray-700/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white">Supporting Member #1</h3>
+            </div>
+            
+            {/* Supporting Member 2 */}
+            <div className="bg-gray-700/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white">Supporting Member #2</h3>
+            </div>
+            
+            {/* Supporting Member 3 */}
+            <div className="bg-gray-700/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white">Supporting Member #3</h3>
+            </div>
+            
+            {/* Supporting Member 4 */}
+            <div className="bg-gray-700/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white">Supporting Member #4</h3>
+            </div>
+            
+            {/* Supporting Member 5 */}
+            <div className="bg-gray-700/50 p-4 rounded-xl">
+              <h3 className="text-lg font-semibold text-white">Supporting Member #5</h3>
             </div>
           </div>
         </div>
