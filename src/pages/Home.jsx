@@ -50,13 +50,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen p-8 font-montserrat">
-      <div className="max-w-2xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
-          <p className="text-[#C14949] font-semibold">
-            🚧 Under Construction - This site is actively being developed. Many features are incomplete and/or subject to change. 🚧
-          </p>
-        </div>
-        
+      <div className="max-w-6xl mx-auto mt-8">
         <div className="flex flex-col items-center mb-4">
           <img 
             src={ARC_Logo_No_Text_Transparent} 

@@ -102,15 +102,9 @@ const News = () => {
   
   return (
     <div className="min-h-screen p-8 font-montserrat">
-      <div className="max-w-4xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-xl ring-1 ring-[#C14949]/50 mb-8 text-center">
-          <p className="text-[#C14949] font-semibold">
-            🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
-          </p>
-        </div>
-        
-        <h1 className="text-5xl font-bold mb-6 text-white">
-          Latest News
+      <div className="max-w-6xl mx-auto mt-8">
+        <h1 className="text-5xl font-bold mb-6 text-white text-center">
+          News
         </h1>
         
         {/* Error message */}

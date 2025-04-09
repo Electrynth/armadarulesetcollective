@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 const Privacy = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
-      <div className="max-w-3xl mx-auto mt-8">
-        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-lg ring-1 ring-gray-700/50">
-          <h1 className="text-3xl font-bold text-white mb-6">Privacy Policy</h1>
-          
+      <div className="max-w-6xl mx-auto mt-8">
+        <h1 className="text-5xl font-bold mb-6 text-white text-center">
+          Privacy Policy
+        </h1>
+        
+        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <div className="space-y-6 text-gray-300">
             <section>
               <h2 className="text-xl font-semibold text-white mb-3">Introduction</h2>

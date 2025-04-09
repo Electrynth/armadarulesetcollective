@@ -2,241 +2,167 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const OrganizedPlay = () => {
+  // Tournament categories with their items
+  const tournamentCategories = [
+    {
+      title: "Tournament Formats",
+      description: "Information about different tournament formats for Star Wars: Armada.",
+      icon: "🏆",
+      items: [
+        { title: "Standard Tournament Format", link: "#", description: "The standard tournament format used for most official events." },
+        { title: "Custom Tournament Formats", link: "#", description: "Alternative tournament formats for special events." },
+        { title: "Special Event Formats", link: "#", description: "Unique formats for themed tournaments and special occasions." },
+        { title: "Tournament Rules and Guidelines", link: "#", description: "Comprehensive rules and guidelines for tournament play." }
+      ]
+    },
+    {
+      title: "Tournament Resources",
+      description: "Tools and resources for tournament organizers and players.",
+      icon: "🛠️",
+      items: [
+        { title: "Tournament Scoring Systems", link: "#", description: "Different scoring systems used in tournaments." },
+        { title: "Tournament Pairings Tools", link: "#", description: "Software and tools for managing tournament pairings." },
+        { title: "Tournament Management Software", link: "#", description: "Applications to help organize and run tournaments." },
+        { title: "Tournament Reporting Templates", link: "#", description: "Templates for reporting tournament results and statistics." }
+      ]
+    },
+    {
+      title: "Tournament Preparation",
+      description: "Guides and tips for preparing for tournaments.",
+      icon: "📋",
+      items: [
+        { title: "Fleet Building for Tournaments", link: "#", description: "Strategies for building competitive fleets for tournaments." },
+        { title: "Practice Strategies", link: "#", description: "Effective ways to practice and improve before tournaments." },
+        { title: "Mental Preparation", link: "#", description: "Tips for mental preparation and maintaining focus during tournaments." },
+        { title: "Tournament Day Checklist", link: "#", description: "Essential items and preparations for tournament day." }
+      ]
+    },
+    {
+      title: "Tournament Organizer Guide",
+      description: "Comprehensive guide for tournament organizers.",
+      icon: "👨‍💼",
+      items: [
+        { title: "Tournament Setup Guide", link: "#", description: "Step-by-step guide for setting up a tournament." },
+        { title: "Running a Tournament", link: "#", description: "Best practices for running a smooth tournament." },
+        { title: "Managing Players and Pairings", link: "#", description: "Tips for managing players and creating fair pairings." },
+        { title: "Tournament Promotion", link: "#", description: "Strategies for promoting your tournament to the community." }
+      ]
+    },
+    {
+      title: "Upcoming Tournaments",
+      description: "Calendar of upcoming tournaments and events for Star Wars: Armada.",
+      icon: "📅",
+      items: [
+        { title: "Regional Tournaments", link: "#", description: "Upcoming regional tournaments across different areas." },
+        { title: "National Championships", link: "#", description: "National championship events and qualifiers." },
+        { title: "International Events", link: "#", description: "Major international tournaments and events." },
+        { title: "Local Tournaments", link: "#", description: "Local tournament listings by region." }
+      ]
+    },
+    {
+      title: "Tournament Results",
+      description: "Results from past tournaments and analysis of winning fleets.",
+      icon: "📊",
+      items: [
+        { title: "Recent Tournament Results", link: "#", description: "Results from recently completed tournaments." },
+        { title: "Historical Tournament Data", link: "#", description: "Archive of past tournament results and statistics." },
+        { title: "Winning Fleet Analysis", link: "#", description: "Analysis of fleets that performed well in tournaments." },
+        { title: "Meta Evolution", link: "#", description: "How the competitive meta has evolved through tournaments." }
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen p-8 font-montserrat">
-      <div className="max-w-4xl mx-auto mt-8">
-        <div className="bg-[#C14949]/20 backdrop-blur-sm p-4 rounded-lg ring-1 ring-[#C14949]/50 mb-8 text-center">
-          <p className="text-[#C14949] font-semibold">
-            🚧 Under Construction - This site is actively being developed. Some features may be incomplete or subject to change. 🚧
+      <div className="max-w-6xl mx-auto mt-8">
+        {/* Under Construction Banner */}
+        <div className="bg-yellow-900/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-yellow-700/50 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-yellow-200 mb-2">🚧 Under Construction 🚧</h2>
+          <p className="text-yellow-100 text-lg">
+            This page is currently under development. Content will be added soon!
           </p>
         </div>
         
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Organized Play</h1>
+        <h1 className="text-5xl font-bold mb-6 text-white text-center">
+          Organized Play
+        </h1>
         
-        {/* Tournament Information Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Information</h2>
-          <p className="text-gray-300 mb-4">
-            Find information about upcoming Star Wars: Armada tournaments, organized play events, and competitive play resources.
+        <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+          Welcome to the ARC Organized Play page. Here you'll find information about tournaments, events, and competitive play for Star Wars: Armada.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tournamentCategories.map((category, index) => (
+            <div 
+              key={index} 
+              className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 overflow-hidden"
+            >
+              <div className="p-6">
+                <h2 className="text-2xl font-semibold text-white mb-4">
+                  <span className="mr-2">{category.icon}</span>
+                  {category.title}
+                </h2>
+                
+                <p className="text-gray-300 mb-4">
+                  {category.description}
+                </p>
+                
+                <ul className="space-y-3">
+                  {category.items.map((item, itemIndex) => (
+                    <li key={itemIndex} className="border-t border-gray-700/50 pt-3">
+                      <h3 className="text-lg font-medium text-white mb-1">{item.title}</h3>
+                      <p className="text-gray-400 text-sm mb-2">{item.description}</p>
+                      {item.link.startsWith('http') ? (
+                        <a 
+                          href={item.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-[#C14949] hover:text-[#D15A5A] transition-colors text-sm font-medium"
+                        >
+                          Visit site →
+                        </a>
+                      ) : (
+                        <Link 
+                          to={item.link} 
+                          className="text-[#C14949] hover:text-[#D15A5A] transition-colors text-sm font-medium"
+                        >
+                          Learn more →
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
+          <h2 className="text-2xl font-semibold text-white mb-4 text-center">Suggest a Tournament</h2>
+          <p className="text-gray-300 mb-6 text-center">
+            Know of a tournament that should be included here? We'd love to hear about it! Please reach out to us through our community channels.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Upcoming Events</h3>
-              <p className="text-gray-300 mb-4">No upcoming events scheduled at this time.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                View Event Calendar →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Tournament Rules</h3>
-              <p className="text-gray-300 mb-4">Official tournament rules and guidelines for Star Wars: Armada organized play.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Download Tournament Rules →
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Tournament Structure Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Structure</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Swiss Rounds</h3>
-              <p className="text-gray-300 mb-4">Learn how Swiss rounds work in Armada tournaments and how pairings are determined.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Swiss Round Guide →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Scoring System</h3>
-              <p className="text-gray-300 mb-4">Details on how tournament scoring works and how to calculate your tournament score.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Scoring Guide →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Time Management</h3>
-              <p className="text-gray-300 mb-4">Guidelines for round timing and effective time management during tournaments.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Time Management Guide →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Fleet Building Rules</h3>
-              <p className="text-gray-300 mb-4">Specific rules for fleet construction in tournaments and restrictions that apply.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Fleet Building Guide →
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Tournament Preparation Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Preparation</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Pre-Tournament Checklist</h3>
-              <p className="text-gray-300 mb-4">What players should bring and prepare before attending a tournament.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Checklist →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Fleet Submission</h3>
-              <p className="text-gray-300 mb-4">How and when to submit fleet lists for tournament participation.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Submission Guidelines →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Tournament Etiquette</h3>
-              <p className="text-gray-300 mb-4">Best practices for competitive play and respectful tournament conduct.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Etiquette Guide →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Common Rules Questions</h3>
-              <p className="text-gray-300 mb-4">Frequently asked rules questions specific to tournaments and competitive play.</p>
-              <Link to="/faq" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Rules FAQ →
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Tournament Results Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Results</h2>
-          <p className="text-gray-300 mb-4">
-            View results from past tournaments and see which fleets and strategies performed well.
-          </p>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-left text-gray-300">
-              <thead className="text-xs uppercase bg-gray-800/90">
-                <tr>
-                  <th className="px-4 py-3">Tournament</th>
-                  <th className="px-4 py-3">Date</th>
-                  <th className="px-4 py-3">Winner</th>
-                  <th className="px-4 py-3">Fleet</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-gray-700/50">
-                  <td className="px-4 py-3">No tournaments recorded yet</td>
-                  <td className="px-4 py-3">-</td>
-                  <td className="px-4 py-3">-</td>
-                  <td className="px-4 py-3">-</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        
-        {/* Organized Play Programs Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Organized Play Programs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">ARC Championship Series</h3>
-              <p className="text-gray-300 mb-4">Information about the ARC Championship Series and how to qualify.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Championship Series →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Regional Championships</h3>
-              <p className="text-gray-300 mb-4">Details about regional qualifying events and their importance in the championship circuit.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Regional Events →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Store Championship Program</h3>
-              <p className="text-gray-300 mb-4">Guidelines for store-level tournaments and how to participate in the store championship program.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Store Championships →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Seasonal Events</h3>
-              <p className="text-gray-300 mb-4">Special tournaments tied to seasons or new releases with unique formats and prizes.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Seasonal Events →
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Tournament Organizer Tools Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Tournament Organizer Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Tournament Software</h3>
-              <p className="text-gray-300 mb-4">Links to software for managing tournaments, tracking scores, and generating pairings.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Software Tools →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Score Sheets</h3>
-              <p className="text-gray-300 mb-4">Printable score sheets for tournament use and digital alternatives.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Download Score Sheets →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Pairings Generator</h3>
-              <p className="text-gray-300 mb-4">Tools for generating tournament pairings based on Swiss round principles.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Pairings Tools →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Prize Support Guidelines</h3>
-              <p className="text-gray-300 mb-4">Information about tournament prizes and how to obtain prize support for your events.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Prize Support →
-              </Link>
-            </div>
-          </div>
-        </div>
-        
-        {/* Community Tournaments Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-lg ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-2xl font-semibold text-white mb-4">Community Tournaments</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Community Tournament Directory</h3>
-              <p className="text-gray-300 mb-4">List of community-run tournaments and how to find events in your area.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Find Events →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Submit a Tournament</h3>
-              <p className="text-gray-300 mb-4">Process for adding community tournaments to the ARC calendar and directory.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Submit Event →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Tournament Report Templates</h3>
-              <p className="text-gray-300 mb-4">Templates for submitting tournament reports and sharing results with the community.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Report Templates →
-              </Link>
-            </div>
-            <div className="bg-gray-800/90 p-4 rounded-lg ring-1 ring-gray-700/50">
-              <h3 className="text-xl font-semibold text-white mb-2">Community Tournament Support</h3>
-              <p className="text-gray-300 mb-4">How ARC supports community tournaments and resources available to organizers.</p>
-              <Link to="/resources" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-                Community Support →
-              </Link>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="https://discord.gg/WRMbfNkeMM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#5865F2] text-white px-6 py-3 rounded-xl ring-1 ring-[#4752C4] hover:bg-[#4752C4] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              Discord
+            </a>
+            <a 
+              href="mailto:nbrown4296@gmail.com"
+              className="bg-[#4CAF50] text-white px-6 py-3 rounded-xl ring-1 ring-[#3D8B40] hover:bg-[#45A049] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              Email
+            </a>
           </div>
         </div>
       </div>
