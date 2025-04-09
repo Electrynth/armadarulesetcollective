@@ -87,7 +87,7 @@ const About = () => {
               <h3 className="text-xl font-semibold text-white mb-1">Nick Brown</h3>
               <p className="text-gray-400 text-sm mb-1">Discord Name: @cactus.cooler</p>
               <p className="text-gray-400 text-sm mb-1">Armada Hub Discord: @nick</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Los Angeles, California, USA</p>
+              <p className="text-gray-400 text-sm mb-4">📍 California, USA</p>
               <p className="text-gray-300">
                 I am a long-time Star Wars: Armada player, playing the game since 2015 and have extensive experience in the competitive scene. I placed 4th at the 2019 World Championship and 6th at the 2025 World Championship. I believe my experience and knowledge of the game will help me provide the community with accurate rules and balanced competitive formats.
               </p>
