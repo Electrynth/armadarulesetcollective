@@ -140,7 +140,7 @@ const OrganizedPlay = () => {
         <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4 text-center">Suggest a Tournament</h2>
           <p className="text-gray-300 mb-6 text-center">
-            Know of a tournament that should be included here? We'd love to hear about it! Please reach out to us through our community channels.
+            Know of a tournament that should be included here? We'd love to hear about it! Please reach out to us through the Discord server or our email.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 

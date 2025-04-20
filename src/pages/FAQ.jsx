@@ -90,7 +90,7 @@ const FAQ = () => {
         <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4">Still Have Questions?</h2>
           <p className="text-gray-300 mb-4">
-            If you couldn't find the answer you're looking for, please reach out to our community through one of these channels:
+            If you couldn't find the answer you're looking for, please reach out to our community through the Discord server or our email.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
