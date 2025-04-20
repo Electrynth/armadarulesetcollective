@@ -1,4 +1,3 @@
-import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
 import ARC_Logo_No_Text_Transparent from '../assets/ARC Logo no text Transparent.png';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -66,7 +65,7 @@ const Home = () => {
         </div>
         
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-          Your central hub for Star Wars: Armada rules, resources, and community updates.
+          Your source for Star Wars: Armada rules, resources, and community updates.
         </p>
 
         {/* Latest Blog Post */}
@@ -96,8 +95,8 @@ const Home = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 md:col-span-2">
-            <h2 className="text-2xl font-semibold text-white mb-3">Join Our Discord Community</h2>
-            <p className="text-gray-300 mb-4">Connect with fellow Armada players, discuss strategies, and stay updated with the latest news.</p>
+            <h2 className="text-2xl font-semibold text-white mb-3">Join the Discord Community</h2>
+            <p className="text-gray-300 mb-4">The Armada Hub is the central Discord server for Armada. It's the gateway to all other Armada communities and resources.</p>
             <div className="flex justify-center">
               <iframe
                 src="https://discord.com/widget?id=219608175333081088&theme=dark"
