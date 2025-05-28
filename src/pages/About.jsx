@@ -22,55 +22,68 @@ const About = () => {
         
         {/* Mission & Values Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-3xl font-semibold text-white mb-6">Our Mission & Values</h2>
+          <h2 className="text-3xl font-semibold text-white mb-6">Our Purpose & Structure</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Consistency</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Living Ruleset</h3>
               <p className="text-gray-300">
-                We are committed to providing the most accurate and up-to-date rules information for Star Wars: Armada players.
+                We maintain a comprehensive, up-to-date ruleset that Tournament Organizers and players can refer to when needed, ensuring consistency across the community.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Community</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Competitive Balance</h3>
               <p className="text-gray-300">
-                We believe in fostering a supportive and inclusive community where players can learn, grow, and enjoy the game together.
+                We work to ensure Star Wars Armada competitive tournament play remains balanced and engaging for all players.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Transparency</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Tournament Support</h3>
               <p className="text-gray-300">
-                We are open about our processes, decisions, and the reasoning behind rule interpretations and clarifications.
+                We coordinate with Tournament Organizers to maintain an organized play structure, encouraging continuity of tournaments while not running events directly.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Knowledge</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Core Executive</h3>
               <p className="text-gray-300">
-                We are dedicated to helping players of all skill levels understand the game better through clear explanations and learning resources.
+                A team of 3-5 members who set organizational goals, guide ARC's direction, and make personnel decisions about ARC membership.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Collaboration</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Project Management</h3>
               <p className="text-gray-300">
-                We work together with players, organizers, and the broader community to develop and refine our resources and rules interpretations.
+                Our Project Manager ensures smooth operations and can serve as a tiebreaker in Core Executive decisions when needed.
               </p>
             </div>
             
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Balance</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Playtesting</h3>
               <p className="text-gray-300">
-                We are committed to fostering a balanced competitive environment where all factions have a chance to succeed with various strategies.
+                Our Playtest Manager coordinates testing schedules and feedback collection, working with playtesters from diverse regions to maintain game balance.
               </p>
             </div>
           </div>
           
           <p className="text-gray-300">
-            These core values guide everything we do at ARC, from rule clarifications to community engagement and future development.
+            ARC operates under a clear governance structure with defined processes for decision-making and communication, ensuring transparency and accountability in all our actions.
           </p>
+          
+          <div className="mt-6 text-center">
+            <a 
+              href="/src/assets/ARC TOR v0.3.md"
+              download="ARC_Terms_of_Reference_v0.3.md"
+              className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              Download Terms of Reference
+            </a>
+          </div>
         </div>
         
         {/* Core Members Section */}
@@ -81,8 +94,8 @@ const About = () => {
             {/* Member 1 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
               <h3 className="text-xl font-semibold text-white mb-1">Nick Brown</h3>
-              <p className="text-gray-400 text-sm mb-1">Discord Name: @cactus.cooler</p>
-              <p className="text-gray-400 text-sm mb-1">Armada Hub Discord: @nick</p>
+              <p className="text-gray-400 text-sm mb-1">Discord: @cactus.cooler</p>
+              <p className="text-gray-400 text-sm mb-1">Armada Hub: @nick</p>
               <p className="text-gray-400 text-sm mb-4">📍 California, USA</p>
               <p className="text-gray-300">
                 I am a long-time Star Wars: Armada player, playing the game since 2015 and have extensive experience in the competitive scene. I placed 4th at the 2019 World Championship and 6th at the 2025 World Championship. I believe my experience and knowledge of the game will help me provide the community with accurate rules and balanced competitive formats.
@@ -95,12 +108,16 @@ const About = () => {
             
             {/* Member 2 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-1">John Doe #1</h3>
-              <p className="text-gray-400 text-sm mb-1">@johndoe1</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <h3 className="text-xl font-semibold text-white mb-1">James Chen</h3>
+              <p className="text-gray-400 text-sm mb-1">Discord: @maturin</p>
+              <p className="text-gray-400 text-sm mb-4">📍 Western Canada</p>
               <p className="text-gray-300">
-                
-              </p>
+                James is a doctor with an online MD degree from the Illinois Automotive Academy. He spent his residency at many fine ski areas, before abandoning the East Coast to shack up with a Canadian wife of convenience, in order to access the free health care needed to treat the inevitable injuries that will result when his wife reads this. He has spent the last 3 years herding cats professionally at the Children's Hospital, in addition to his main job of knocking kids out.
+                </p>
+                <br />
+                <p className="text-gray-300">
+                  He occasionally gets a game of Armada in (and is the current Western Canada Champion).  He joined ARC recently to herd Armada cats as ARC's Project Manager.
+                </p>
             </div>
             
             {/* Member 3 */}
@@ -139,32 +156,19 @@ const About = () => {
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
           <h2 className="text-3xl font-semibold text-white mb-6">Supporting Members</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Supporting Member 1 */}
-            <div className="bg-gray-700/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white">Supporting Member #1</h3>
-            </div>
-            
-            {/* Supporting Member 2 */}
-            <div className="bg-gray-700/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white">Supporting Member #2</h3>
-            </div>
-            
-            {/* Supporting Member 3 */}
-            <div className="bg-gray-700/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white">Supporting Member #3</h3>
-            </div>
-            
-            {/* Supporting Member 4 */}
-            <div className="bg-gray-700/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white">Supporting Member #4</h3>
-            </div>
-            
-            {/* Supporting Member 5 */}
-            <div className="bg-gray-700/50 p-4 rounded-xl">
-              <h3 className="text-lg font-semibold text-white">Supporting Member #5</h3>
+          <div className="bg-gray-700/50 p-6 rounded-xl mb-6">
+            <div className="flex items-center justify-center gap-3 text-gray-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+              <p className="text-lg">This section is currently under construction</p>
             </div>
           </div>
+          
+          <p className="text-gray-300 text-center">
+            We are in the process of recognizing our supporting members who contribute to the Armada community.
+            Check back soon for updates!
+          </p>
         </div>
         
         {/* FAQ Integration Section */}
