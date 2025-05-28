@@ -27,28 +27,6 @@ const OrganizedPlay = () => {
       ]
     },
     {
-      title: "Tournament Preparation",
-      description: "Guides and tips for preparing for tournaments.",
-      icon: "📋",
-      items: [
-        { title: "Fleet Building for Tournaments", link: "#", description: "Strategies for building competitive fleets for tournaments." },
-        { title: "Practice Strategies", link: "#", description: "Effective ways to practice and improve before tournaments." },
-        { title: "Mental Preparation", link: "#", description: "Tips for mental preparation and maintaining focus during tournaments." },
-        { title: "Tournament Day Checklist", link: "#", description: "Essential items and preparations for tournament day." }
-      ]
-    },
-    {
-      title: "Tournament Organizer Guide",
-      description: "Comprehensive guide for tournament organizers.",
-      icon: "👨‍💼",
-      items: [
-        { title: "Tournament Setup Guide", link: "#", description: "Step-by-step guide for setting up a tournament." },
-        { title: "Running a Tournament", link: "#", description: "Best practices for running a smooth tournament." },
-        { title: "Managing Players and Pairings", link: "#", description: "Tips for managing players and creating fair pairings." },
-        { title: "Tournament Promotion", link: "#", description: "Strategies for promoting your tournament to the community." }
-      ]
-    },
-    {
       title: "Upcoming Tournaments",
       description: "Calendar of upcoming tournaments and events for Star Wars: Armada.",
       icon: "📅",

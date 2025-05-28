@@ -5,17 +5,6 @@ const Resources = () => {
   // Resource categories with their items
   const resourceCategories = [
     {
-      title: "Rules Reference",
-      description: "Comprehensive guides and references for Star Wars: Armada rules.",
-      icon: "📚",
-      items: [
-        { title: "Official Rules Reference", link: "#", description: "The complete official rules reference document." },
-        { title: "Rules Clarifications", link: "#", description: "Official clarifications and errata for specific rules." },
-        { title: "Rule Interpretations", link: "#", description: "ARC's interpretations of complex rule interactions." },
-        { title: "Rules Quiz", link: "#", description: "Test your knowledge of Star Wars: Armada rules." }
-      ]
-    },
-    {
       title: "Fleet Builders",
       description: "Tools to help you build your fleets.",
       icon: "🚀",
@@ -28,17 +17,6 @@ const Resources = () => {
       ]
     },
     {
-      title: "New Player Resources",
-      description: "Specifically curated content for players new to Star Wars: Armada.",
-      icon: "🌱",
-      items: [
-        { title: "Getting Started Guide", link: "#", description: "A comprehensive guide for new players." },
-        { title: "Basic Strategies", link: "#", description: "Simple strategies to help you get started." },
-        { title: "Faction Overview", link: "#", description: "Introduction to each faction and their playstyles." },
-        { title: "Common Mistakes", link: "#", description: "Common mistakes to avoid as a new player." }
-      ]
-    },
-    {
       title: "Communities",
       description: "Connect with Star Wars: Armada players and join vibrant community spaces.",
       icon: "👥",
@@ -48,17 +26,6 @@ const Resources = () => {
         { title: "Armada Legacy Discord", link: "https://discord.gg/qJ5VvupY4j", description: "Discord server for the Legacy format of Star Wars: Armada." },
         { title: "Armada Legends Discord", link: "https://discord.gg/PFj2xHGYvq", description: "Discord server for the Legends format of Star Wars: Armada." },
         { title: "Reddit Community", link: "https://www.reddit.com/r/StarWarsArmada/", description: "Reddit community for Star Wars: Armada discussion and content." }
-      ]
-    },
-    {
-      title: "Print & Play Resources",
-      description: "Templates for cards, tokens, markers, and other game components.",
-      icon: "🖨️",
-      items: [
-        { title: "Custom Cards", link: "#", description: "Printable templates for custom cards." },
-        { title: "Token Templates", link: "#", description: "Printable templates for game tokens and markers." },
-        { title: "Custom Components", link: "#", description: "Templates for custom game components." },
-        { title: "Card Sleeves", link: "#", description: "Information about card sleeves and protection." }
       ]
     },
     {
@@ -87,29 +54,7 @@ const Resources = () => {
       items: [
         { title: "Cannot Get Your Ship Out", link: "https://cannotgetyourshipout.blogspot.com", description: "Strategy articles, battle reports, and community content." }
       ]
-    },
-    {
-      title: "Strategy Guides",
-      description: "In-depth guides to help you improve your gameplay.",
-      icon: "🎯",
-      items: [
-        { title: "Faction Guides", link: "#", description: "Strategy guides for each faction." },
-        { title: "Ship Guides", link: "#", description: "Detailed guides for specific ships and their optimal uses." },
-        { title: "Squadron Guides", link: "#", description: "Information about different squadrons and their roles." },
-        { title: "Commander Guides", link: "#", description: "Strategies for using different commanders effectively." }
-      ]
-    },
-    {
-      title: "Historical Archives",
-      description: "Resources documenting the history of Star Wars: Armada.",
-      icon: "📜",
-      items: [
-        { title: "Tournament History", link: "#", description: "Records of past tournaments and their results." },
-        { title: "Meta Evolution", link: "#", description: "How the competitive meta has evolved over time." },
-        { title: "Game History", link: "#", description: "History of Star Wars: Armada and its development." },
-        { title: "Community Milestones", link: "#", description: "Important milestones in the Armada community." }
-      ]
-    },
+    }
   ];
 
   return (
