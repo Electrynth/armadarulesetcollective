@@ -44,6 +44,7 @@ const Navigation = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/news', label: 'News' },
+    { path: '/rules', label: 'Rules' },
     { path: '/organized-play', label: 'Organized Play' },
     { path: '/resources', label: 'Resources' },
     { path: '/faq', label: 'FAQ' },

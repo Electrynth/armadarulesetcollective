@@ -9,6 +9,7 @@ import About from './pages/About';
 import OrganizedPlay from './pages/OrganizedPlay';
 import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
+import Rules from './pages/Rules';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<BlogPostDetail />} />
+            <Route path="/rules" element={<Rules />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
