@@ -19,8 +19,8 @@ function Rules() {
   };
 
   return (
-    <div className="h-[calc(100vh-4rem)] flex flex-col p-2 md:p-4 font-montserrat overflow-y-hidden">
-      <div className="max-w-6xl mx-auto w-full flex flex-col flex-grow mt-4 md:mt-6">
+    <div className="h-[calc(100vh)] flex flex-col p-2 md:p-4 font-montserrat overflow-y-hidden pt-4" style={{ marginTop: '-2rem' }}>
+      <div className="max-w-6xl mx-auto w-full flex flex-col flex-grow mt-4 md:mt-6" style={{ marginTop: '3rem' }}>
         <div className="bg-gray-800/90 backdrop-blur-sm p-4 rounded-xl ring-1 ring-gray-700/50 flex flex-col flex-grow min-h-0">
           <div className="flex flex-col md:flex-row gap-2 mb-4">
             <select
