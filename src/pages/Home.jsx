@@ -105,7 +105,6 @@ const Home = () => {
                 className="rounded-xl h-[350px] md:h-[500px] w-full max-w-xl"
                 allowTransparency="true"
                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                title="The Armada Hub"
               ></iframe>
             </div>
           </div>
