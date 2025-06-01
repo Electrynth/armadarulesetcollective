@@ -131,12 +131,13 @@ function Rules() {
           </p>
 
           <div className="flex-grow min-h-0">
-            <embed
-              src={getPdfUrl(getDisplayPath(selectedPdf))}
+            <object
+              data={getPdfUrl(getDisplayPath(selectedPdf))}
               type="application/pdf"
               className="w-full h-full rounded-lg"
-              title="Rules PDF Viewer"
-            />
+            >
+              <p>Browser does not support PDF files. <a href={getDisplayPath(selectedPdf)}><b>Download</b></a> instead.</p>
+            </object>
           </div>
         </div>
       </div>
