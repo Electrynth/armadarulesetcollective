@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 const About = () => {
   return (
@@ -7,75 +7,67 @@ const About = () => {
         <h1 className="text-5xl font-bold mb-6 text-white text-center">
           About ARC
         </h1>
-        
-        {/* Introduction Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
-          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            The Armada Ruleset Collective is dedicated to providing accurate, up-to-date rules and resources
-            for Star Wars: Armada players worldwide.
-          </p>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            Our mission is to support the Armada community by maintaining a comprehensive rules database
-            and providing tools to enhance the gaming experience.
-          </p>
-        </div>
-        
-        {/* Mission & Values Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-3xl font-semibold text-white mb-6">Our Purpose & Structure</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Living Ruleset</h3>
-              <p className="text-gray-300">
-                We maintain a comprehensive, up-to-date ruleset that Tournament Organizers and players can refer to when needed, ensuring consistency across the community.
-              </p>
+      </div>
+      {/* Mission & Values Section */}
+      <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
+          {/* Purpose Section */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-4">Our Purpose</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Living Ruleset</h3>
+                <p className="text-gray-300">
+                  We will ensure Star Wars: Armada has a living ruleset so Tournament Organizers and players will always have access to the most up-to-date and accurate information on rules.
+                </p>
+              </div>
+              
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Competitive Balance</h3>
+                <p className="text-gray-300">
+                  We will keep the Star Wars: Armada competitive scene vibrant and interesting by ensuring balanced and varied gameplay.
+                </p>
+              </div>
+              
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Tournament Support</h3>
+                <p className="text-gray-300">
+                  We will work with Tournament Organizers to continue an organized play structure, encouraging consistency, coordination, and collaboration of Star Wars: Armada events worldwide.
+                </p>
+              </div>
             </div>
-            
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Competitive Balance</h3>
-              <p className="text-gray-300">
-                We work to ensure Star Wars Armada competitive tournament play remains balanced and engaging for all players.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Tournament Support</h3>
-              <p className="text-gray-300">
-                We coordinate with Tournament Organizers to maintain an organized play structure, encouraging continuity of tournaments while not running events directly.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Core Executive</h3>
-              <p className="text-gray-300">
-                A team of 3-5 members who set organizational goals, guide ARC's direction, and make personnel decisions about ARC membership.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Project Management</h3>
-              <p className="text-gray-300">
-                Our Project Manager ensures smooth operations and can serve as a tiebreaker in Core Executive decisions when needed.
-              </p>
-            </div>
-            
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">Playtesting</h3>
-              <p className="text-gray-300">
-                Our Playtest Manager coordinates testing schedules and feedback collection, working with playtesters from diverse regions to maintain game balance.
-              </p>
+          </div>
+
+          {/* Structure Section */}
+          <div className="mb-6">
+            <h3 className="text-2xl font-semibold text-white mb-4">Our Structure</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Core Executive</h3>
+                <p className="text-gray-300">
+                  Our Core Executive is composed of 3-5 people, whom are charged with setting organizational goals, guiding ARC towards those goals, and making personnel decisions about ARC membership.
+                </p>
+              </div>
+              
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Project Manager</h3>
+                <p className="text-gray-300">
+                  Our Project Manager attends to the details of keeping an organization running smoothly. They are usually a non-voting member of the Core Executive, but may cast a tiebreaking vote if the Core Executive is deadlocked.
+                </p>
+              </div>
+              
+              <div className="bg-gray-700/50 p-6 rounded-xl">
+                <h3 className="text-xl font-semibold text-white mb-3">Playtesting</h3>
+                <p className="text-gray-300">
+                  Our Playtest Manager coordinates amongst playtest leads, organizing internal test tournaments, and collecting feedback. Additionally, playtesters are drawn from various geographic regions to maintain feedback diversity.
+                </p>
+              </div>
             </div>
           </div>
           
-          <p className="text-gray-300">
-            ARC operates under a clear governance structure with defined processes for decision-making and communication, ensuring transparency and accountability in all our actions.
-          </p>
-          
           <div className="mt-6 text-center">
             <a 
-              href="/src/assets/ARC TOR v0.3.md"
-              download="ARC_Terms_of_Reference_v0.3.md"
+              href="/src/assets/ARC TOR v1.01.md"
+              download="ARC_Terms_of_Reference_v1.01.md"
               className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -85,56 +77,50 @@ const About = () => {
             </a>
           </div>
         </div>
-        
+
         {/* Core Members Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
           <h2 className="text-3xl font-semibold text-white mb-6">Core Members</h2>
+          <div className="bg-gray-700/50 p-6 rounded-xl mb-6">
+            <div className="flex items-center justify-center gap-3 text-gray-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+              <p className="text-lg">This section is currently under construction</p>
+            </div>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Member 1 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
               <h3 className="text-xl font-semibold text-white mb-1">Nick Brown</h3>
-              <p className="text-gray-400 text-sm mb-1">Discord: @cactus.cooler</p>
-              <p className="text-gray-400 text-sm mb-1">Armada Hub: @nick</p>
+              <p className="text-gray-400 text-sm mb-1">@nick</p>
               <p className="text-gray-400 text-sm mb-4">📍 California, USA</p>
-              <p className="text-gray-300">
-                I am a long-time Star Wars: Armada player, playing the game since 2015 and have extensive experience in the competitive scene. I placed 4th at the 2019 World Championship and 6th at the 2025 World Championship. I believe my experience and knowledge of the game will help me provide the community with accurate rules and balanced competitive formats.
-              </p>
-              <br />
-              <p className="text-gray-300">
-                As part of ARC I focus on the technical development of ARC's tools and resources and support the other core members in their efforts. Outside of Armada, I am software engineer who also enjoys playing other tabletop and board games.
-              </p>
             </div>
             
             {/* Member 2 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-1">James Chen</h3>
-              <p className="text-gray-400 text-sm mb-1">Discord: @maturin</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Western Canada</p>
-              <p className="text-gray-300">
-                James is a doctor with an online MD degree from the Illinois Automotive Academy. He spent his residency at many fine ski areas, before abandoning the East Coast to shack up with a Canadian wife of convenience, in order to access the free health care needed to treat the inevitable injuries that will result when his wife reads this. He has spent the last 3 years herding cats professionally at the Children's Hospital, in addition to his main job of knocking kids out.
-                </p>
-                <br />
-                <p className="text-gray-300">
-                  He occasionally gets a game of Armada in (and is the current Western Canada Champion).  He joined ARC recently to herd Armada cats as ARC's Project Manager.
-                </p>
-            </div>
-            
-            {/* Member 3 */}
-            <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-1">John Doe #2</h3>
-              <p className="text-gray-400 text-sm mb-1">@johndoe2</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <h3 className="text-xl font-semibold text-white mb-1">Mackenzie Dalla Lana</h3>
+              <p className="text-gray-400 text-sm mb-1">@largepackage</p>
+              <p className="text-gray-400 text-sm mb-4">📍 BC, Canada</p>
               <p className="text-gray-300">
                 
               </p>
             </div>
             
+            
+            {/* Member 3 */}
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-1">Nick Larson</h3>
+              <p className="text-gray-400 text-sm mb-1">@unskilledfirstofficer</p>
+              <p className="text-gray-400 text-sm mb-4">📍 California, USA</p>
+            </div>
+            
             {/* Member 4 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-1">John Doe #3</h3>
-              <p className="text-gray-400 text-sm mb-1">@johndoe3</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
+              <h3 className="text-xl font-semibold text-white mb-1">Lewis Wright</h3>
+              <p className="text-gray-400 text-sm mb-1">@lark</p>
+              <p className="text-gray-400 text-sm mb-4">📍 England, UK</p>
               <p className="text-gray-300">
                 
               </p>
@@ -142,16 +128,13 @@ const About = () => {
             
             {/* Member 5 */}
             <div className="bg-gray-700/50 p-6 rounded-xl">
-              <h3 className="text-xl font-semibold text-white mb-1">John Doe #4</h3>
-              <p className="text-gray-400 text-sm mb-1">@johndoe4</p>
-              <p className="text-gray-400 text-sm mb-4">📍 Location</p>
-              <p className="text-gray-300">
-                
-              </p>
+              <h3 className="text-xl font-semibold text-white mb-1">James Chen</h3>
+              <p className="text-gray-400 text-sm mb-1">@maturin</p>
+              <p className="text-gray-400 text-sm mb-4">📍 BC, Canada</p>
             </div>
           </div>
         </div>
-        
+
         {/* Supporting Members Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
           <h2 className="text-3xl font-semibold text-white mb-6">Supporting Members</h2>
@@ -170,45 +153,6 @@ const About = () => {
             Check back soon for updates!
           </p>
         </div>
-        
-        {/* FAQ Integration Section */}
-        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-3xl font-semibold text-white mb-6">Common Questions</h2>
-          
-          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            Have questions about ARC? Check out our frequently asked questions for quick answers to common inquiries.
-          </p>
-          
-          <div className="bg-gray-700/50 p-6 rounded-xl mb-6">
-            <h3 className="text-xl font-semibold text-white mb-3">What is ARC?</h3>
-            <p className="text-gray-300 mb-4">
-              ARC is a community-driven initiative dedicated to providing accurate, up-to-date rules and resources for Star Wars: Armada players worldwide.
-            </p>
-            <Link to="/faq" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-              Learn more about ARC →
-            </Link>
-          </div>
-          
-          <div className="bg-gray-700/50 p-6 rounded-xl mb-6">
-            <h3 className="text-xl font-semibold text-white mb-3">How often are rules updated?</h3>
-            <p className="text-gray-300 mb-4">
-              ARC will update the rules and/or make changes to the competitive ruleset approximately twice a year, with possible minor changes throughout the year.
-            </p>
-            <Link to="/faq" className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium">
-              See all FAQ answers →
-            </Link>
-          </div>
-          
-          <div className="text-center">
-            <Link 
-              to="/faq" 
-              className="inline-block bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
-            >
-              View All FAQs
-            </Link>
-          </div>
-        </div>
-        
         {/* Contact Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-3xl font-semibold text-white mb-6">Contact Us</h2>
@@ -240,7 +184,6 @@ const About = () => {
             </a>
           </div>
         </div>
-      </div>
     </div>
   );
 };
