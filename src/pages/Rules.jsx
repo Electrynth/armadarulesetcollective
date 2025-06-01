@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function Rules() {
   const pdfFiles = [
-    { name: 'Cover', path: '/pdfs/Cover.pdf', isCover: true, size: '2.0MB' },
+    { name: 'Cover', path: '/pdfs/Cover.pdf', isCover: true, size: '1.5MB' },
     { name: 'Titles', compressedPath: '/pdfs/compressed/Titles_min_0.8.pdf', rawPath: '/pdfs/raw/Titles.pdf', compressedSize: '6.5MB', rawSize: '17MB' },
     { name: 'Commanders', compressedPath: '/pdfs/compressed/Commanders_min_0.8.pdf', rawPath: '/pdfs/raw/Commanders.pdf', compressedSize: '4.5MB', rawSize: '24MB' },
     { name: 'Officers', compressedPath: '/pdfs/compressed/Officers_min_0.8.pdf', rawPath: '/pdfs/raw/Officers.pdf', compressedSize: '2.8MB', rawSize: '14MB' },
@@ -68,7 +68,7 @@ function Rules() {
                   </svg>
                   <div className="flex flex-col items-start">
                     <span>Text Only</span>
-                    <span className="text-sm text-gray-200">15MB</span>
+                    <span className="text-sm text-gray-200">4.5MB</span>
                   </div>
                 </a>
                 <a
@@ -84,7 +84,7 @@ function Rules() {
                   </svg>
                   <div className="flex flex-col items-start">
                     <span>Full Document</span>
-                    <span className="text-sm text-gray-200">120MB</span>
+                    <span className="text-sm text-gray-200">57MB</span>
                   </div>
                 </a>
               </div>
