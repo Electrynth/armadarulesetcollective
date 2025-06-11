@@ -83,6 +83,18 @@ const Home = () => {
           Your source for Star Wars: Armada rules, resources, and community updates.
         </p>
 
+        {/* Recent Updates */}
+        {recentPosts.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-white mb-4">Recent Updates</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentPosts.map(post => (
+                <BlogPost key={post.id} post={post} isPreview={true} />
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Featured Blog Post */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
@@ -107,18 +119,6 @@ const Home = () => {
             </div>
           )}
         </div>
-
-        {/* Recent Updates */}
-        {recentPosts.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-2xl font-semibold text-white mb-4">Recent Updates</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {recentPosts.map(post => (
-                <BlogPost key={post.id} post={post} isPreview={true} />
-              ))}
-            </div>
-          </div>
-        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 md:col-span-2">
