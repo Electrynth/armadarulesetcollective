@@ -1,6 +1,4 @@
 import React from 'react';
-import torFile from '../assets/ARC TOR v1.01.md';
-import guidingPrinciplesFile from '../assets/ARC Guiding Principles v1.0.md';
 
 const About = () => {
   return (
@@ -68,7 +66,7 @@ const About = () => {
           
           <div className="mt-6 text-center">
             <a 
-              href={torFile}
+              href="/assets/ARC TOR v1.01.md"
               download="ARC_Terms_of_Reference_v1.01.md"
               className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
             >
@@ -116,7 +114,7 @@ const About = () => {
 
           <div className="mt-6 text-center">
             <a 
-              href={guidingPrinciplesFile}
+              href="/assets/ARC Guiding Principles v1.0.md"
               download="ARC_Guiding_Principles_v1.0.md"
               className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
             >
