@@ -78,9 +78,57 @@ const About = () => {
           </div>
         </div>
 
+        {/* Guiding Principles Section */}
+        <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
+          <h2 className="text-3xl font-semibold text-white mb-6">Guiding Principles</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-3">Systems Approach</h3>
+              <p className="text-gray-300">
+                We examine gameplay at both systems level (squadrons, objectives, fleet archetypes) and individual card level, with careful consideration of the complexity and impact of changes.
+              </p>
+            </div>
+
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-3">Balance Philosophy</h3>
+              <p className="text-gray-300">
+                We prefer buffing underperforming elements over nerfing overperforming ones, while maintaining a wide variety of viable fleet archetypes across all factions.
+              </p>
+            </div>
+
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-3">Update Schedule</h3>
+              <p className="text-gray-300">
+                We maintain a balanced pace of rules releases, currently planning for biannual updates to allow players time to adapt while keeping the game fresh and engaging.
+              </p>
+            </div>
+
+            <div className="bg-gray-700/50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold text-white mb-3">Core Principles</h3>
+              <p className="text-gray-300">
+                We take a conservative approach to changes while recognizing the need for evolution. All changes are made with clear intentions and transparent communication.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 text-center">
+            <a 
+              href="/src/assets/ARC Guiding Principles v1.0.md"
+              download="ARC_Guiding_Principles_v1.0.md"
+              className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              Download Guiding Principles
+            </a>
+          </div>
+        </div>
+
         {/* Core Members Section */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50 mb-8">
-          <h2 className="text-3xl font-semibold text-white mb-6">Core Members</h2>
+          <h2 className="text-3xl font-semibold text-white mb-6">Core Executive Members</h2>
           <div className="bg-gray-700/50 p-6 rounded-xl mb-6">
             <div className="flex items-center justify-center gap-3 text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -174,7 +222,7 @@ const About = () => {
               Discord
             </a>
             <a 
-              href="mailto:nbrown4296@gmail.com"
+              href="mailto:contact@armadarulesetcollective.com"
               className="bg-[#4CAF50] text-white px-6 py-3 rounded-xl ring-1 ring-[#3D8B40] hover:bg-[#45A049] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

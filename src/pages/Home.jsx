@@ -7,33 +7,48 @@ import BlogPost from '../components/BlogPost';
 const Home = () => {
   const [imageError, setImageError] = useState(false);
   const [latestPost, setLatestPost] = useState(null);
+  const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // Fetch the latest blog post
+  // Fetch the latest blog posts
   useEffect(() => {
-    const getLatestPost = async () => {
+    const getPosts = async () => {
       try {
         setLoading(true);
         const posts = await fetchBlogPosts();
         
         if (posts && posts.length > 0) {
-          // Sort by date (newest first) and get the first one
-          const sortedPosts = [...posts].sort((a, b) => 
+          // Filter for featured posts and sort by date (newest first)
+          const featuredPosts = posts.filter(post => post.featured);
+          const sortedFeaturedPosts = [...featuredPosts].sort((a, b) => 
             new Date(b.date) - new Date(a.date)
           );
-          setLatestPost(sortedPosts[0]);
+          
+          // Get non-featured posts and sort by date
+          const nonFeaturedPosts = posts.filter(post => !post.featured);
+          const sortedNonFeaturedPosts = [...nonFeaturedPosts].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+          );
+          
+          // Get the most recent featured post, or fall back to most recent post if no featured posts exist
+          setLatestPost(sortedFeaturedPosts.length > 0 ? sortedFeaturedPosts[0] : sortedNonFeaturedPosts[0]);
+          
+          // Get the 3 most recent non-featured posts
+          setRecentPosts(sortedNonFeaturedPosts.slice(0, 3));
         } else {
           setLatestPost(null);
+          setRecentPosts([]);
         }
       } catch (err) {
-        console.error('Error fetching latest blog post:', err);
+        console.error('Error fetching blog posts:', err);
         setLatestPost(null);
+        setRecentPosts([]);
       } finally {
         setLoading(false);
       }
     };
 
-    getLatestPost();
+    getPosts();
   }, []);
 
   // Format date
@@ -68,10 +83,10 @@ const Home = () => {
           Your source for Star Wars: Armada rules, resources, and community updates.
         </p>
 
-        {/* Latest Blog Post */}
+        {/* Featured Blog Post */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-semibold text-white">Latest Update</h2>
+            <h2 className="text-2xl font-semibold text-white">Featured Update</h2>
             <Link 
               to="/news" 
               className="text-white hover:text-gray-300 transition-colors font-medium"
@@ -82,7 +97,7 @@ const Home = () => {
           
           {loading ? (
             <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
-              <p className="text-gray-300">Loading latest update...</p>
+              <p className="text-gray-300">Loading featured update...</p>
             </div>
           ) : latestPost ? (
             <BlogPost post={latestPost} isPreview={true} />
@@ -92,6 +107,18 @@ const Home = () => {
             </div>
           )}
         </div>
+
+        {/* Recent Updates */}
+        {recentPosts.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-white mb-4">Recent Updates</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentPosts.map(post => (
+                <BlogPost key={post.id} post={post} isPreview={true} />
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 md:col-span-2">
