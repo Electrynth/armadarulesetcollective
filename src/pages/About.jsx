@@ -107,7 +107,7 @@ const About = () => {
             <div className="bg-gray-700/50 p-6 rounded-xl">
               <h3 className="text-xl font-semibold text-white mb-3">Core Principles</h3>
               <p className="text-gray-300">
-                We take a conservative approach to changes while recognizing the need for evolution. All changes are made with clear intentions and transparent communication.
+                We take a conservative approach to changes while recognizing the need for evolution. All changes will made with clear intentions and transparent communication.
               </p>
             </div>
           </div>
