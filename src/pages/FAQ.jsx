@@ -262,7 +262,7 @@ const FAQ = () => {
               }`}
             >
               <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                ARC conducts thorough playtesting with a committed team of testers and community members. This includes multiple testing rounds across various skill levels, factions, and playstyles. Our team features former FFG employees and testers, World class players, and casual players alike. Many have been playing since the game was released and some are relatively new to Armada. We always evaluate both the item in question and its potential impact on the game as a whole. This diversity is the key to our confidence in the balance and fairness of our content.
+                ARC conducts thorough playtesting with a committed team of testers and community members. This includes multiple testing rounds across various skill levels, factions, and playstyles. Our team features former FFG employees and testers, world class players, and casual players alike. Many have been playing since the game was released and some are relatively new to Armada. We always evaluate both the item in question and its potential impact on the game as a whole. This diversity is the key to our confidence in the balance and fairness of our content.
               </p>
             </div>
           </div>
