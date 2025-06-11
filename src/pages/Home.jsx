@@ -86,8 +86,22 @@ const Home = () => {
         {/* Recent Updates */}
         {recentPosts.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-semibold text-white mb-4">Recent Updates</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-semibold text-white">Recent Updates</h2>
+              <Link 
+                to="/news" 
+                className="text-white hover:text-gray-300 transition-colors font-medium"
+              >
+                View All Updates →
+              </Link>
+            </div>
+            <div className={`grid gap-6 ${
+              recentPosts.length === 1 
+                ? 'grid-cols-1 max-w-3xl mx-auto' 
+                : recentPosts.length === 2 
+                  ? 'grid-cols-1 md:grid-cols-2' 
+                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+            }`}>
               {recentPosts.map(post => (
                 <BlogPost key={post.id} post={post} isPreview={true} />
               ))}
