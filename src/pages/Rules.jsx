@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 
 function Rules() {
   const pdfFiles = [
-    { name: 'Cover', path: '/pdfs/Cover.pdf', isCover: true, size: '1.5MB' },
-    { name: 'Titles', compressedPath: '/pdfs/compressed/Titles_min_0.8.pdf', rawPath: '/pdfs/raw/Titles.pdf', compressedSize: '6.5MB', rawSize: '17MB' },
-    { name: 'Commanders', compressedPath: '/pdfs/compressed/Commanders_min_0.8.pdf', rawPath: '/pdfs/raw/Commanders.pdf', compressedSize: '4.5MB', rawSize: '24MB' },
-    { name: 'Officers', compressedPath: '/pdfs/compressed/Officers_min_0.8.pdf', rawPath: '/pdfs/raw/Officers.pdf', compressedSize: '2.8MB', rawSize: '14MB' },
-    { name: 'Boarding Teams', compressedPath: '/pdfs/compressed/Boarding Teams_min_0.8.pdf', rawPath: '/pdfs/raw/Boarding Teams.pdf', compressedSize: '780KB', rawSize: '2.2MB' },
-    { name: 'Weapon Teams', compressedPath: '/pdfs/compressed/Weapon Teams_min_0.8.pdf', rawPath: '/pdfs/raw/Weapon Teams.pdf', compressedSize: '1.5MB', rawSize: '4.2MB' },
-    { name: 'Support Teams', compressedPath: '/pdfs/compressed/Support Teams_min_0.8.pdf', rawPath: '/pdfs/raw/Support Teams.pdf', compressedSize: '985KB', rawSize: '4.2MB' },
-    { name: 'Offensive Retrofits', compressedPath: '/pdfs/compressed/Offensive Retrofits_min_0.8.pdf', rawPath: '/pdfs/raw/Offensive Retrofits.pdf', compressedSize: '2.0MB', rawSize: '11MB' },
-    { name: 'Defensive Retrofits', compressedPath: '/pdfs/compressed/Defensive Retrofits_min_0.8.pdf', rawPath: '/pdfs/raw/Defensive Retrofits.pdf', compressedSize: '738KB', rawSize: '3.7MB' },
-    { name: 'Fleet Commands', compressedPath: '/pdfs/compressed/Fleet Commands_min_0.8.pdf', rawPath: '/pdfs/raw/Fleet Commands.pdf', compressedSize: '1023KB', rawSize: '5.4MB' },
-    { name: 'Fleet Support', compressedPath: '/pdfs/compressed/Fleet Support_min_0.8.pdf', rawPath: '/pdfs/raw/Fleet Support.pdf', compressedSize: '779KB', rawSize: '2.6MB' },
-    { name: 'Ordnance', compressedPath: '/pdfs/compressed/Ordnance_min_0.8.pdf', rawPath: '/pdfs/raw/Ordnance.pdf', compressedSize: '788KB', rawSize: '2.4MB' },
-    { name: 'Ion Cannons', compressedPath: '/pdfs/compressed/Ion Cannons_min_0.8.pdf', rawPath: '/pdfs/raw/Ion Cannons.pdf', compressedSize: '768KB', rawSize: '4.0MB' },
-    { name: 'Turbolasers', compressedPath: '/pdfs/compressed/Turbolasers_min_0.8.pdf', rawPath: '/pdfs/raw/Turbolasers.pdf', compressedSize: '1.6MB', rawSize: '4.3MB' },
-    { name: 'Experimental Retrofits', compressedPath: '/pdfs/compressed/Experimental Retrofits_min_0.8.pdf', rawPath: '/pdfs/raw/Experimental Retrofits.pdf', compressedSize: '538KB', rawSize: '2.8MB' },
-    { name: 'Super Weapons', compressedPath: '/pdfs/compressed/Super Weapons_min_0.8.pdf', rawPath: '/pdfs/raw/Super Weapons.pdf', compressedSize: '362KB', rawSize: '1.1MB' },
-    { name: 'Squadrons', compressedPath: '/pdfs/compressed/Squadrons_min_0.8.pdf', rawPath: '/pdfs/raw/Squadrons.pdf', compressedSize: '5.8MB', rawSize: '15MB' },
-    { name: 'Damage Cards', compressedPath: '/pdfs/compressed/Damage Cards_min_0.8.pdf', rawPath: '/pdfs/raw/Damage Cards.pdf', compressedSize: '1.6MB', rawSize: '7.9MB' }
+    { name: 'Cover', path: '/pdfs/Cover.pdf', isSinglePage: true, size: '1.5MB' },
+    { name: 'Changelog', path: '/pdfs/ARM Changelog.pdf', isSinglePage: true, size: '1.5MB' },
+    { name: 'Titles', compressedPath: '/pdfs/compressed/Titles.pdf', rawPath: '/pdfs/raw/Titles.pdf', compressedSize: '6.5MB', rawSize: '17MB' },
+    { name: 'Commanders', compressedPath: '/pdfs/compressed/Commanders.pdf', rawPath: '/pdfs/raw/Commanders.pdf', compressedSize: '4.5MB', rawSize: '24MB' },
+    { name: 'Officers', compressedPath: '/pdfs/compressed/Officers.pdf', rawPath: '/pdfs/raw/Officers.pdf', compressedSize: '2.8MB', rawSize: '14MB' },
+    { name: 'Boarding Teams', compressedPath: '/pdfs/compressed/Boarding Teams.pdf', rawPath: '/pdfs/raw/Boarding Teams.pdf', compressedSize: '780KB', rawSize: '2.2MB' },
+    { name: 'Weapon Teams', compressedPath: '/pdfs/compressed/Weapon Teams.pdf', rawPath: '/pdfs/raw/Weapon Teams.pdf', compressedSize: '1.5MB', rawSize: '4.2MB' },
+    { name: 'Support Teams', compressedPath: '/pdfs/compressed/Support Teams.pdf', rawPath: '/pdfs/raw/Support Teams.pdf', compressedSize: '985KB', rawSize: '4.2MB' },
+    { name: 'Offensive Retrofits', compressedPath: '/pdfs/compressed/Offensive Retrofits.pdf', rawPath: '/pdfs/raw/Offensive Retrofits.pdf', compressedSize: '2.0MB', rawSize: '11MB' },
+    { name: 'Defensive Retrofits', compressedPath: '/pdfs/compressed/Defensive Retrofits.pdf', rawPath: '/pdfs/raw/Defensive Retrofits.pdf', compressedSize: '738KB', rawSize: '3.7MB' },
+    { name: 'Fleet Commands', compressedPath: '/pdfs/compressed/Fleet Commands.pdf', rawPath: '/pdfs/raw/Fleet Commands.pdf', compressedSize: '1023KB', rawSize: '5.4MB' },
+    { name: 'Fleet Support', compressedPath: '/pdfs/compressed/Fleet Support.pdf', rawPath: '/pdfs/raw/Fleet Support.pdf', compressedSize: '779KB', rawSize: '2.6MB' },
+    { name: 'Ordnance', compressedPath: '/pdfs/compressed/Ordnance.pdf', rawPath: '/pdfs/raw/Ordnance.pdf', compressedSize: '788KB', rawSize: '2.4MB' },
+    { name: 'Ion Cannons', compressedPath: '/pdfs/compressed/Ion Cannons.pdf', rawPath: '/pdfs/raw/Ion Cannons.pdf', compressedSize: '768KB', rawSize: '4.0MB' },
+    { name: 'Turbolasers', compressedPath: '/pdfs/compressed/Turbolasers.pdf', rawPath: '/pdfs/raw/Turbolasers.pdf', compressedSize: '1.6MB', rawSize: '4.3MB' },
+    { name: 'Experimental Retrofits', compressedPath: '/pdfs/compressed/Experimental Retrofits.pdf', rawPath: '/pdfs/raw/Experimental Retrofits.pdf', compressedSize: '538KB', rawSize: '2.8MB' },
+    { name: 'Super Weapons', compressedPath: '/pdfs/compressed/Super Weapons.pdf', rawPath: '/pdfs/raw/Super Weapons.pdf', compressedSize: '362KB', rawSize: '1.1MB' },
+    { name: 'Squadrons', compressedPath: '/pdfs/compressed/Squadrons.pdf', rawPath: '/pdfs/raw/Squadrons.pdf', compressedSize: '5.8MB', rawSize: '15MB' },
+    { name: 'Damage Cards', compressedPath: '/pdfs/compressed/Damage Cards.pdf', rawPath: '/pdfs/raw/Damage Cards.pdf', compressedSize: '1.6MB', rawSize: '7.9MB' }
   ];
 
   const [selectedPdf, setSelectedPdf] = useState(pdfFiles[0]);
@@ -29,7 +30,7 @@ function Rules() {
   };
 
   const getDisplayPath = (pdf) => {
-    if (pdf.isCover) return pdf.path;
+    if (pdf.isSinglePage) return pdf.path;
     return pdf.compressedPath;
   };
 
@@ -53,10 +54,10 @@ function Rules() {
                 </option>
               ))}
             </select>
-            {selectedPdf.isCover && (
+            {selectedPdf.isSinglePage && (
               <div className="flex gap-2">
                 <a
-                  href="/pdfs/ARM v1.0 Text Only.pdf"
+                  href="/pdfs/ARM Text Only.pdf"
                   download
                   className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-xl transition-colors flex items-center gap-2"
                   title="Download Text Only Version"
@@ -72,7 +73,7 @@ function Rules() {
                   </div>
                 </a>
                 <a
-                  href="https://d2j4aq9mja0i3a.cloudfront.net/armada-reference-manual/ARM%20v1.02.pdf"
+                  href="https://d2j4aq9mja0i3a.cloudfront.net/armada-reference-manual/ARM%20v1.03.pdf"
                   className="bg-[#C14949] hover:bg-[#D15A5A] text-white px-3 py-2 rounded-xl transition-colors flex items-center gap-2"
                   title="Download Full Document"
                   target="_blank"
@@ -89,7 +90,7 @@ function Rules() {
                 </a>
               </div>
             )}
-            {!selectedPdf.isCover && (
+            {!selectedPdf.isSinglePage && (
               <div className="flex gap-2">
                 <a
                   href={selectedPdf.compressedPath}
