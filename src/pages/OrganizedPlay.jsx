@@ -142,6 +142,11 @@ const OrganizedPlay = () => {
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-6xl mx-auto mt-8">
+        <h1 className="text-5xl font-bold mb-6 text-white text-center">
+          Organized Play
+        </h1>
+      </div>
+      <div className="max-w-6xl mx-auto mt-8">
         {/* Events Table */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50">
           {/* Controls */}
@@ -165,7 +170,7 @@ const OrganizedPlay = () => {
                     : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
                 }`}
               >
-                Upcoming Events
+                Upcoming & Current Events
               </button>
             </div>
             <a
@@ -174,18 +179,18 @@ const OrganizedPlay = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2 bg-[#C14949] hover:bg-[#D15A5A] text-white rounded-lg transition-colors"
             >
-              Submit Event
+                Submission Form
               <ExternalLinkIcon />
             </a>
           </div>
 
           {/* Table Header */}
           <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3 bg-gray-800/50 rounded-xl text-gray-300 font-semibold text-sm mb-4">
-            <div className="col-span-3">Event Name</div>
-            <div className="col-span-2">Date</div>
-            <div className="col-span-2">Location</div>
-            <div className="col-span-2">Format</div>
-            <div className="col-span-3">Links</div>
+            <div className="col-span-4 text-left">Event Name</div>
+            <div className="col-span-2 text-left">Date</div>
+            <div className="col-span-2 text-left">Location</div>
+            <div className="col-span-2 text-left">Format</div>
+            <div className="col-span-2 text-left">Links</div>
           </div>
 
           {/* Events List */}
@@ -196,7 +201,7 @@ const OrganizedPlay = () => {
             >
               {/* Mobile Layout */}
               <div className="md:hidden p-4 space-y-3">
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-center">
                   <div className="font-bold text-white">{event.eventName}</div>
                   <span className={`px-2 py-1 rounded-full text-xs ${
                     event.format === 'Standard' 
@@ -208,11 +213,18 @@ const OrganizedPlay = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div>
+                  <div className="flex flex-col justify-center">
                     <div className="text-gray-400">Date</div>
-                    <div className="text-white">{new Date(event.eventDate).toLocaleDateString()}</div>
+                    <div className="text-white">
+                      {new Date(event.eventDate).toLocaleDateString()}
+                    </div>
+                    {event.numDays > 1 && (
+                      <div className="text-sm text-gray-400">
+                        {event.numDays} day{event.numDays > 1 ? 's' : ''}
+                      </div>
+                    )}
                   </div>
-                  <div>
+                  <div className="flex flex-col justify-center">
                     <div className="text-gray-400">Location</div>
                     {event.type === 'in-person' ? (
                       <div className="text-white">{event.country}</div>
@@ -228,7 +240,7 @@ const OrganizedPlay = () => {
                       href={event.ticketLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-3 py-2 rounded-lg transition-colors text-sm"
+                      className="w-full inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1.5 rounded-lg transition-colors text-xs"
                     >
                       Tickets
                       <ExternalLinkIcon />
@@ -251,13 +263,20 @@ const OrganizedPlay = () => {
               {/* Desktop Layout */}
               <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3">
                 {/* Event Name */}
-                <div className="col-span-3">
+                <div className="col-span-4 flex items-center">
                   <div className="font-bold text-white">{event.eventName}</div>
                 </div>
 
                 {/* Date */}
-                <div className="col-span-2 flex items-center">
-                  {new Date(event.eventDate).toLocaleDateString()}
+                <div className="col-span-2 flex flex-col justify-center">
+                  <div className="text-white">
+                    {new Date(event.eventDate).toLocaleDateString()}
+                  </div>
+                  {event.numDays > 1 && (
+                    <div className="text-sm text-gray-400">
+                      {event.numDays} day{event.numDays > 1 ? 's' : ''}
+                    </div>
+                  )}
                 </div>
 
                 {/* Location */}
@@ -281,13 +300,13 @@ const OrganizedPlay = () => {
                 </div>
 
                 {/* Links */}
-                <div className="col-span-3 flex flex-col space-y-2">
+                <div className="col-span-2 flex flex-col justify-center space-y-2">
                   {event.ticketLink && (
                     <a
                       href={event.ticketLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-3 py-1.5 rounded-lg transition-colors text-sm"
+                      className="inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1 rounded-lg transition-colors text-xs"
                     >
                       Tickets
                       <ExternalLinkIcon />
@@ -308,6 +327,38 @@ const OrganizedPlay = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Contact Container */}
+        <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
+          <h2 className="text-3xl font-semibold text-white mb-6">Contact Us</h2>
+          
+          <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+            Have questions or suggestions? Reach out to us through the ARC Discussion channel on the Armada Hub Discord or send us an email.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="https://discord.gg/WRMbfNkeMM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#5865F2] text-white px-6 py-3 rounded-xl ring-1 ring-[#4752C4] hover:bg-[#4752C4] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              Discord
+            </a>
+            <a 
+              href="mailto:contact@armadarulesetcollective.com"
+              className="bg-[#4CAF50] text-white px-6 py-3 rounded-xl ring-1 ring-[#3D8B40] hover:bg-[#45A049] transition-all flex items-center gap-2 shadow-lg hover:shadow-xl"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              Email
+            </a>
+          </div>
         </div>
       </div>
     </div>
