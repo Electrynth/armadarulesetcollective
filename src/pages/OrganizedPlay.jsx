@@ -150,8 +150,17 @@ const OrganizedPlay = () => {
         {/* Events Table */}
         <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50">
           {/* Controls */}
-          <div className="mb-6 flex justify-between items-center">
-            <div className="flex gap-2">
+          <div className="mb-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfd8SNOg9VsVf_gvtStgvqRniaUmOOyO3nu_jytMkBfaGxKbA/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-[#C14949] hover:bg-[#D15A5A] text-white rounded-lg transition-colors md:order-2"
+            >
+              Submission Form
+              <ExternalLinkIcon />
+            </a>
+            <div className="flex flex-col md:flex-row gap-2 md:order-1">
               <button
                 onClick={() => setTimeFilter('past')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
@@ -173,15 +182,6 @@ const OrganizedPlay = () => {
                 Upcoming & Current Events
               </button>
             </div>
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfd8SNOg9VsVf_gvtStgvqRniaUmOOyO3nu_jytMkBfaGxKbA/viewform?usp=header"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-[#C14949] hover:bg-[#D15A5A] text-white rounded-lg transition-colors"
-            >
-                Submission Form
-              <ExternalLinkIcon />
-            </a>
           </div>
 
           {/* Table Header */}
@@ -213,13 +213,13 @@ const OrganizedPlay = () => {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="flex flex-col justify-center">
+                  <div className="flex flex-col items-start justify-center">
                     <div className="text-gray-400">Date</div>
-                    <div className="text-white text-left">
+                    <div className="text-white">
                       {new Date(event.eventDate).toLocaleDateString()}
                     </div>
                     {event.numDays > 1 && (
-                      <div className="text-sm text-gray-400 text-left">
+                      <div className="text-sm text-gray-400">
                         {event.numDays} day{event.numDays > 1 ? 's' : ''}
                       </div>
                     )}
