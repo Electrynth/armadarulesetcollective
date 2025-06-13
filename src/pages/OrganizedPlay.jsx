@@ -215,11 +215,11 @@ const OrganizedPlay = () => {
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div className="flex flex-col justify-center">
                     <div className="text-gray-400">Date</div>
-                    <div className="text-white">
+                    <div className="text-white text-left">
                       {new Date(event.eventDate).toLocaleDateString()}
                     </div>
                     {event.numDays > 1 && (
-                      <div className="text-sm text-gray-400">
+                      <div className="text-sm text-gray-400 text-left">
                         {event.numDays} day{event.numDays > 1 ? 's' : ''}
                       </div>
                     )}
@@ -269,11 +269,11 @@ const OrganizedPlay = () => {
 
                 {/* Date */}
                 <div className="col-span-2 flex flex-col justify-center">
-                  <div className="text-white">
+                  <div className="text-white text-left">
                     {new Date(event.eventDate).toLocaleDateString()}
                   </div>
                   {event.numDays > 1 && (
-                    <div className="text-sm text-gray-400">
+                    <div className="text-sm text-gray-400 text-left">
                       {event.numDays} day{event.numDays > 1 ? 's' : ''}
                     </div>
                   )}
