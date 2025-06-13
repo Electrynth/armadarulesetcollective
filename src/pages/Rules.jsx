@@ -85,7 +85,7 @@ function Rules() {
                   </svg>
                   <div className="flex flex-col items-start">
                     <span>Full Doc</span>
-                    <span className="text-sm text-gray-200">88MB</span>
+                    <span className="text-sm text-gray-200">144MB</span>
                   </div>
                 </a>
                 <a
