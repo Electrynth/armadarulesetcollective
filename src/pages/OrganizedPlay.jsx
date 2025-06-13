@@ -1,15 +1,313 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+// FORM SCHEMA
+
+const fieldsToIndexSchema = {
+  formSubmissionDate: 0,
+  eventName: 1,
+  eventStartDate: 2,
+  eventCountry: 3,
+  ticketURL: 4,
+  standingsURL: 5,
+  emailPOC: 6,
+  inPersonOrOnline: 7,
+  submitterEmail: 8,
+  eventFormat: 9,
+  numDays: 10
+};
+
+
+// External link icon component
+const ExternalLinkIcon = () => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    className="h-4 w-4 ml-1" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <path 
+      strokeLinecap="round" 
+      strokeLinejoin="round" 
+      strokeWidth={2} 
+      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+    />
+  </svg>
+);
 
 const OrganizedPlay = () => {
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  const [timeFilter, setTimeFilter] = useState('future'); // 'past' or 'future'
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const SPREADSHEET_ID = '19vv-Z-YFxlP0ZqVe4vAMXSjBTQhB_DmX1ARLZiufYw4';
+        const RANGE = 'Sheet1!A2:Z';
+
+        // Using the public visualization API instead
+        const response = await fetch(
+          `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&range=${RANGE}`,
+          {
+            headers: {
+              'Accept': 'text/csv',
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch events');
+        }
+
+        const csvText = await response.text();
+        const rows = csvText.split('\n').map(row => row.split(',').map(cell => cell.replace(/^"|"$/g, '')));
+        
+        // Transform the data into the expected format and filter out rows without event names
+        const transformedEvents = rows
+          .map((row, index) => ({
+            id: index,
+            eventName: row[fieldsToIndexSchema.eventName] || '',
+            eventDate: row[fieldsToIndexSchema.eventStartDate] || '',
+            city: row[fieldsToIndexSchema.eventCountry] || '',
+            country: row[fieldsToIndexSchema.eventCountry] || '',
+            type: row[fieldsToIndexSchema.inPersonOrOnline]?.toLowerCase() || 'in-person',
+            format: row[fieldsToIndexSchema.eventFormat] || '',
+            ticketLink: row[fieldsToIndexSchema.ticketURL] || '',
+            standingsLink: row[fieldsToIndexSchema.standingsURL] || '',
+            emailPOC: row[fieldsToIndexSchema.emailPOC] || '',
+            submitterEmail: row[fieldsToIndexSchema.submitterEmail] || '',
+            numDays: row[fieldsToIndexSchema.numDays] || '1'
+          }))
+          .filter(event => event.eventName.trim() !== ''); // Filter out events without names
+
+        setEvents(transformedEvents);
+      } catch (err) {
+        console.error('Error fetching events:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // Filter events based on timeFilter
+  useEffect(() => {
+    const now = new Date();
+    const filtered = events.filter(event => {
+      const eventDate = new Date(event.eventDate);
+      const numDays = parseInt(event.numDays) || 1;
+      const eventEndDate = new Date(eventDate);
+      eventEndDate.setDate(eventDate.getDate() + numDays - 1);
+
+      if (timeFilter === 'future') {
+        // Include events that are ongoing or haven't started yet
+        return eventEndDate >= now;
+      } else {
+        // Past events are those that have completely ended
+        return eventEndDate < now;
+      }
+    });
+    setFilteredEvents(filtered);
+  }, [events, timeFilter]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen p-8 font-montserrat">
+        <div className="max-w-6xl mx-auto mt-8">
+          <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
+            <p className="text-gray-300 text-lg">Loading events...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen p-8 font-montserrat">
+        <div className="max-w-6xl mx-auto mt-8">
+          <div className="bg-red-900/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-red-700/50 text-center">
+            <p className="text-red-200 text-lg">Error loading events: {error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen p-8 font-montserrat">
       <div className="max-w-6xl mx-auto mt-8">
-        {/* Coming Soon Banner */}
-        <div className="bg-yellow-900/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-yellow-700/50 mb-8 text-center">
-          <h2 className="text-3xl font-bold text-yellow-200 mb-2">🚧 Coming Soon 🚧</h2>
-          <p className="text-yellow-100 text-lg">
-            This page is currently under development. Content will be added soon!
-          </p>
+        {/* Events Table */}
+        <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50">
+          {/* Controls */}
+          <div className="mb-6 flex justify-between items-center">
+            <div className="flex gap-2">
+              <button
+                onClick={() => setTimeFilter('past')}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  timeFilter === 'past'
+                    ? 'bg-gray-600 text-white'
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                Past Events
+              </button>
+              <button
+                onClick={() => setTimeFilter('future')}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  timeFilter === 'future'
+                    ? 'bg-gray-600 text-white'
+                    : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+                }`}
+              >
+                Upcoming Events
+              </button>
+            </div>
+            <a
+              href="#" // TODO: Replace with actual form link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-[#C14949] hover:bg-[#D15A5A] text-white rounded-lg transition-colors"
+            >
+              Submit Event
+              <ExternalLinkIcon />
+            </a>
+          </div>
+
+          {/* Table Header */}
+          <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3 bg-gray-800/50 rounded-xl text-gray-300 font-semibold text-sm mb-4">
+            <div className="col-span-3">Event Name</div>
+            <div className="col-span-2">Date</div>
+            <div className="col-span-2">Location</div>
+            <div className="col-span-2">Format</div>
+            <div className="col-span-3">Links</div>
+          </div>
+
+          {/* Events List */}
+          {filteredEvents.map((event) => (
+            <div
+              key={event.id}
+              className="bg-gray-700/50 rounded-xl ring-1 ring-gray-600/50 hover:ring-gray-500/50 transition-all mb-4"
+            >
+              {/* Mobile Layout */}
+              <div className="md:hidden p-4 space-y-3">
+                <div className="flex justify-between items-start">
+                  <div className="font-bold text-white">{event.eventName}</div>
+                  <span className={`px-2 py-1 rounded-full text-xs ${
+                    event.format === 'Standard' 
+                      ? 'bg-blue-500/20 text-blue-200' 
+                      : 'bg-purple-500/20 text-purple-200'
+                  }`}>
+                    {event.format}
+                  </span>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div>
+                    <div className="text-gray-400">Date</div>
+                    <div className="text-white">{new Date(event.eventDate).toLocaleDateString()}</div>
+                  </div>
+                  <div>
+                    <div className="text-gray-400">Location</div>
+                    {event.type === 'in-person' ? (
+                      <div className="text-white">{event.country}</div>
+                    ) : (
+                      <div className="text-white">{event.type}</div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2 pt-2">
+                  {event.ticketLink && (
+                    <a
+                      href={event.ticketLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-3 py-2 rounded-lg transition-colors text-sm"
+                    >
+                      Tickets
+                      <ExternalLinkIcon />
+                    </a>
+                  )}
+                  {event.standingsLink && (
+                    <a
+                      href={event.standingsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded-lg transition-colors text-sm"
+                    >
+                      Standings
+                      <ExternalLinkIcon />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Desktop Layout */}
+              <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3">
+                {/* Event Name */}
+                <div className="col-span-3">
+                  <div className="font-bold text-white">{event.eventName}</div>
+                </div>
+
+                {/* Date */}
+                <div className="col-span-2 flex items-center">
+                  {new Date(event.eventDate).toLocaleDateString()}
+                </div>
+
+                {/* Location */}
+                <div className="col-span-2 flex items-center">
+                  {event.type === 'in-person' ? (
+                    <div className="text-white">{event.country}</div>
+                  ) : (
+                    <div className="text-white">{event.type}</div>
+                  )}
+                </div>
+
+                {/* Format */}
+                <div className="col-span-2 flex items-center">
+                  <span className={`px-2 py-1 rounded-full text-xs ${
+                    event.format === 'Standard' 
+                      ? 'bg-blue-500/20 text-blue-200' 
+                      : 'bg-purple-500/20 text-purple-200'
+                  }`}>
+                    {event.format}
+                  </span>
+                </div>
+
+                {/* Links */}
+                <div className="col-span-3 flex flex-col space-y-2">
+                  {event.ticketLink && (
+                    <a
+                      href={event.ticketLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-3 py-1.5 rounded-lg transition-colors text-sm"
+                    >
+                      Tickets
+                      <ExternalLinkIcon />
+                    </a>
+                  )}
+                  {event.standingsLink && (
+                    <a
+                      href={event.standingsLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-3 py-1.5 rounded-lg transition-colors text-sm"
+                    >
+                      Standings
+                      <ExternalLinkIcon />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
