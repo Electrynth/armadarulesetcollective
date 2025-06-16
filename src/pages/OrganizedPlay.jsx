@@ -189,7 +189,7 @@ const OrganizedPlay = () => {
             <div className="col-span-4 text-left">Event Name</div>
             <div className="col-span-2 text-left">Date</div>
             <div className="col-span-2 text-left">Location</div>
-            <div className="col-span-2 text-left">Format</div>
+            <div className="col-span-2 text-left">Cut</div>
             <div className="col-span-2 text-left">Links</div>
           </div>
 
