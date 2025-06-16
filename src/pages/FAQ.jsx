@@ -193,7 +193,7 @@ const FAQ = () => {
               onClick={() => toggleFAQ(8)}
               aria-expanded={openIndex === 8}
             >
-              <h2 className="text-xl font-semibold text-white">What is the ARC Partnered event?</h2>
+              <h2 className="text-xl font-semibold text-white">What is an ARC Partnered event?</h2>
               <span className="text-white text-2xl">{openIndex === 8 ? '−' : '+'}</span>
             </button>
             <div 
