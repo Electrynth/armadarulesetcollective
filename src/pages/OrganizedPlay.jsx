@@ -260,7 +260,7 @@ const OrganizedPlay = () => {
                       <ExternalLinkIcon />
                     </a>
                   )}
-                  {event.standingsLink && (
+                  {event.standingsLink && false && (
                     <a
                       href={event.standingsLink}
                       target="_blank"
@@ -330,7 +330,7 @@ const OrganizedPlay = () => {
                       <ExternalLinkIcon />
                     </a>
                   )}
-                  {event.standingsLink && (
+                  {event.standingsLink && false && (
                     <a
                       href={event.standingsLink}
                       target="_blank"
