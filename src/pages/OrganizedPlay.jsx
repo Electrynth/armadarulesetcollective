@@ -147,7 +147,7 @@ const OrganizedPlay = () => {
         <div className="bg-yellow-900/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-yellow-700/50 mb-8 text-center">
           <h2 className="text-3xl font-bold text-yellow-200 mb-2">🚧 Work In Progress 🚧</h2>
           <p className="text-yellow-100 text-lg">
-            This page is currently under development. Content and features may change.
+            This page is currently under development. Content and features may change. Email contact@armadarulesetcollective.com for questions, comments, or concerns regarding the functionality and display of this page.
           </p>
         </div>
       </div>
@@ -214,11 +214,11 @@ const OrganizedPlay = () => {
                 <div className="flex justify-between items-center">
                   <div className="font-bold text-white">{event.eventName}</div>
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.topCut === 'TBD' 
+                    event.topCut === 'TBD' || event.topCut === 'None' || !event.topCut
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.topCut}
+                    {event.topCut ? event.topCut : 'TBD'}
                   </span>
                 </div>
                 
@@ -309,11 +309,11 @@ const OrganizedPlay = () => {
                 {/* Top Cut */}
                 <div className="col-span-2 flex items-center">
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.topCut === 'TBD'
+                    event.topCut === 'TBD' || event.topCut === 'None' || !event.topCut
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.topCut}
+                    {event.topCut ? event.topCut : 'TBD'}
                   </span>
                 </div>
 
