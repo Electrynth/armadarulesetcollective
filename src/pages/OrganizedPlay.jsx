@@ -12,7 +12,7 @@ const fieldsToIndexSchema = {
   emailPOC: 6,
   inPersonOrOnline: 7,
   submitterEmail: 8,
-  eventFormat: 9,
+  topCut: 9,
   numDays: 10
 };
 
@@ -46,7 +46,7 @@ const OrganizedPlay = () => {
     const fetchEvents = async () => {
       try {
         const SPREADSHEET_ID = '19vv-Z-YFxlP0ZqVe4vAMXSjBTQhB_DmX1ARLZiufYw4';
-        const RANGE = 'Sheet1!A2:Z';
+        const RANGE = 'Approved Events!A2:Z';
 
         // Using the public visualization API instead
         const response = await fetch(
@@ -57,6 +57,7 @@ const OrganizedPlay = () => {
             },
           }
         );
+
 
         if (!response.ok) {
           throw new Error('Failed to fetch events');
@@ -74,7 +75,7 @@ const OrganizedPlay = () => {
             city: row[fieldsToIndexSchema.eventCountry] || '',
             country: row[fieldsToIndexSchema.eventCountry] || '',
             type: row[fieldsToIndexSchema.inPersonOrOnline]?.toLowerCase() || 'in-person',
-            format: row[fieldsToIndexSchema.eventFormat] || '',
+            topCut: row[fieldsToIndexSchema.topCut] || '',
             ticketLink: row[fieldsToIndexSchema.ticketURL] || '',
             standingsLink: row[fieldsToIndexSchema.standingsURL] || '',
             emailPOC: row[fieldsToIndexSchema.emailPOC] || '',
@@ -141,6 +142,15 @@ const OrganizedPlay = () => {
 
   return (
     <div className="min-h-screen p-8 font-montserrat">
+      {/* WIP Banner - styled to match other pages */}
+      <div className="max-w-6xl mx-auto mt-8">
+        <div className="bg-yellow-900/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-yellow-700/50 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-yellow-200 mb-2">🚧 Work In Progress 🚧</h2>
+          <p className="text-yellow-100 text-lg">
+            This page is currently under development. Content and features may change.
+          </p>
+        </div>
+      </div>
       <div className="max-w-6xl mx-auto mt-8">
         <h1 className="text-5xl font-bold mb-6 text-white text-center">
           Organized Play
@@ -204,11 +214,11 @@ const OrganizedPlay = () => {
                 <div className="flex justify-between items-center">
                   <div className="font-bold text-white">{event.eventName}</div>
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.format === 'Standard' 
+                    event.topCut === 'TBD' 
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.format}
+                    {event.topCut}
                   </span>
                 </div>
                 
@@ -255,7 +265,7 @@ const OrganizedPlay = () => {
                       href={event.standingsLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded-lg transition-colors text-sm"
+                      className="w-full inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-2 py-1.5 rounded-lg transition-colors text-xs"
                     >
                       Standings
                       <ExternalLinkIcon />
@@ -296,14 +306,14 @@ const OrganizedPlay = () => {
                   )}
                 </div>
 
-                {/* Format */}
+                {/* Top Cut */}
                 <div className="col-span-2 flex items-center">
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.format === 'Standard' 
+                    event.topCut === 'TBD'
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.format}
+                    {event.topCut}
                   </span>
                 </div>
 
@@ -325,7 +335,7 @@ const OrganizedPlay = () => {
                       href={event.standingsLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-3 py-1.5 rounded-lg transition-colors text-sm"
+                      className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-2 py-1 rounded-lg transition-colors text-xs"
                     >
                       Standings
                       <ExternalLinkIcon />
