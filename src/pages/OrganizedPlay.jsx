@@ -113,7 +113,22 @@ const OrganizedPlay = () => {
         return eventEndDate < now;
       }
     });
-    setFilteredEvents(filtered);
+
+    // Sort events by date
+    const sorted = filtered.sort((a, b) => {
+      const dateA = new Date(a.eventDate);
+      const dateB = new Date(b.eventDate);
+      
+      if (timeFilter === 'future') {
+        // For future events, sort by date ascending (earliest first)
+        return dateA - dateB;
+      } else {
+        // For past events, sort by date descending (most recent first)
+        return dateB - dateA;
+      }
+    });
+
+    setFilteredEvents(sorted);
   }, [events, timeFilter]);
 
   if (loading) {
@@ -214,11 +229,15 @@ const OrganizedPlay = () => {
                 <div className="flex justify-between items-center">
                   <div className="font-bold text-white">{event.eventName}</div>
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.topCut === 'TBD' || event.topCut === 'None' || !event.topCut
+                    isNaN(event.topCut) || event.topCut === '0'
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.topCut ? event.topCut : 'TBD'}
+                    {event.numDays > 1 ? (
+                      event.topCut && event.topCut !== 'TBD' ? `Top ${event.topCut} Cut` : 'Cut TBD'
+                    ) : (
+                      '1 Day Event'
+                    )}
                   </span>
                 </div>
                 
@@ -260,7 +279,7 @@ const OrganizedPlay = () => {
                       <ExternalLinkIcon />
                     </a>
                   )}
-                  {event.standingsLink && false && (
+                  {event.standingsLink && event.standingsLink !== 'TBD' && (
                     <a
                       href={event.standingsLink}
                       target="_blank"
@@ -309,11 +328,15 @@ const OrganizedPlay = () => {
                 {/* Top Cut */}
                 <div className="col-span-2 flex items-center">
                   <span className={`px-2 py-1 rounded-full text-xs ${
-                    event.topCut === 'TBD' || event.topCut === 'None' || !event.topCut
+                    isNaN(event.topCut) || event.topCut === '0'
                       ? 'bg-blue-500/20 text-blue-200' 
                       : 'bg-purple-500/20 text-purple-200'
                   }`}>
-                    {event.topCut ? event.topCut : 'TBD'}
+                    {event.numDays > 1 ? (
+                      event.topCut && event.topCut !== 'TBD' ? `Top ${event.topCut} Cut` : 'Cut TBD'
+                    ) : (
+                      '1 Day Event'
+                    )}
                   </span>
                 </div>
 
@@ -330,7 +353,7 @@ const OrganizedPlay = () => {
                       <ExternalLinkIcon />
                     </a>
                   )}
-                  {event.standingsLink && false && (
+                  {event.standingsLink && event.standingsLink !== 'TBD' && (
                     <a
                       href={event.standingsLink}
                       target="_blank"
