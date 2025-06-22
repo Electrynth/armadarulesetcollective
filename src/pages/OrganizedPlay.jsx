@@ -382,7 +382,7 @@ const OrganizedPlay = () => {
               {/* Mobile Layout */}
               <div className="md:hidden p-4 space-y-3">
                 <div className="flex justify-between items-center">
-                  <div className="font-bold text-white">{event.eventName}</div>
+                  <div className="font-bold text-white text-left">{event.eventName}</div>
                   <span className={`px-2 py-1 rounded-full text-xs ${
                     isNaN(event.topCut) || event.topCut === '0'
                       ? 'bg-blue-500/20 text-blue-200' 
@@ -414,7 +414,7 @@ const OrganizedPlay = () => {
                   </div>
                   <div className="flex flex-col justify-center">
                     <div className="text-gray-400">Location</div>
-                    <div className="text-white">{event.type === 'in-person' ? event.country : event.type}</div>
+                    <div className="text-white text-left">{event.type === 'in-person' ? event.country : event.type}</div>
                   </div>
                 </div>
 
