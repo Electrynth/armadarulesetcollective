@@ -3,6 +3,53 @@ import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
 import { useState } from 'react';
 import RichTextContent from './RichTextContent';
 
+// Utility function to parse basic markdown links
+const parseMarkdownLinks = (text) => {
+  if (!text) return text;
+  
+  // Regular expression to match markdown links: [text](url "title")
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)(?:\s+"([^"]+)")?\)/g;
+  
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+  
+  while ((match = linkRegex.exec(text)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    
+    // Extract link components
+    const linkText = match[1];
+    const linkUrl = match[2];
+    const linkTitle = match[3] || '';
+    
+    // Create the link element
+    parts.push(
+      <a 
+        key={`link-${match.index}`}
+        href={linkUrl}
+        title={linkTitle}
+        className="text-[#C14949] hover:text-[#D15A5A] underline break-all"
+        target={linkUrl.startsWith('http') ? '_blank' : undefined}
+        rel={linkUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
+        {linkText}
+      </a>
+    );
+    
+    lastIndex = match.index + match[0].length;
+  }
+  
+  // Add remaining text after the last link
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  
+  return parts.length > 0 ? parts : text;
+};
+
 const BlogPost = ({ post, isPreview = false }) => {
   const [imageError, setImageError] = useState(false);
   
@@ -33,7 +80,7 @@ const BlogPost = ({ post, isPreview = false }) => {
   // Render content based on preview mode
   const renderContent = () => {
     if (isPreview) {
-      return <p className="text-gray-300">{post.summary}</p>;
+      return <p className="text-gray-300">{parseMarkdownLinks(post.summary)}</p>;
     }
     
     return <RichTextContent content={post.content} />;
@@ -69,7 +116,7 @@ const BlogPost = ({ post, isPreview = false }) => {
       
       <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2">
         {isPreview ? (
-          <Link to={`/news/${post.id}`} className="hover:text-[#C14949] transition-colors">
+          <Link to={`/news/${post.slug}`} className="hover:text-[#C14949] transition-colors">
             {post.title}
           </Link>
         ) : (
@@ -86,7 +133,7 @@ const BlogPost = ({ post, isPreview = false }) => {
       {isPreview && (
         <div className="mt-6 pt-4 border-t border-gray-700/50">
           <Link 
-            to={`/news/${post.id}`} 
+            to={`/news/${post.slug}`} 
             className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
           >
             Read more →

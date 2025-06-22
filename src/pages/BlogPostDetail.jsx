@@ -1,10 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import BlogPost from '../components/BlogPost';
-import { fetchBlogPostById } from '../services/contentful';
+import { fetchBlogPostBySlug } from '../services/contentful';
 
 const BlogPostDetail = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ const BlogPostDetail = () => {
     const getBlogPost = async () => {
       try {
         setLoading(true);
-        const fetchedPost = await fetchBlogPostById(id);
+        const fetchedPost = await fetchBlogPostBySlug(slug);
         
         if (fetchedPost) {
           setPost(fetchedPost);
@@ -30,7 +30,7 @@ const BlogPostDetail = () => {
     };
 
     getBlogPost();
-  }, [id]);
+  }, [slug]);
   
   // If loading, show loading state
   if (loading) {
