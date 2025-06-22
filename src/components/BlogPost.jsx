@@ -45,7 +45,7 @@ const BlogPost = ({ post, isPreview = false }) => {
   };
 
   return (
-    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50">
+    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50 flex flex-col h-full">
       <div className="mb-4 overflow-hidden rounded-xl bg-gray-900/50 flex items-center justify-center">
         <img 
           src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
@@ -77,12 +77,14 @@ const BlogPost = ({ post, isPreview = false }) => {
         )}
       </h2>
       
-      {renderContent()}
+      <div className="flex-grow">
+        {renderContent()}
+      </div>
       
       {renderTags()}
       
       {isPreview && (
-        <div className="mt-4">
+        <div className="mt-6 pt-4 border-t border-gray-700/50">
           <Link 
             to={`/news/${post.id}`} 
             className="text-[#C14949] hover:text-[#D15A5A] transition-colors font-medium"
