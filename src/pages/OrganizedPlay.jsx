@@ -16,6 +16,11 @@ const fieldsToIndexSchema = {
   numDays: 10
 };
 
+// Sort direction enum
+const SortDirection = {
+  ASC: 'asc',
+  DESC: 'desc'
+};
 
 // External link icon component
 const ExternalLinkIcon = () => (
@@ -41,6 +46,8 @@ const OrganizedPlay = () => {
   const [timeFilter, setTimeFilter] = useState('future'); // 'past' or 'future'
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sortField, setSortField] = useState('date'); // 'date' or 'location'
+  const [sortDirection, setSortDirection] = useState(SortDirection.ASC);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -96,7 +103,7 @@ const OrganizedPlay = () => {
     fetchEvents();
   }, []);
 
-  // Filter events based on timeFilter
+  // Filter and sort events based on timeFilter and sort settings
   useEffect(() => {
     const now = new Date();
     const filtered = events.filter(event => {
@@ -114,22 +121,62 @@ const OrganizedPlay = () => {
       }
     });
 
-    // Sort events by date
+    // Sort events
     const sorted = filtered.sort((a, b) => {
-      const dateA = new Date(a.eventDate);
-      const dateB = new Date(b.eventDate);
+      let comparison = 0;
       
-      if (timeFilter === 'future') {
-        // For future events, sort by date ascending (earliest first)
-        return dateA - dateB;
-      } else {
-        // For past events, sort by date descending (most recent first)
-        return dateB - dateA;
+      if (sortField === 'date') {
+        const dateA = new Date(a.eventDate);
+        const dateB = new Date(b.eventDate);
+        comparison = dateA - dateB;
+      } else if (sortField === 'location') {
+        const locationA = (a.type === 'in-person' ? a.country : a.type).toLowerCase();
+        const locationB = (b.type === 'in-person' ? b.country : b.type).toLowerCase();
+        comparison = locationA.localeCompare(locationB);
       }
+      
+      // Apply sort direction
+      return sortDirection === SortDirection.ASC ? comparison : -comparison;
     });
 
     setFilteredEvents(sorted);
-  }, [events, timeFilter]);
+  }, [events, timeFilter, sortField, sortDirection]);
+
+  // Handle sort button clicks
+  const handleSort = (field) => {
+    if (sortField === field) {
+      // Toggle direction if same field
+      setSortDirection(sortDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC);
+    } else {
+      // Set new field with ascending direction
+      setSortField(field);
+      setSortDirection(SortDirection.ASC);
+    }
+  };
+
+  // Sort button component
+  const SortButton = ({ field, label }) => (
+    <button
+      onClick={() => handleSort(field)}
+      className={`inline-flex items-center gap-1 px-3 py-1 rounded-lg transition-colors text-sm ${
+        sortField === field
+          ? 'bg-gray-600 text-white'
+          : 'bg-gray-700/50 text-gray-300 hover:bg-gray-600/50'
+      }`}
+    >
+      {label}
+      {sortField === field && (
+        <svg 
+          className={`w-4 h-4 transition-transform ${sortDirection === SortDirection.DESC ? 'rotate-180' : ''}`}
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+        </svg>
+      )}
+    </button>
+  );
 
   if (loading) {
     return (
@@ -212,8 +259,14 @@ const OrganizedPlay = () => {
           {/* Table Header */}
           <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3 bg-gray-800/50 rounded-xl text-gray-300 font-semibold text-sm mb-4">
             <div className="col-span-4 text-left">Event Name</div>
-            <div className="col-span-2 text-left">Date</div>
-            <div className="col-span-2 text-left">Location</div>
+            <div className="col-span-2 text-left flex items-center gap-2">
+              Date
+              <SortButton field="date" label="Sort" />
+            </div>
+            <div className="col-span-2 text-left flex items-center gap-2">
+              Location
+              <SortButton field="location" label="Sort" />
+            </div>
             <div className="col-span-2 text-left">Cut</div>
             <div className="col-span-2 text-left">Links</div>
           </div>
@@ -375,7 +428,7 @@ const OrganizedPlay = () => {
           <h2 className="text-3xl font-semibold text-white mb-6">Contact Us</h2>
           
           <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-            Have questions regarding Organized Play? Reach out to us through our dedicated Organized Play email!
+            Have questions regarding Organized Play or want more information on any of these events? Reach out to us through our dedicated Organized Play email!
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
