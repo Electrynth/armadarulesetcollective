@@ -48,6 +48,8 @@ const OrganizedPlay = () => {
   const [error, setError] = useState(null);
   const [sortField, setSortField] = useState('date'); // 'date' or 'location'
   const [sortDirection, setSortDirection] = useState(SortDirection.ASC);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -154,6 +156,18 @@ const OrganizedPlay = () => {
     }
   };
 
+  // Handle info button click
+  const handleInfoClick = (event) => {
+    setSelectedEvent(event);
+    setShowPopup(true);
+  };
+
+  // Handle popup close
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSelectedEvent(null);
+  };
+
   // Sort button component
   const SortButton = ({ field, label }) => (
     <button
@@ -177,6 +191,93 @@ const OrganizedPlay = () => {
       )}
     </button>
   );
+
+  // Popup component
+  const InfoPopup = () => {
+    if (!showPopup || !selectedEvent) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="bg-gray-800 rounded-xl ring-1 ring-gray-700 max-w-md w-full p-6">
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-xl font-bold text-white">{selectedEvent.eventName}</h3>
+            <button
+              onClick={handleClosePopup}
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <div className="space-y-4 text-gray-300">
+            <div>
+              <h4 className="font-semibold text-white mb-2">Event Details</h4>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>Date:</span>
+                  <span>{new Date(selectedEvent.eventDate).toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  })}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Duration:</span>
+                  <span>{selectedEvent.numDays} day{selectedEvent.numDays > 1 ? 's' : ''}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Type:</span>
+                  <span className="capitalize">{selectedEvent.type}</span>
+                </div>
+                {selectedEvent.topCut && selectedEvent.topCut !== 'TBD' && (
+                  <div className="flex justify-between">
+                    <span>Top Cut:</span>
+                    <span>Top {selectedEvent.topCut}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-white mb-2">Links</h4>
+              <div className="space-y-2">
+                {selectedEvent.ticketLink && (
+                  <a
+                    href={selectedEvent.ticketLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-[#C14949] hover:bg-[#D15A5A] text-white px-4 py-2 rounded-lg transition-colors text-center text-sm"
+                  >
+                    Get Tickets
+                  </a>
+                )}
+                {selectedEvent.standingsLink && selectedEvent.standingsLink !== 'TBD' && (
+                  <a
+                    href={selectedEvent.standingsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition-colors text-center text-sm"
+                  >
+                    View Standings
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {selectedEvent.type !== 'in-person' && (
+              <div className="pt-2 border-t border-gray-600">
+                <p className="text-sm text-gray-400 italic">
+                  Online events are typically organized through the Armada Hub Discord.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   if (loading) {
     return (
@@ -275,7 +376,8 @@ const OrganizedPlay = () => {
           {filteredEvents.map((event) => (
             <div
               key={event.id}
-              className="bg-gray-700/50 rounded-xl ring-1 ring-gray-600/50 hover:ring-gray-500/50 transition-all mb-4"
+              onClick={() => handleInfoClick(event)}
+              className="bg-gray-700/50 rounded-xl ring-1 ring-gray-600/50 hover:ring-gray-500/50 hover:bg-gray-700/70 transition-all mb-4 cursor-pointer"
             >
               {/* Mobile Layout */}
               <div className="md:hidden p-4 space-y-3">
@@ -312,11 +414,7 @@ const OrganizedPlay = () => {
                   </div>
                   <div className="flex flex-col justify-center">
                     <div className="text-gray-400">Location</div>
-                    {event.type === 'in-person' ? (
-                      <div className="text-white">{event.country}</div>
-                    ) : (
-                      <div className="text-white">{event.type}</div>
-                    )}
+                    <div className="text-white">{event.type === 'in-person' ? event.country : event.type}</div>
                   </div>
                 </div>
 
@@ -326,6 +424,7 @@ const OrganizedPlay = () => {
                       href={event.ticketLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="w-full inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1.5 rounded-lg transition-colors text-xs"
                     >
                       Tickets
@@ -337,6 +436,7 @@ const OrganizedPlay = () => {
                       href={event.standingsLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="w-full inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-2 py-1.5 rounded-lg transition-colors text-xs"
                     >
                       Standings
@@ -350,7 +450,7 @@ const OrganizedPlay = () => {
               <div className="hidden md:grid grid-cols-12 gap-4 px-4 py-3">
                 {/* Event Name */}
                 <div className="col-span-4 flex items-center">
-                  <div className="font-bold text-white">{event.eventName}</div>
+                  <div className="font-bold text-white text-left">{event.eventName}</div>
                 </div>
 
                 {/* Date */}
@@ -371,11 +471,7 @@ const OrganizedPlay = () => {
 
                 {/* Location */}
                 <div className="col-span-2 flex items-center">
-                  {event.type === 'in-person' ? (
-                    <div className="text-white">{event.country}</div>
-                  ) : (
-                    <div className="text-white">{event.type}</div>
-                  )}
+                  <div className="text-white text-left">{event.type === 'in-person' ? event.country : event.type}</div>
                 </div>
 
                 {/* Top Cut */}
@@ -400,6 +496,7 @@ const OrganizedPlay = () => {
                       href={event.ticketLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1 rounded-lg transition-colors text-xs"
                     >
                       Tickets
@@ -411,6 +508,7 @@ const OrganizedPlay = () => {
                       href={event.standingsLink}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white px-2 py-1 rounded-lg transition-colors text-xs"
                     >
                       Standings
@@ -422,6 +520,9 @@ const OrganizedPlay = () => {
             </div>
           ))}
         </div>
+
+        {/* Info Popup */}
+        <InfoPopup />
 
         {/* Contact Container */}
         <div className="mt-12 bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
