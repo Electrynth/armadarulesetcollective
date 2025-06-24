@@ -250,7 +250,7 @@ const OrganizedPlay = () => {
                     rel="noopener noreferrer"
                     className="block w-full bg-[#C14949] hover:bg-[#D15A5A] text-white px-4 py-2 rounded-lg transition-colors text-center text-sm"
                   >
-                    Get Tickets
+                    Sign-ups
                   </a>
                 )}
                 {selectedEvent.standingsLink && selectedEvent.standingsLink !== 'TBD' && (
@@ -427,7 +427,7 @@ const OrganizedPlay = () => {
                       onClick={(e) => e.stopPropagation()}
                       className="w-full inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1.5 rounded-lg transition-colors text-xs"
                     >
-                      Tickets
+                      Sign-up
                       <ExternalLinkIcon />
                     </a>
                   )}
@@ -499,7 +499,7 @@ const OrganizedPlay = () => {
                       onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center justify-center bg-[#C14949] hover:bg-[#D15A5A] text-white px-2 py-1 rounded-lg transition-colors text-xs"
                     >
-                      Tickets
+                      Sign-up
                       <ExternalLinkIcon />
                     </a>
                   )}
