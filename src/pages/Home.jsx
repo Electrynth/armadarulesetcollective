@@ -24,17 +24,19 @@ const Home = () => {
             new Date(b.date) - new Date(a.date)
           );
           
-          // Get non-featured posts and sort by date
-          const nonFeaturedPosts = posts.filter(post => !post.featured);
-          const sortedNonFeaturedPosts = [...nonFeaturedPosts].sort((a, b) => 
+          // Sort all posts by date (newest first)
+          const sortedAllPosts = [...posts].sort((a, b) => 
             new Date(b.date) - new Date(a.date)
           );
           
           // Get the most recent featured post, or fall back to most recent post if no featured posts exist
-          setLatestPost(sortedFeaturedPosts.length > 0 ? sortedFeaturedPosts[0] : sortedNonFeaturedPosts[0]);
-          
-          // Get the 3 most recent non-featured posts
-          setRecentPosts(sortedNonFeaturedPosts.slice(0, 3));
+          const latest = sortedFeaturedPosts.length > 0 ? sortedFeaturedPosts[0] : sortedAllPosts[0];
+          setLatestPost(latest);
+
+          // Build recentPosts: always include latest, then fill with next most recent posts (no duplicates)
+          const recent = sortedAllPosts.filter(post => post.id !== latest.id);
+          const combinedRecent = [latest, ...recent].slice(0, 3);
+          setRecentPosts(combinedRecent);
         } else {
           setLatestPost(null);
           setRecentPosts([]);
