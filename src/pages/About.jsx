@@ -66,8 +66,8 @@ const About = () => {
           
           <div className="mt-6 text-center">
             <a 
-              href="/assets/ARC TOR v1.01.pdf"
-              download="ARC_Terms_of_Reference_v1.01.pdf"
+              href="/assets/ARC TOR.pdf"
+              download="ARC_Terms_of_Reference.pdf"
               className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -114,8 +114,8 @@ const About = () => {
 
           <div className="mt-6 text-center">
             <a 
-              href="/assets/ARC Guiding Principles v1.0.pdf"
-              download="ARC_Guiding_Principles_v1.0.pdf"
+              href="/assets/ARC Guiding Principles.pdf"
+              download="ARC_Guiding_Principles.pdf"
               className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white px-6 py-3 rounded-xl transition-colors font-medium"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
