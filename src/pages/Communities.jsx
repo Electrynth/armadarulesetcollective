@@ -148,7 +148,7 @@ const Communities = () => {
                 </th>
                 <th className="px-4 py-2 text-left text-white w-auto">Discord Handle</th>
                 <th className="px-4 py-2 text-left text-white min-w-[120px] whitespace-nowrap">Active</th>
-                <th className="px-4 py-2 text-left text-white min-w-[120px]">Links</th>
+                <th className="px-4 py-2 text-left text-white min-w-[120px]">Description</th>
               </tr>
             </thead>
             <tbody>
