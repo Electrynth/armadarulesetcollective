@@ -80,6 +80,11 @@ const Communities = () => {
         const countryB = b.country.toLowerCase();
         if (countryA < countryB) return sortByCountryAsc ? 1 : -1;
         if (countryA > countryB) return sortByCountryAsc ? -1 : 1;
+        // If countries are equal, sort by state
+        const stateA = (a.state || '').toLowerCase();
+        const stateB = (b.state || '').toLowerCase();
+        if (stateA < stateB) return sortByCountryAsc ? 1 : -1;
+        if (stateA > stateB) return sortByCountryAsc ? -1 : 1;
         return 0;
       })
     );
