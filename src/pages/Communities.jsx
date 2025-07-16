@@ -14,6 +14,7 @@ const Communities = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [popupLink, setPopupLink] = useState(null); // For mobile modal
+  const [sortByCountryAsc, setSortByCountryAsc] = useState(true);
   // Remove popupLink state, not needed anymore
 
   useEffect(() => {
@@ -70,6 +71,20 @@ const Communities = () => {
     fetchCommunities();
   }, []);
 
+  // Sorting handler
+  const handleSortByCountry = () => {
+    setSortByCountryAsc((asc) => !asc);
+    setCommunities((prev) =>
+      [...prev].sort((a, b) => {
+        const countryA = a.country.toLowerCase();
+        const countryB = b.country.toLowerCase();
+        if (countryA < countryB) return sortByCountryAsc ? 1 : -1;
+        if (countryA > countryB) return sortByCountryAsc ? -1 : 1;
+        return 0;
+      })
+    );
+  };
+
   return (
     <div className="max-w-6xl mx-auto p-8">
       <h1 className="text-3xl font-bold text-white mb-6">Find a Community Near You!</h1>
@@ -119,7 +134,18 @@ const Communities = () => {
           <table className="w-full">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-left text-white w-auto">Country (State)</th>
+                <th className="px-4 py-2 text-left text-white w-auto cursor-pointer select-none" onClick={handleSortByCountry}>
+                  <span className="flex items-center gap-1">
+                    Country (State)
+                    <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      {sortByCountryAsc ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      )}
+                    </svg>
+                  </span>
+                </th>
                 <th className="px-4 py-2 text-left text-white w-auto">Discord Handle</th>
                 <th className="px-4 py-2 text-left text-white min-w-[120px] whitespace-nowrap">Active</th>
                 <th className="px-4 py-2 text-left text-white min-w-[120px]">Links</th>
