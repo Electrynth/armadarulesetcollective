@@ -85,6 +85,14 @@ const Home = () => {
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
           Your source for Star Wars: Armada rules, resources, and community updates.
         </p>
+        <div className="flex justify-center mb-6">
+          <Link
+            to="/communities"
+            className="inline-block bg-[#C14949] hover:bg-[#D15A5A] text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
+          >
+            Find a community near me
+          </Link>
+        </div>
 
         {/* Recent Updates */}
         {recentPosts.length > 0 && (

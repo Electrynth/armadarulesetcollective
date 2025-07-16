@@ -10,6 +10,7 @@ import OrganizedPlay from './pages/OrganizedPlay';
 import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
 import Rules from './pages/Rules';
+import Communities from './pages/Communities';
 import './App.css';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/organized-play" element={<OrganizedPlay />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/communities" element={<Communities />} />
           </Routes>
         </div>
       </div>
