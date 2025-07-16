@@ -18,25 +18,19 @@ const Home = () => {
         const posts = await fetchBlogPosts();
         
         if (posts && posts.length > 0) {
-          // Filter for featured posts and sort by date (newest first)
-          const featuredPosts = posts.filter(post => post.featured);
-          const sortedFeaturedPosts = [...featuredPosts].sort((a, b) => 
-            new Date(b.date) - new Date(a.date)
-          );
-          
           // Sort all posts by date (newest first)
           const sortedAllPosts = [...posts].sort((a, b) => 
             new Date(b.date) - new Date(a.date)
           );
           
-          // Get the most recent featured post, or fall back to most recent post if no featured posts exist
-          const latest = sortedFeaturedPosts.length > 0 ? sortedFeaturedPosts[0] : sortedAllPosts[0];
+          // The most recent post by date
+          const latest = sortedAllPosts[0];
           setLatestPost(latest);
 
-          // Build recentPosts: always include latest, then fill with next most recent posts (no duplicates)
-          const recent = sortedAllPosts.filter(post => post.id !== latest.id);
-          const combinedRecent = [latest, ...recent].slice(0, 3);
+          // The 3 most recent posts by date
+          const combinedRecent = sortedAllPosts.slice(0, 3);
           setRecentPosts(combinedRecent);
+          console.log(combinedRecent);
         } else {
           setLatestPost(null);
           setRecentPosts([]);
