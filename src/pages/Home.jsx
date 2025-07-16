@@ -9,6 +9,7 @@ const Home = () => {
   const [latestPost, setLatestPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [featuredPost, setFeaturedPost] = useState(null);
   
   // Fetch the latest blog posts
   useEffect(() => {
@@ -30,7 +31,13 @@ const Home = () => {
           // The 3 most recent posts by date
           const combinedRecent = sortedAllPosts.slice(0, 3);
           setRecentPosts(combinedRecent);
-          console.log(combinedRecent);
+
+          // Find the most recent featured post by date
+          const featuredPosts = posts.filter(post => post.featured);
+          const sortedFeaturedPosts = [...featuredPosts].sort((a, b) => 
+            new Date(b.date) - new Date(a.date)
+          );
+          setFeaturedPost(sortedFeaturedPosts[0] || null);
         } else {
           setLatestPost(null);
           setRecentPosts([]);
@@ -121,11 +128,11 @@ const Home = () => {
             <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
               <p className="text-gray-300">Loading featured update...</p>
             </div>
-          ) : latestPost ? (
-            <BlogPost post={latestPost} isPreview={true} />
+          ) : featuredPost ? (
+            <BlogPost post={featuredPost} isPreview={true} />
           ) : (
             <div className="bg-gray-800/90 backdrop-blur-sm p-6 rounded-xl ring-1 ring-gray-700/50 text-center">
-              <p className="text-gray-300">No updates available at this time.</p>
+              <p className="text-gray-300">No featured updates available at this time.</p>
             </div>
           )}
         </div>
