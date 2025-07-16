@@ -97,7 +97,7 @@ const Communities = () => {
             <rect x="13" y="28" width="22" height="2" rx="1"/>
             <rect x="13" y="34" width="14" height="2" rx="1"/>
           </svg>
-          View Contact Spreadhsheet
+          View Contact Spreadsheet
         </a>
       </div>
       {loading && <p className="text-gray-300">Loading communities...</p>}
