@@ -90,7 +90,7 @@ const Home = () => {
             to="/communities"
             className="inline-block bg-[#C14949] hover:bg-[#D15A5A] text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
           >
-            Find a community near me
+            Find a community near me!
           </Link>
         </div>
 

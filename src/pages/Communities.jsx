@@ -75,6 +75,17 @@ const Communities = () => {
       <h1 className="text-3xl font-bold text-white mb-6">Find a Community Near You!</h1>
       <div className="mb-6 flex flex-col md:flex-row gap-4 justify-center items-center">
         <a
+          href="https://forms.gle/WWXp27qD8zyhwGM88"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-[#C14949] hover:bg-[#D15A5A] text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+            <path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 18H7V4h10v16zm-2-8H9v-2h6v2zm0 4H9v-2h6v2z"/>
+          </svg>
+          Submit a Contact
+        </a>
+        <a
           href="https://discord.gg/WRMbfNkeMM"
           target="_blank"
           rel="noopener noreferrer"
@@ -97,7 +108,7 @@ const Communities = () => {
             <rect x="13" y="28" width="22" height="2" rx="1"/>
             <rect x="13" y="34" width="14" height="2" rx="1"/>
           </svg>
-          View Contact Spreadsheet
+           View Contact Spreadsheet
         </a>
       </div>
       {loading && <p className="text-gray-300">Loading communities...</p>}
