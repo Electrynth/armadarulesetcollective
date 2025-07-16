@@ -141,7 +141,7 @@ const Communities = () => {
               <tr>
                 <th className="px-4 py-2 text-left text-white w-auto cursor-pointer select-none" onClick={handleSortByCountry}>
                   <span className="flex items-center gap-1">
-                    Country (State)
+                    Country (State/Region)
                     <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       {sortByCountryAsc ? (
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
