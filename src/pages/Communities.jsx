@@ -1,4 +1,39 @@
 import React, { useState, useEffect } from 'react';
+// Add a simple CSV parser that handles quoted newlines and commas
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (char === '"') {
+      if (inQuotes && text[i + 1] === '"') {
+        cell += '"';
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      row.push(cell);
+      cell = '';
+    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (cell !== '' || row.length > 0) {
+        row.push(cell);
+        rows.push(row);
+        row = [];
+        cell = '';
+      }
+    } else {
+      cell += char;
+    }
+  }
+  if (cell !== '' || row.length > 0) {
+    row.push(cell);
+    rows.push(row);
+  }
+  return rows;
+}
 
 const fieldsToIndexSchema = {
   timestamp: 0,
@@ -35,7 +70,7 @@ const Communities = () => {
           throw new Error('Failed to fetch communities');
         }
         const csvText = await response.text();
-        const rows = csvText.split('\n').map(row => row.split(',').map(cell => cell.replace(/^"|"$/g, '')));
+        const rows = parseCSV(csvText);
         const transformed = rows
           .map((row, index) => {
             // Parse timestamp and determine if active
@@ -62,6 +97,20 @@ const Communities = () => {
           })
           .filter(community => community.name.trim() !== '' && community.country.trim() !== '' && community.discord.trim() !== '');
         setCommunities(transformed);
+        // Sort by country, then state ascending by default
+        setCommunities(
+          [...transformed].sort((a, b) => {
+            const countryA = a.country.toLowerCase();
+            const countryB = b.country.toLowerCase();
+            if (countryA < countryB) return -1;
+            if (countryA > countryB) return 1;
+            const stateA = (a.state || '').toLowerCase();
+            const stateB = (b.state || '').toLowerCase();
+            if (stateA < stateB) return -1;
+            if (stateA > stateB) return 1;
+            return 0;
+          })
+        );
       } catch (err) {
         setError(err.message);
       } finally {
@@ -136,7 +185,77 @@ const Communities = () => {
       {!loading && !error && (
         <div className="overflow-x-auto bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4 text-center">Armada Phonebook</h2>
-          <table className="w-full">
+          <p className="text-gray-300 text-center mb-6 max-w-2xl mx-auto">
+            Questions, comments, or concerns about the data? Please email us at
+            <a href="mailto:contact@armadarulesetcollective.com" className="underline text-[#C14949] hover:text-[#D15A5A] ml-1">contact@armadarulesetcollective.com</a>.
+          </p>
+          {/* Mobile: Card layout */}
+          <div className="flex flex-col gap-4 md:hidden">
+            {communities.length === 0 && (
+              <div className="px-4 py-2 text-gray-300 text-left">No communities found.</div>
+            )}
+            {communities.map(community => (
+              <div key={community.id} className="bg-gray-700/50 rounded-xl p-4 ring-1 ring-gray-600/50 shadow flex flex-col gap-2 text-left">
+                <div className="text-white font-semibold text-lg flex flex-wrap items-center gap-1 text-left">
+                  {community.country}
+                  {community.state && (
+                    <span className="text-gray-400 text-base">({community.state})</span>
+                  )}
+                </div>
+                <div className="text-gray-300 text-base text-left">
+                  <span className="font-medium">Discord:</span> {community.discord}
+                </div>
+                <div className="text-gray-300 text-base text-left">
+                  <span className="font-medium">Active:</span> {community.active ? 'Yes' : 'No'}
+                  {(() => {
+                    const timestampStr = community.timestamp || '';
+                    if (timestampStr) {
+                      const d = new Date(timestampStr);
+                      if (!isNaN(d.getTime())) {
+                        const year = d.getFullYear();
+                        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                        const month = monthNames[d.getMonth()];
+                        return <span className="block text-sm text-gray-400 mt-1">As of {year} {month}</span>;
+                      }
+                    }
+                    return '';
+                  })()}
+                </div>
+                <div className="text-gray-300 text-base text-left">
+                  <span className="font-medium">Links:</span>
+                  <div className="flex flex-col gap-1 mt-1 text-left">
+                    {community.link ? (
+                      community.link
+                        .split(/;|\n/)
+                        .map((raw, idx) => {
+                          const part = raw.trim();
+                          if (!part) return null;
+                          const match = part.match(/^(.*?)(?:\s*[-:]\s*)?(https?:\/\/\S+)/i);
+                          if (match) {
+                            const url = match[2];
+                            return (
+                              <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949] break-all text-left">
+                                {url}
+                              </a>
+                            );
+                          } else {
+                            return (
+                              <a key={idx} href={part} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949] break-all text-left">
+                                {part}
+                              </a>
+                            );
+                          }
+                        })
+                    ) : (
+                      <span className="text-gray-400">—</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Desktop/tablet: Table layout */}
+          <table className="w-full hidden md:table">
             <thead>
               <tr>
                 <th className="px-4 py-2 text-left text-white w-auto cursor-pointer select-none" onClick={handleSortByCountry}>
@@ -189,39 +308,36 @@ const Communities = () => {
                     })()}
                   </td>
                   <td className="px-4 py-2 text-left min-w-[120px] break-words break-all">
-                    {/* Desktop/tablet: show link text directly */}
+                    {/* Desktop/tablet: show multiple links directly */}
                     <span className="hidden sm:inline break-all text-gray-200">
-                      {community.link ? community.link : <span className="text-gray-400">—</span>}
-                    </span>
-                    {/* Mobile: show button to open modal */}
-                    <span className="inline sm:hidden">
                       {community.link ? (
-                        <>
-                          <button
-                            className="bg-[#C14949] hover:bg-[#D15A5A] text-white font-medium px-2 py-0.5 rounded text-sm focus:outline-none focus:ring-2 focus:ring-[#C14949]"
-                            onClick={() => setPopupLink(community.link)}
-                            type="button"
-                          >
-                            Show
-                          </button>
-                          {popupLink === community.link && (
-                            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60">
-                              <div className="bg-gray-900 p-8 rounded-2xl shadow-2xl max-w-lg w-11/12 sm:w-3/4 md:w-1/2 flex flex-col items-center relative border border-gray-700">
-                                <button
-                                  className="absolute top-4 right-4 text-gray-400 hover:text-white text-4xl font-extrabold focus:outline-none p-2"
-                                  onClick={() => setPopupLink(null)}
-                                  aria-label="Close"
-                                >
-                                  &times;
-                                </button>
-                                <div className="text-white text-lg font-semibold mb-4 text-center">Community Links</div>
-                                <div className="text-gray-200 break-all text-base bg-gray-800 rounded p-4 w-full text-center select-all">
-                                  {community.link}
+                        community.link
+                          .split(/;|\n/)
+                          .map((raw, idx) => {
+                            const part = raw.trim();
+                            if (!part) return null;
+                            // Try to split label and url if present (e.g. 'Label - url' or 'Label: url')
+                            const match = part.match(/^(.*?)(?:\s*[-:]\s*)?(https?:\/\/\S+)/i);
+                            if (match) {
+                              const url = match[2];
+                              return (
+                                <div key={idx} className="mb-1">
+                                  <a href={url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949]">
+                                    {url}
+                                  </a>
                                 </div>
-                              </div>
-                            </div>
-                          )}
-                        </>
+                              );
+                            } else {
+                              // Just a URL
+                              return (
+                                <div key={idx} className="mb-1">
+                                  <a href={part} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949]">
+                                    {part}
+                                  </a>
+                                </div>
+                              );
+                            }
+                          })
                       ) : (
                         <span className="text-gray-400">—</span>
                       )}
