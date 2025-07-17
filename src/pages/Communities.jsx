@@ -186,7 +186,7 @@ const Communities = () => {
         <div className="overflow-x-auto bg-gray-800/90 backdrop-blur-sm p-8 rounded-xl ring-1 ring-gray-700/50">
           <h2 className="text-2xl font-semibold text-white mb-4 text-center">Armada Phonebook</h2>
           <p className="text-gray-300 text-center mb-6 max-w-2xl mx-auto">
-            Questions, comments, or concerns about the data? Please email us at
+            Do you have questions or edits regarding the data below? Please email us at
             <a href="mailto:contact@armadarulesetcollective.com" className="underline text-[#C14949] hover:text-[#D15A5A] ml-1">contact@armadarulesetcollective.com</a>.
           </p>
           {/* Mobile: Card layout */}
