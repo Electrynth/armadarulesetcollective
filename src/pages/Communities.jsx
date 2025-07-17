@@ -232,10 +232,11 @@ const Communities = () => {
                           if (!part) return null;
                           const match = part.match(/^(.*?)(?:\s*[-:]\s*)?(https?:\/\/\S+)/i);
                           if (match) {
+                            const label = match[1].trim();
                             const url = match[2];
                             return (
                               <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949] break-all text-left">
-                                {url}
+                                {label ? `${label} - ${url}` : url}
                               </a>
                             );
                           } else {
@@ -319,11 +320,12 @@ const Communities = () => {
                             // Try to split label and url if present (e.g. 'Label - url' or 'Label: url')
                             const match = part.match(/^(.*?)(?:\s*[-:]\s*)?(https?:\/\/\S+)/i);
                             if (match) {
+                              const label = match[1].trim();
                               const url = match[2];
                               return (
                                 <div key={idx} className="mb-1">
                                   <a href={url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#C14949]">
-                                    {url}
+                                    {label ? `${label} - ${url}` : url}
                                   </a>
                                 </div>
                               );
