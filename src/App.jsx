@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/next'
 import Navigation from './components/Navigation';
 import Stars from './components/Stars';
 import Home from './pages/Home';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/communities" element={<Communities />} />
           </Routes>
         </div>
+        <Analytics />
       </div>
     </Router>
   );
