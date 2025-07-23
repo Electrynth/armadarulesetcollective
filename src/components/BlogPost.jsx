@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ARC_Logo_No_Text from '../assets/ARC Logo no text Circle.png';
-import { useState } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import RichTextContent from './RichTextContent';
 
 // Utility function to parse basic markdown links
@@ -52,12 +53,37 @@ const parseMarkdownLinks = (text) => {
 
 const BlogPost = ({ post, isPreview = false }) => {
   const [imageError, setImageError] = useState(false);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalImageRef = useRef(null);
+
   // Format date
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  // Modal close on ESC
+  useEffect(() => {
+    if (!isModalOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsModalOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    // Prevent background scroll
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isModalOpen]);
+
+  // Modal close on click outside image
+  const handleModalClick = useCallback((e) => {
+    if (modalImageRef.current && !modalImageRef.current.contains(e.target)) {
+      setIsModalOpen(false);
+    }
+  }, []);
 
   // Render tags
   const renderTags = () => {
@@ -92,15 +118,67 @@ const BlogPost = ({ post, isPreview = false }) => {
   };
 
   return (
-    <article className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50 flex flex-col h-full">
+    <article
+      className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50 flex flex-col h-full"
+      aria-hidden={isModalOpen ? 'true' : undefined}
+    >
       <div className="mb-4 overflow-hidden rounded-xl bg-gray-900/50 flex items-center justify-center">
         <img 
           src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
           alt={post.title} 
-          className={`w-full min-h-[8rem] sm:min-h-[12rem] max-h-[15rem] sm:max-h-[20rem] ${imageError || !post.image ? 'object-contain p-4' : 'object-contain'}`}
+          className={`w-full min-h-[8rem] sm:min-h-[12rem] max-h-[15rem] sm:max-h-[20rem] ${imageError || !post.image ? 'object-contain p-4' : 'object-contain'} cursor-pointer`}
           onError={handleImageError}
+          onClick={() => !imageError && post.image && setIsModalOpen(true)}
+          tabIndex={post.image && !imageError ? 0 : -1}
+          aria-label="Enlarge image"
+          onKeyDown={e => {
+            if ((e.key === 'Enter' || e.key === ' ') && post.image && !imageError) {
+              setIsModalOpen(true);
+            }
+          }}
         />
       </div>
+      {/* Modal for enlarged image */}
+      {isModalOpen && post.image && !imageError &&
+        ReactDOM.createPortal(
+          <div
+            className="fixed inset-0 z-[1000] flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm animate-fade-in"
+            onClick={handleModalClick}
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="relative flex flex-col items-center w-full h-full p-4 sm:p-8 overflow-auto">
+              <button
+                className="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl font-bold focus:outline-none bg-black/60 rounded-full w-10 h-10 flex items-center justify-center z-10"
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close image modal"
+                tabIndex={0}
+                style={{lineHeight: 1}}
+              >
+                &times;
+              </button>
+              <div className="flex items-center justify-center w-full h-full">
+                <img
+                  ref={modalImageRef}
+                  src={post.image}
+                  alt={post.title}
+                  className="rounded-xl shadow-lg border border-gray-700 bg-gray-900"
+                  style={{
+                    maxWidth: '100vw',
+                    maxHeight: '80vh',
+                    width: 'auto',
+                    height: 'auto',
+                    boxSizing: 'border-box',
+                    padding: '1rem',
+                    background: 'rgba(24,24,24,0.95)'
+                  }}
+                />
+              </div>
+            </div>
+          </div>,
+          document.body
+        )
+      }
       
       <div className="flex flex-wrap items-center gap-2 mb-2 text-sm">
         <span className="text-[#C14949] font-medium">{post.category}</span>
