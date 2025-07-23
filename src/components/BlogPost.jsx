@@ -114,7 +114,7 @@ const BlogPost = ({ post, isPreview = false }) => {
         )}
       </div>
       
-      <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-2">
         {isPreview ? (
           <Link to={`/news/${post.slug}`} className="hover:text-[#C14949] transition-colors">
             {post.title}
@@ -124,7 +124,7 @@ const BlogPost = ({ post, isPreview = false }) => {
         )}
       </h2>
       
-      <div className="flex-grow">
+      <div className="flex-grow text-left text-grey indent-10">
         {renderContent()}
       </div>
       
