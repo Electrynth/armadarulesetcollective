@@ -31,10 +31,10 @@ const FAQ = () => {
               }`}
             >
               <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                ARC is the unofficial and fan-made continuation of Star Wars: Armada™, built by players who have come together to ensure the community continues to thrive after AMG withdrew support for this game. Our team includes national and international tournament winners, Tournament Organizers, former FFG playtesters, and prominent community members.
+                ARC is the <b>unofficial</b> and <b>fan-made</b> continuation of Star Wars: Armada™, built by players who have come together to ensure the community continues to thrive after AMG withdrew support for this game. Our team includes national and international tournament winners, Tournament Organizers, former FFG playtesters, and prominent community members.
                 <br /><br />
                 ARC has 3 main goals:
-                <ul>1) Ensure Armada rules are maintained, FAQ's are issued, and players are supported.</ul>
+                <ul>1) Ensure Armada rules are maintained and updated.</ul>
                 <ul>2) Coordinate an Organized Play environment for Armada events, with support for Tournament Organizers and players.</ul>
                 <ul>3) Ensure gameplay for Armada remains balanced and fresh, with balance changes for existing cards if needed, and occasional new content if we see appropriate opportunities.</ul>
                 <br />
