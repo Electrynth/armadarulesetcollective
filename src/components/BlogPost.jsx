@@ -106,7 +106,7 @@ const BlogPost = ({ post, isPreview = false }) => {
   // Render content based on preview mode
   const renderContent = () => {
     if (isPreview) {
-      return <p className="text-gray-300"><RichTextContent content={post.summary} /></p>;
+      return <div className="text-gray-300"><RichTextContent content={post.summary} /></div>;
     }
     
     return <RichTextContent content={post.content} />;
