@@ -37,6 +37,7 @@ const Home = () => {
           const sortedFeaturedPosts = [...featuredPosts].sort((a, b) => 
             new Date(b.date) - new Date(a.date)
           );
+          
           setFeaturedPost(sortedFeaturedPosts[0] || null);
         } else {
           setLatestPost(null);
@@ -83,7 +84,7 @@ const Home = () => {
         </div>
         
         <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-          Your source for Star Wars: Armada rules, resources, and community updates.
+          Your source for rules, resources, and community updates.
         </p>
         <div className="flex justify-center mb-6">
           <Link
@@ -171,11 +172,11 @@ const Home = () => {
           </p>
           
           <p>
-            Star Wars: Armada is a trademark of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd. This website is not affiliated with, endorsed by, or connected to Fantasy Flight Games, Atomic Mass Games, or Lucasfilm Ltd. All Star Wars: Armada content, including but not limited to rules, card text, and game mechanics, is the property of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd.
+            Star Wars: Armada is a trademark of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd. This website is NOT affiliated with, endorsed by, or connected to Fantasy Flight Games, Atomic Mass Games, or Lucasfilm Ltd. All Star Wars: Armada™ content, including but not limited to rules, card text, and game mechanics, is the property of Fantasy Flight Games, Atomic Mass Games, and Lucasfilm Ltd.
           </p>
           
           <p>
-            The content provided on this website is for informational and community purposes only. While we strive to maintain accuracy, we make no representations or warranties of any kind about the completeness, accuracy, reliability, suitability, or availability of the information contained on this website.
+            The content provided on this website is for personal use only, and is forbidden from being used for any commercial purposes. While we strive to maintain accuracy, we make no representations or warranties of any kind about the completeness, accuracy, reliability, suitability, or availability of the information contained on this website.
           </p>
           
           <p>
