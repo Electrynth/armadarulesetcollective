@@ -1,0 +1,225 @@
+{
+  "sections": [
+    {
+      "id": "print-play",
+      "title": "Print and Play Documents",
+      "icon": "🖨️",
+      "items": [
+        {
+            "title": "ARC01 Cards",
+            "description": "Reworked cards and new ship cards for the ARC01 release.",
+            "link": "https://d2j4aq9mja0i3a.cloudfront.net/print-and-play/ARC01.pdf",
+            "linkText": "Download →"
+        },
+        {
+          "title": "AMG RR2",
+          "description": "AMG's Rapid Reinforcements 2.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/print-and-play/Rapid%20Reinforcements%202.pdf",
+          "linkText": "Download →"
+      }
+      ]
+    },
+    {
+      "id": "list-builders",
+      "title": "List Builders",
+      "icon": "📋",
+      "items": [
+        {
+          "title": "Armada Warlords",
+          "description": "Classic web-based list builder.",
+          "link": "https://star-forge.tools/",
+          "linkText": "Visit Site →"
+        },
+        {
+          "title": "Star Forge",
+          "description": "Feature-rich builder with a focus on Armada Legacy.",
+          "link": "https://armadawarlords.twilightpeaks.net/",
+          "linkText": "Visit Site →"
+        },
+        {
+          "title": "HoloFoundry.net",
+          "description": "Mobile-friendly list builder.",
+          "link": "https://holofoundry.net/",
+          "linkText": "Visit Site →"
+        },
+        {
+          "title": "Armada Fleets Designer",
+          "description": "Downloadable Android app for building fleets.",
+          "link": "https://www.dmborque.eu/swm/",
+          "linkText": "Visit Site →"
+        }
+      ]
+    },
+    {
+      "id": "translated-cards",
+      "title": "Translated Cards",
+      "icon": "🌍",
+      "items": [
+        {
+          "title": "German RR2 Translations",
+          "description": "Community-contributed German translation for the Rapid Reinforcements 2 expansion.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/translations/German%20Translation.pdf",
+          "linkText": "Download →"
+        }
+      ]
+    },
+    {
+      "id": "tournament-documents",
+      "title": "Official Tournament Documents",
+      "icon": "🏆",
+      "items": [
+        {
+          "title": "ARC Tournament Regulations",
+          "description": "Coming Soon!",
+          "link": "",
+          "linkText": ""
+        },
+        {
+          "title": "AMG Tournament Regulations",
+          "description": "Official tournament rules and regulations from AMG.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/tournament-documents/AMG%20Tournament%20Regulations.pdf",
+          "linkText": "Download →"
+        },
+        {
+          "title": "Fleet Sheet",
+          "description": "Printable sheet for fleet input.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/tournament-documents/Fleet%20Sheet.pdf",
+          "linkText": "Download →"
+        },
+        {
+          "title": "Score Sheet",
+          "description": "Printable sheet for score input.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/tournament-documents/Score%20Sheet.pdf",
+          "linkText": "Download →"
+        }
+      ]
+    },
+    {
+      "id": "alternative-play",
+      "title": "Alternative Play Modes",
+      "icon": "🎲",
+      "items": [
+        {
+          "title": "Sector Fleet",
+          "description": "Rules for large-scale battles with multiple players.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/play-mode-documents/Sector%20Fleet%20Rules.pdf",
+          "linkText": "View Rules →"
+        },
+        {
+          "title": "Monster Trucks",
+          "description": "Format for large-scale battles with primarily large ships.",
+          "link": "https://cannotgetyourshipout.blogspot.com/2018/01/monster-truck-madness.html",
+          "linkText": "View Rules →"
+        },
+        {
+          "title": "Fighter Group",
+          "description": "Squadron-only format for small, fast-paced skirmishes.",
+          "link": "https://fighter-group.netlify.app/",
+          "linkText": "View Rules →"
+        },
+        {
+          "title": "Task Force",
+          "description": "200-point format with slightly modified standard rules.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/play-mode-documents/Task%20Force.webp",
+          "linkText": "View Rules →"
+        },
+        {
+          "title": "Take the Station",
+          "description": "150-point king of the hill format between 4 players.",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/play-mode-documents/Take%20The%20Station.pdf",
+          "linkText": "View Rules →"
+        }
+      ]
+    },
+    {
+      "id": "community-content",
+      "title": "Community Content",
+      "icon": "🎙️",
+      "subsections": [
+        {
+          "title": "Podcasts",
+          "items": [
+            {
+              "title": "Structural Damage",
+              "description": "Podcast with deep dives into Armada.",
+              "link": "https://open.spotify.com/show/6XNQcMWLHunqYYuLN9nIMr?si=0bb4d4b54d034658",
+              "linkText": "Listen →"
+            }
+          ]
+        },
+        {
+          "title": "YouTube Channels",
+          "items": [
+            {
+              "title": "ION Radio",
+              "description": "Gaming channel with Armada battle reports and gameplay.",
+              "link": "https://www.youtube.com/@IONRadio",
+              "linkText": "Watch →"
+            },
+            {
+              "title": "Downsizeit",
+              "description": "Gaming channel with Armada battle reports and gameplay.",
+              "link": "https://www.youtube.com/@Downsizeit",
+              "linkText": "Watch →"
+            }
+          ]
+        },
+        {
+          "title": "Blogs & Articles",
+          "items": [
+            {
+              "title": "Cannot Get Your Ship Out",
+              "description": "Timeless strategy articles and guides about all aspects of Armada.",
+              "link": "https://cannotgetyourshipout.blogspot.com/",
+              "linkText": "Visit Site →"
+            },
+            {
+              "title": "Steel Strategy",
+              "description": "Classic blog about card discussion, tactics, and fleet building.",
+              "link": "http://www.steelstrategy.com/",
+              "linkText": "View Site →"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "Components",
+      "icon": "⚙️",
+      "items": [
+        {
+          "title": "Unofficial Fan-made Expansions",
+          "description": "Community-curated site with resources for unofficial fan-made expansions.",
+          "link": "https://www.armadalegacy.com/resources",
+          "linkText": "Visit Site →"
+        }
+      ]
+    },
+    {
+      "id": "additional-resources",
+      "title": "Additional Resources",
+      "icon": "🛠️",
+      "items": [
+        {
+          "title": "Armada Phonebook",
+          "description": "Data repository with contact info for play groups around the world.",
+          "link": "https://armadarulesetcollective.com/community",
+          "linkText": "Visit Site →"
+        },
+        {
+          "title": "Damage Card Generator",
+          "description": "Online tool for dealing damage cards to your ships during a game.",
+          "link": "https://www.armadalegacy.com/damage",
+          "linkText": "Visit Site →"
+        },
+        {
+            "title": "Star Wars: Armada Wiki",
+            "description": "Community-maintained Fandom Wiki page for the game.",
+            "link": "https://starwars-armada.fandom.com/wiki/Star_Wars:_Armada_Wiki",
+            "linkText": "Visit Site →"
+          }
+      ]
+    }
+  ]
+} 
