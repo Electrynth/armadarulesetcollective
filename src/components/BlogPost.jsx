@@ -106,7 +106,7 @@ const BlogPost = ({ post, isPreview = false }) => {
   // Render content based on preview mode
   const renderContent = () => {
     if (isPreview) {
-      return <div className="text-gray-300"><RichTextContent content={post.summary} /></div>;
+      return <div className="text-gray-300 text-center"><RichTextContent content={post.summary} /></div>;
     }
     
     return <RichTextContent content={post.content} />;
@@ -202,7 +202,7 @@ const BlogPost = ({ post, isPreview = false }) => {
         )}
       </h2>
       
-      <div className="flex-grow text-left text-grey indent-10">
+      <div className={`flex-grow text-left text-grey ${isPreview ? '' : 'indent-10'}`}>
         {renderContent()}
       </div>
       
