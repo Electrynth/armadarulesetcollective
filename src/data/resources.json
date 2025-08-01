@@ -25,14 +25,14 @@
       "icon": "📋",
       "items": [
         {
-          "title": "Armada Warlords",
-          "description": "Classic web-based list builder.",
+          "title": "Star Forge",
+          "description": "Feature-rich builder with a focus on Armada Legacy.",
           "link": "https://star-forge.tools/",
           "linkText": "Visit Site →"
         },
         {
-          "title": "Star Forge",
-          "description": "Feature-rich builder with a focus on Armada Legacy.",
+          "title": "Armada Warlords",
+          "description": "Classic web-based list builder.",
           "link": "https://armadawarlords.twilightpeaks.net/",
           "linkText": "Visit Site →"
         },
