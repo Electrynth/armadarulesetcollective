@@ -122,11 +122,11 @@ const BlogPost = ({ post, isPreview = false }) => {
       className="bg-gray-800/90 backdrop-blur-sm p-4 sm:p-6 rounded-xl ring-1 ring-gray-700/50 flex flex-col h-full"
       aria-hidden={isModalOpen ? 'true' : undefined}
     >
-      <div className="mb-4 overflow-hidden rounded-xl bg-gray-900/50 flex items-center justify-center">
+      <div className="mb-4 overflow-hidden rounded-xl bg-gray-900/50 flex items-center justify-center h-48 sm:h-64">
         <img 
           src={imageError ? ARC_Logo_No_Text : (post.image || ARC_Logo_No_Text)} 
           alt={post.title} 
-          className={`w-full min-h-[8rem] sm:min-h-[12rem] max-h-[15rem] sm:max-h-[20rem] ${imageError || !post.image ? 'object-contain p-4' : 'object-contain'} cursor-pointer`}
+          className={`w-full h-full object-contain ${imageError || !post.image ? 'p-4' : ''} cursor-pointer`}
           onError={handleImageError}
           onClick={() => !imageError && post.image && setIsModalOpen(true)}
           tabIndex={post.image && !imageError ? 0 : -1}
