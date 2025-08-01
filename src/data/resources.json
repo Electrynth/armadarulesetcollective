@@ -12,8 +12,8 @@
             "linkText": "Download →"
         },
         {
-          "title": "AMG RR2",
-          "description": "AMG's Rapid Reinforcements 2.",
+          "title": "AMG RR 1 & 2",
+          "description": "AMG's Rapid Reinforcements 1 & 2.",
           "link": "https://d2j4aq9mja0i3a.cloudfront.net/print-and-play/Rapid%20Reinforcements%202.pdf",
           "linkText": "Download →"
       }
@@ -51,6 +51,25 @@
       ]
     },
     {
+      "id": "rrg-errata",
+      "title": "RRG & Errata",
+      "icon": "📖",
+      "items": [
+        {
+            "title": "AMG RRG",
+            "description": "AMG Rules Reference Guide",
+            "link": "https://d2j4aq9mja0i3a.cloudfront.net/AMG%20RRG.pdf",
+            "linkText": "Download →"
+        },
+        {
+          "title": "AMG Errata",
+          "description": "AMG's Latest Errata Document",
+          "link": "https://d2j4aq9mja0i3a.cloudfront.net/Errata.pdf",
+          "linkText": "Download →"
+      }
+      ]
+    },
+    {
       "id": "translated-cards",
       "title": "Translated Cards",
       "icon": "🌍",
@@ -73,12 +92,6 @@
           "description": "Coming Soon!",
           "link": "",
           "linkText": ""
-        },
-        {
-          "title": "AMG Tournament Regulations",
-          "description": "Official tournament rules and regulations from AMG.",
-          "link": "https://d2j4aq9mja0i3a.cloudfront.net/tournament-documents/AMG%20Tournament%20Regulations.pdf",
-          "linkText": "Download →"
         },
         {
           "title": "Fleet Sheet",
@@ -141,8 +154,14 @@
           "items": [
             {
               "title": "Structural Damage",
-              "description": "Podcast with deep dives into Armada.",
+              "description": "Podcast with deep dives into all things Armada.",
               "link": "https://open.spotify.com/show/6XNQcMWLHunqYYuLN9nIMr?si=0bb4d4b54d034658",
+              "linkText": "Listen →"
+            },
+            {
+              "title": "Speculation Station",
+              "description": "Podcast discussing current events and the current meta with Armada.",
+              "link": "https://open.spotify.com/show/5qjJzYwYnkts9T1Onz0gN4",
               "linkText": "Listen →"
             }
           ]
@@ -151,15 +170,33 @@
           "title": "YouTube Channels",
           "items": [
             {
-              "title": "ION Radio",
-              "description": "Gaming channel with Armada battle reports and gameplay.",
-              "link": "https://www.youtube.com/@IONRadio",
+              "title": "Fly Casual",
+              "description": "Channel that deep dives into strategy and fleet building.",
+              "link": "https://www.youtube.com/@FlyCasualStreaming",
+              "linkText": "Watch →"
+            },
+            {
+              "title": "The 13th Fleet",
+              "description": "Gaming channel with content on Star Wars: Armada and Star Wars: The Old Republic.",
+              "link": "https://www.youtube.com/@The13thFleet",
               "linkText": "Watch →"
             },
             {
               "title": "Downsizeit",
-              "description": "Gaming channel with Armada battle reports and gameplay.",
+              "description": "Channel with focus on Star Wars: Armada and other tabletop games.",
               "link": "https://www.youtube.com/@Downsizeit",
+              "linkText": "Watch →"
+            },
+            {
+              "title": "ION Radio",
+              "description": "Gaming channel dedicated to high quality battle reports.",
+              "link": "https://www.youtube.com/@IONRadio",
+              "linkText": "Watch →"
+            },
+            {
+              "title": "Brace For Impact",
+              "description": "Gaming channel with commentary on Armada and battle reports.",
+              "link": "https://www.youtube.com/@BraceForImpact",
               "linkText": "Watch →"
             }
           ]
@@ -167,6 +204,12 @@
         {
           "title": "Blogs & Articles",
           "items": [
+            {
+              "title": "Aluminum Falcon",
+              "description": "Blog about tabletop games and hobbies with a focus on Star Wars miniatures games.",
+              "link": "https://www.aluminum-falcon.com/",
+              "linkText": "Visit Site →"
+            },
             {
               "title": "Cannot Get Your Ship Out",
               "description": "Timeless strategy articles and guides about all aspects of Armada.",
