@@ -205,6 +205,12 @@
           "title": "Blogs & Articles",
           "items": [
             {
+              "title": "I Have You Now",
+              "description": "A Blog about Armada and the home to VASSAL and the Warlords fleet builder.",
+              "link": "https://armadaihaveyounow.blogspot.com/",
+              "linkText": "Visit Site →"
+            },
+            {
               "title": "Aluminum Falcon",
               "description": "Blog about tabletop games and hobbies with a focus on Star Wars miniatures games.",
               "link": "https://www.aluminum-falcon.com/",
