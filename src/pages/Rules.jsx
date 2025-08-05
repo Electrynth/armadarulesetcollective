@@ -4,9 +4,9 @@ function Rules() {
   const pdfFiles = [
     { name: 'Cover', path: '/pdfs/Cover.pdf', isSinglePage: true, size: '1.5MB' },
     { name: 'Changelog', path: '/pdfs/ARM Changelog.pdf', isSinglePage: true, size: '1.5MB' },
-    { name: 'Titles', compressedPath: '/pdfs/compressed/Titles.pdf', rawPath: '/pdfs/raw/Title.pdf', compressedSize: '6.5MB', rawSize: '28MB' },
-    { name: 'Commanders', compressedPath: '/pdfs/compressed/Commanders.pdf', rawPath: '/pdfs/raw/Commander.pdf', compressedSize: '4.5MB', rawSize: '23MB' },
-    { name: 'Officers', compressedPath: '/pdfs/compressed/Officers.pdf', rawPath: '/pdfs/raw/Officer.pdf', compressedSize: '2.8MB', rawSize: '14MB' },
+    { name: 'Titles', compressedPath: '/pdfs/compressed/Titles.pdf', rawPath: '/pdfs/raw/Title.pdf', compressedSize: '16MB', rawSize: '28MB' },
+    { name: 'Commanders', compressedPath: '/pdfs/compressed/Commanders.pdf', rawPath: '/pdfs/raw/Commander.pdf', compressedSize: '13MB', rawSize: '23MB' },
+    { name: 'Officers', compressedPath: '/pdfs/compressed/Officers.pdf', rawPath: '/pdfs/raw/Officer.pdf', compressedSize: '13MB', rawSize: '14MB' },
     { name: 'Boarding Teams', compressedPath: '/pdfs/compressed/Boarding Teams.pdf', rawPath: '/pdfs/raw/Boarding Team.pdf', compressedSize: '780KB', rawSize: '2.7MB' },
     { name: 'Weapon Teams', compressedPath: '/pdfs/compressed/Weapon Teams.pdf', rawPath: '/pdfs/raw/Weapon Team.pdf', compressedSize: '1.5MB', rawSize: '5.5MB' },
     { name: 'Support Teams', compressedPath: '/pdfs/compressed/Support Teams.pdf', rawPath: '/pdfs/raw/Support Team.pdf', compressedSize: '985KB', rawSize: '3.9MB' },
@@ -19,7 +19,7 @@ function Rules() {
     { name: 'Turbolasers', compressedPath: '/pdfs/compressed/Turbolasers.pdf', rawPath: '/pdfs/raw/Turbolaser.pdf', compressedSize: '1.6MB', rawSize: '6.5MB' },
     { name: 'Experimental Retrofits', compressedPath: '/pdfs/compressed/Experimental Retrofits.pdf', rawPath: '/pdfs/raw/Experimental Retrofit.pdf', compressedSize: '538KB', rawSize: '2.2MB' },
     { name: 'Super Weapons', compressedPath: '/pdfs/compressed/Super Weapons.pdf', rawPath: '/pdfs/raw/Superweapon.pdf', compressedSize: '362KB', rawSize: '1.1MB' },
-    { name: 'Squadrons', compressedPath: '/pdfs/compressed/Squadrons.pdf', rawPath: '/pdfs/raw/Squadrons.pdf', compressedSize: '5.8MB', rawSize: '25MB' },
+    { name: 'Squadrons', compressedPath: '/pdfs/compressed/Squadrons.pdf', rawPath: '/pdfs/raw/Squadrons.pdf', compressedSize: '13MB', rawSize: '25MB' },
     { name: 'Damage Cards', compressedPath: '/pdfs/compressed/Damage Cards.pdf', rawPath: '/pdfs/raw/Damage Cards.pdf', compressedSize: '1.6MB', rawSize: '6.5MB' }
   ];
 
