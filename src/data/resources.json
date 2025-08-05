@@ -62,6 +62,12 @@
       "icon": "📖",
       "items": [
         {
+            "title": "ARM v1.03",
+            "description": "Archived Armada Reference Manual v1.03",
+            "link": "https://d2j4aq9mja0i3a.cloudfront.net/armada-reference-manual/ARM%20v1.03.pdf",
+            "linkText": "Download →"
+        },
+        {
             "title": "AMG RRG",
             "description": "AMG Rules Reference Guide",
             "link": "https://d2j4aq9mja0i3a.cloudfront.net/AMG%20RRG.pdf",
