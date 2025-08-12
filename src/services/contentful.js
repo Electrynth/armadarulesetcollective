@@ -68,30 +68,24 @@ const processContent = (content) => {
   if (!content) return '';
   
   // If it's already a string, return it
-  if (typeof content === 'string') return content;
+  if (typeof content === 'string') {
+    return content;
+  }
   
-  // If it's a Rich Text object, return it as is
+  // If it's a Rich Text object, return it as is without modification
+  // The rich text renderer will handle embedded entries and assets
   if (typeof content === 'object') {
-    // Check if the content has the expected structure for Contentful Rich Text
+    // Check if it's a Contentful Rich Text document
     if (content.nodeType === 'document' && Array.isArray(content.content)) {
-      // Process the content to ensure italic marks are preserved
-      const processedContent = {
-        ...content,
-        content: content.content.map(node => {
-          // If the node has marks, ensure they're properly formatted
-          if (node.marks && Array.isArray(node.marks)) {
-            return {
-              ...node,
-              marks: node.marks.map(mark => mark)
-            };
-          }
-          return node;
-        })
-      };
-      
-      return processedContent;
+      return content;
     }
     
+    // Check if it has a content field that might be rich text
+    if (content.content && typeof content.content === 'object' && content.content.nodeType === 'document') {
+      return content.content;
+    }
+    
+    // If it's some other object, return it as is
     return content;
   }
   
@@ -111,6 +105,7 @@ export const fetchBlogPosts = async () => {
     const response = await client.getEntries({
       content_type: 'blogPost',
       order: '-fields.date',
+      include: 10, // Include up to 10 levels of embedded entries and assets
     });
     
     // Transform Contentful data to match your current blog post structure
@@ -142,7 +137,9 @@ export const fetchBlogPostById = async (id) => {
       return null;
     }
 
-    const response = await client.getEntry(id);
+    const response = await client.getEntry(id, {
+      include: 10, // Include up to 10 levels of embedded entries and assets
+    });
     
     return {
       id: response.sys.id,

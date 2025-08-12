@@ -202,7 +202,7 @@ const BlogPost = ({ post, isPreview = false }) => {
         )}
       </h2>
       
-      <div className={`flex-grow text-left text-grey ${isPreview ? '' : 'indent-10'}`}>
+      <div className="flex-grow text-left text-grey">
         {renderContent()}
       </div>
       
