@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Stars from './components/Stars';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import News from './pages/News';
 import BlogPostDetail from './pages/BlogPostDetail';
@@ -16,6 +17,7 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen">
         <Stars />
         <div className="relative z-10">

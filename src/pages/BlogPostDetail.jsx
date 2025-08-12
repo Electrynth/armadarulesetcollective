@@ -10,6 +10,9 @@ const BlogPostDetail = () => {
   const [error, setError] = useState(null);
   
   useEffect(() => {
+    // Scroll to top when the component mounts or slug changes
+    window.scrollTo(0, 0);
+    
     const getBlogPost = async () => {
       try {
         setLoading(true);
