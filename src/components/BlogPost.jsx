@@ -56,6 +56,22 @@ const BlogPost = ({ post, isPreview = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalImageRef = useRef(null);
 
+  // Debug: Log the full blog post data structure from Contentful
+  console.log('BlogPost Data Structure:', {
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    date: post.date,
+    author: post.author,
+    category: post.category,
+    summary: post.summary,
+    content: post.content,
+    tags: post.tags,
+    featured: post.featured,
+    image: post.image,
+    isPreview: isPreview
+  });
+
   // Format date
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
