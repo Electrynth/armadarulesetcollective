@@ -50,6 +50,15 @@ const RichTextContent = ({ content }) => {
   
   // If content is a Rich Text object, render it with the React renderer
   if (content && typeof content === 'object') {
+    // Debug: Log the content structure to see if headers are present
+    console.log('RichTextContent - Content structure:', content);
+    if (content.content && Array.isArray(content.content)) {
+      console.log('RichTextContent - Content nodes:', content.content.map(node => ({
+        nodeType: node.nodeType,
+        content: node.content ? node.content.length : 0
+      })));
+    }
+    
     // Check if this is a valid Contentful Rich Text document
     if (!content.nodeType || content.nodeType !== 'document') {
       // If it's not a valid Rich Text document, try to render as string or show error
@@ -78,9 +87,30 @@ const RichTextContent = ({ content }) => {
     const options = {
       renderNode: {
         [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-3 sm:mb-4 text-base sm:text-lg indent-10">{children}</p>,
-        [BLOCKS.HEADING_1]: (node, children) => <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{children}</h1>,
-        [BLOCKS.HEADING_2]: (node, children) => <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">{children}</h2>,
-        [BLOCKS.HEADING_3]: (node, children) => <h3 className="text-lg sm:text-xl font-bold mb-2">{children}</h3>,
+        [BLOCKS.HEADING_1]: (node, children) => {
+          console.log('Rendering H1:', children);
+          return <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">{children}</h1>;
+        },
+        [BLOCKS.HEADING_2]: (node, children) => {
+          console.log('Rendering H2:', children);
+          return <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-white">{children}</h2>;
+        },
+        [BLOCKS.HEADING_3]: (node, children) => {
+          console.log('Rendering H3:', children);
+          return <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">{children}</h3>;
+        },
+        [BLOCKS.HEADING_4]: (node, children) => {
+          console.log('Rendering H4:', children);
+          return <h4 className="text-base sm:text-lg font-bold mb-2 text-white">{children}</h4>;
+        },
+        [BLOCKS.HEADING_5]: (node, children) => {
+          console.log('Rendering H5:', children);
+          return <h5 className="text-sm sm:text-base font-bold mb-2 text-white">{children}</h5>;
+        },
+        [BLOCKS.HEADING_6]: (node, children) => {
+          console.log('Rendering H6:', children);
+          return <h6 className="text-xs sm:text-sm font-bold mb-2 text-white">{children}</h6>;
+        },
         [BLOCKS.UL_LIST]: (node, children) => <ul className="list-disc pl-4 sm:pl-5 mb-3 sm:mb-4">{children}</ul>,
         [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal pl-4 sm:pl-5 mb-3 sm:mb-4">{children}</ol>,
         [BLOCKS.LIST_ITEM]: (node, children) => <li className="mb-1 text-base sm:text-lg">{children}</li>,
@@ -355,7 +385,7 @@ const RichTextContent = ({ content }) => {
     try {
       return (
         <>
-          <div className="prose prose-invert max-w-none prose-sm sm:prose-base">
+          <div className="prose prose-invert max-w-none prose-sm sm:prose-base [&>h1]:text-white [&>h2]:text-white [&>h3]:text-white [&>h4]:text-white [&>h5]:text-white [&>h6]:text-white">
             {documentToReactComponents(content, options)}
           </div>
           
