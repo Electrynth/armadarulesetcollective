@@ -4,6 +4,25 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import RichTextContent from './RichTextContent';
 
+// Utility function to highlight search terms in text
+const highlightSearchTerms = (text, searchQuery) => {
+  if (!text || !searchQuery || !searchQuery.trim()) {
+    return text;
+  }
+  
+  const searchTerms = searchQuery.toLowerCase().trim().split(/\s+/);
+  let highlightedText = text;
+  
+  searchTerms.forEach(term => {
+    if (term.length > 0) {
+      const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      highlightedText = highlightedText.replace(regex, '<mark class="bg-yellow-500/30 text-yellow-200">$1</mark>');
+    }
+  });
+  
+  return highlightedText;
+};
+
 // Utility function to parse basic markdown links
 const parseMarkdownLinks = (text) => {
   if (!text) return text;
@@ -51,7 +70,7 @@ const parseMarkdownLinks = (text) => {
   return parts.length > 0 ? parts : text;
 };
 
-const BlogPost = ({ post, isPreview = false }) => {
+const BlogPost = ({ post, isPreview = false, searchQuery = '' }) => {
   const [imageError, setImageError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalImageRef = useRef(null);
@@ -101,28 +120,37 @@ const BlogPost = ({ post, isPreview = false }) => {
     }
   }, []);
 
-  // Render tags
+  // Render tags with search highlighting
   const renderTags = () => {
     if (!post.tags || post.tags.length === 0) return null;
     
     return (
       <div className="flex flex-wrap gap-2 mt-4">
-        {post.tags.map((tag, index) => (
-          <span 
-            key={index} 
-            className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
-          >
-            {tag}
-          </span>
-        ))}
+        {post.tags.map((tag, index) => {
+          const highlightedTag = highlightSearchTerms(tag, searchQuery);
+          return (
+            <span 
+              key={index} 
+              className="bg-gray-700/50 text-gray-300 text-xs px-2 py-1 rounded-full"
+              dangerouslySetInnerHTML={{ __html: highlightedTag }}
+            />
+          );
+        })}
       </div>
     );
   };
 
-  // Render content based on preview mode
+  // Render content based on preview mode with search highlighting
   const renderContent = () => {
     if (isPreview) {
-      return <div className="text-gray-300 text-center"><RichTextContent content={post.summary} /></div>;
+      // For preview mode, highlight search terms in summary
+      const highlightedSummary = highlightSearchTerms(post.summary, searchQuery);
+      return (
+        <div 
+          className="text-gray-300 text-center"
+          dangerouslySetInnerHTML={{ __html: highlightedSummary }}
+        />
+      );
     }
     
     return <RichTextContent content={post.content} />;
@@ -132,6 +160,9 @@ const BlogPost = ({ post, isPreview = false }) => {
   const handleImageError = () => {
     setImageError(true);
   };
+
+  // Highlight search terms in title
+  const highlightedTitle = highlightSearchTerms(post.title, searchQuery);
 
   return (
     <article
@@ -211,10 +242,10 @@ const BlogPost = ({ post, isPreview = false }) => {
       <h2 className="text-xl sm:text-2xl font-semibold mb-2">
         {isPreview ? (
           <Link to={`/news/${post.slug}`} className="hover:text-[#C14949] transition-colors">
-            {post.title}
+            <span dangerouslySetInnerHTML={{ __html: highlightedTitle }} />
           </Link>
         ) : (
-          post.title
+          <span dangerouslySetInnerHTML={{ __html: highlightedTitle }} />
         )}
       </h2>
       
