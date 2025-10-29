@@ -90,6 +90,30 @@ const RichTextContent = ({ content }) => {
         [BLOCKS.QUOTE]: (node, children) => <blockquote className="border-l-4 border-gray-600 pl-3 sm:pl-4 italic my-3 sm:my-4 text-base sm:text-lg">{children}</blockquote>,
         [BLOCKS.HR]: () => <hr className="my-4 sm:my-6 border-gray-700" />,
         
+        // Table support - rendered as code block style
+        [BLOCKS.TABLE]: (node, children) => (
+          <div className="my-4 p-3 bg-gray-900/80 rounded-lg border border-gray-600">
+            <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre leading-tight">
+              <code>{children}</code>
+            </pre>
+          </div>
+        ),
+        [BLOCKS.TABLE_ROW]: (node, children) => (
+          <div className="flex">
+            {children}
+          </div>
+        ),
+        [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
+          <div className="flex-1 px-1.5 py-0.5 font-semibold text-white border-r border-gray-600 last:border-r-0 text-xs">
+            {children}
+          </div>
+        ),
+        [BLOCKS.TABLE_CELL]: (node, children) => (
+          <div className="flex-1 px-1.5 py-0.5 text-gray-300 border-r border-gray-600 last:border-r-0 text-xs">
+            {children}
+          </div>
+        ),
+        
         // Embedded Assets (Images, Videos, PDFs, etc.)
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
           const { title, description, file } = node.data.target.fields;
