@@ -89,7 +89,7 @@ const Resources = () => {
             to="/communities"
             className="inline-block bg-[#C14949] hover:bg-[#D15A5A] text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
           >
-            Find community contacts near me!
+            Find a community near me!
           </Link>
           <p className="text-gray-400 text-sm mt-2 text-center">Browse our directory of community contacts and organizers</p>
         </div>
