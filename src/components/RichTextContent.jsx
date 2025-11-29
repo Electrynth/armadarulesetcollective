@@ -4,6 +4,13 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import EmbeddedBlogPost from './EmbeddedBlogPost';
 
+// Utility function to convert "/t" to actual tab characters
+const processText = (text) => {
+  if (typeof text !== 'string') return text;
+  // Convert literal "/t" strings to tab characters
+  return text.replace(/\/t/g, '\t');
+};
+
 const RichTextContent = ({ content }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -77,7 +84,7 @@ const RichTextContent = ({ content }) => {
     
     const options = {
       renderNode: {
-        [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-3 sm:mb-4 text-base sm:text-lg indent-10">{children}</p>,
+        [BLOCKS.PARAGRAPH]: (node, children) => <p className="mb-3 sm:mb-4 text-base sm:text-lg whitespace-pre-wrap">{children}</p>,
         [BLOCKS.HEADING_1]: (node, children) => <h1 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">{children}</h1>,
         [BLOCKS.HEADING_2]: (node, children) => <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-white">{children}</h2>,
         [BLOCKS.HEADING_3]: (node, children) => <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">{children}</h3>,
@@ -86,8 +93,8 @@ const RichTextContent = ({ content }) => {
         [BLOCKS.HEADING_6]: (node, children) => <h6 className="text-xs sm:text-sm font-bold mb-2 text-white">{children}</h6>,
         [BLOCKS.UL_LIST]: (node, children) => <ul className="list-disc pl-4 sm:pl-5 mb-3 sm:mb-4">{children}</ul>,
         [BLOCKS.OL_LIST]: (node, children) => <ol className="list-decimal pl-4 sm:pl-5 mb-3 sm:mb-4">{children}</ol>,
-        [BLOCKS.LIST_ITEM]: (node, children) => <li className="mb-1 text-base sm:text-lg">{children}</li>,
-        [BLOCKS.QUOTE]: (node, children) => <blockquote className="border-l-4 border-gray-600 pl-3 sm:pl-4 italic my-3 sm:my-4 text-base sm:text-lg">{children}</blockquote>,
+        [BLOCKS.LIST_ITEM]: (node, children) => <li className="mb-1 text-base sm:text-lg whitespace-pre-wrap">{children}</li>,
+        [BLOCKS.QUOTE]: (node, children) => <blockquote className="border-l-4 border-gray-600 pl-3 sm:pl-4 italic my-3 sm:my-4 text-base sm:text-lg whitespace-pre-wrap">{children}</blockquote>,
         [BLOCKS.HR]: () => <hr className="my-4 sm:my-6 border-gray-700" />,
         
         // Table support - rendered as code block style
@@ -373,12 +380,15 @@ const RichTextContent = ({ content }) => {
         },
       },
       renderMark: {
-        [MARKS.BOLD]: text => <strong>{text}</strong>,
-        [MARKS.ITALIC]: text => <em className="italic font-style-italic" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: 'italic' }}>{text}</em>,
-        [MARKS.CODE]: text => <code className="bg-gray-800 px-1 py-0.5 rounded text-sm sm:text-base">{text}</code>,
-        [MARKS.UNDERLINE]: text => <u>{text}</u>,
-        [MARKS.SUPERSCRIPT]: text => <sup>{text}</sup>,
-        [MARKS.SUBSCRIPT]: text => <sub>{text}</sub>,
+        [MARKS.BOLD]: text => <strong>{processText(text)}</strong>,
+        [MARKS.ITALIC]: text => <em className="italic font-style-italic" style={{ fontFamily: "'Montserrat', sans-serif", fontStyle: 'italic' }}>{processText(text)}</em>,
+        [MARKS.CODE]: text => <code className="bg-gray-800 px-1 py-0.5 rounded text-sm sm:text-base">{processText(text)}</code>,
+        [MARKS.UNDERLINE]: text => <u>{processText(text)}</u>,
+        [MARKS.SUPERSCRIPT]: text => <sup>{processText(text)}</sup>,
+        [MARKS.SUBSCRIPT]: text => <sub>{processText(text)}</sub>,
+      },
+      renderText: (text) => {
+        return processText(text);
       },
     };
     
