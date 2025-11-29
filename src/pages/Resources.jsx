@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import resourcesData from '../data/resources.json';
 
 const Resources = () => {
@@ -80,6 +81,17 @@ const Resources = () => {
         {/* Header */}
         <div className="space-y-4">
           <h1 className="text-5xl font-bold mb-6 text-white text-center">Resources</h1>
+        </div>
+
+        {/* Find Community Button */}
+        <div className="flex flex-col items-center mb-8">
+          <Link
+            to="/communities"
+            className="inline-block bg-[#C14949] hover:bg-[#D15A5A] text-white font-semibold py-2 px-6 rounded-lg shadow transition-colors duration-200"
+          >
+            Find community contacts near me!
+          </Link>
+          <p className="text-gray-400 text-sm mt-2 text-center">Browse our directory of community contacts and organizers</p>
         </div>
 
         {/* Sections */}
