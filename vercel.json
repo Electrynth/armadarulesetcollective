@@ -1,4 +1,14 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "(www\\.)?armadarulesetcollective\\.com" }
+      ],
+      "destination": "https://armada.community/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
