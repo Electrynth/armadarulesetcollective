@@ -1,11 +1,11 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path((?!assets/).*)",
       "has": [
         { "type": "host", "value": "(www\\.)?armadarulesetcollective\\.com" }
       ],
-      "destination": "https://armada.community/:path*",
+      "destination": "https://www.armada.community/:path",
       "permanent": true
     }
   ],
